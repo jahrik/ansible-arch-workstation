@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  roles:
+    - pkgs
+  tasks:
+
+#  - name: Authorized keys
+#    authorized_key: user=root
+#                    key={{ lookup('file', '.ssh/italc_rsa.pub') }}
+#                    state=present
+#    tags:
+#      - ssh
+#
+#  - name: Copy ssh keys
+#    copy: src={{item}}
+#          dest=/root/.ssh/
+#          owner=root
+#          group=root
+#          mode=0600
+#    with_items:
+#      - .ssh/italc_rsa
+#      - .ssh/italc_rsa.pub
+#    tags:
+#     - ssh
