@@ -4,7 +4,7 @@ This tool is meant to be used with arch linux after a base installation has been
 
 This guide will demonstrate one way to setup a workstation with a base install of arch linux.
 
-Encrypting your hard drive is the first essential step in securing data.
+Ansible will be installed after the base install to double-check our work and handle the rest.
 
 ### dd:
 
