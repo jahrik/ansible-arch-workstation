@@ -142,7 +142,7 @@ Format the encrypted root partition
 mkfs.ext4 /dev/mapper/root
 ```
 
-Mount the partitions:
+### Mount the partitions:
 
 Following the example partitioning scheme
 ```
@@ -152,50 +152,13 @@ mount /dev/sda1 /mnt/boot
 swapon /dev/sda2
 ```
 
-### Establish an internet connection:
-
-Wired:
-
-If an Ethernet cable is plugged in this should happen automatically at boot.
-
-wired
-```
-# If you would like to discover the names of your interfaces.
-ip link
- 
-# Dhcpcd will automatically run at startup and try to establish a wired connection. If you plugged in your Ethernet cable late, input this command to run it again.
-dhcpcd
- 
-# Check and see if we can ping google.
-ping -c 3 www.google.com
-
-```
-
-Wireless
-```
-# Identify wireless devices.
-iw dev
- 
-# Bring up a list of available networks.
-wifi-menu
- 
-# Bring up your wireless interface.
-ip link set wlp3s0 up
- 
-# Show info and if it is up.
-ip link show wlp3s0
- 
-# Ping google to make sure you have a connection.
-ping -c 3 www.google.com
-```
-
 ### Install the base system:
 ```
 # Omit the -i to avoid being asked what to install
 pacstrap -i /mnt base base-devel
 ```
 
-Generate an fstab: 
+### Generate an fstab: 
 ```
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
@@ -208,11 +171,10 @@ cat /mnt/etc/fstab
 
 ### Configure your new install: 
 ```
-arch-chroot
 arch-chroot /mnt /bin/bash
 ```
 
-Finish encryption of home partiition: 
+### Finish encryption of home partiition: 
 
 Create a key 
 
