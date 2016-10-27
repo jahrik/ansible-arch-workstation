@@ -31,12 +31,14 @@ sr0     11:0    1  1024M  0 rom
 My usb is sdb
 ```
 dd bs=4M if=~/Downloads/archlinuxinstall.iso of=/dev/sdb && sync
+```
+
 Boot up into the live arch linux environment and wipe your drives. 
-# Find out which /dev/ is your harddrive.
+
+Find out which /dev/ is your harddrive.
+```
 fdisk -l
 ```
- 
- 
 Wipe existing data from drive.
 
 ```
@@ -68,7 +70,7 @@ parted -s -a optimal /dev/sda mkpart primary 2GB 20GB
 parted -s -a optimal /dev/sda mkpart primary 20GB 100%
 ```
 
-Format your partitions:
+### Format your partitions:
 
 if you are encrypting your drive, you might end up with a partitioning scheme like the following:
 
@@ -107,7 +109,7 @@ Comment
 
 The options used in the example column result in the following: 
 
-example
+example:
 ```
  cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat <device>
 ```
@@ -138,7 +140,7 @@ Format the encrypted root partition
 mkfs.ext4 /dev/mapper/root
 ```
 
-Mount the partitions:
+### Mount the partitions:
 
 Following the example partitioning scheme
 ```
@@ -148,7 +150,7 @@ mount /dev/sda1 /mnt/boot
 swapon /dev/sda2
 ```
 
-Establish an internet connection:
+### Establish an internet connection:
 
 Wired:
 
@@ -185,7 +187,7 @@ ip link show wlp3s0
 ping -c 3 www.google.com
 ```
 
-Install the base system:
+### Install the base system:
 ```
 # Omit the -i to avoid being asked what to install
 pacstrap -i /mnt base base-devel
@@ -202,7 +204,7 @@ cat /mnt/etc/fstab
 ```
 
 
-Configure your new install: 
+### Configure your new install: 
 ```
 arch-chroot
 arch-chroot /mnt /bin/bash
