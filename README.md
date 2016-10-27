@@ -6,6 +6,8 @@ This guide will demonstrate one way to setup a workstation with a base install o
 
 Ansible will be installed after the base install to double-check our work and handle the rest.
 
+## Initial installation
+
 ### dd:
 
 First go to the Arch website and download the latest .iso file.
@@ -244,6 +246,14 @@ Setup for:
 - chef
 - python
 - ansible
+
+## Let ansible handle the rest
+
+Stuff and things go here...
+
+...
+
+...
 
 ## Vagrant lab
 
