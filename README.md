@@ -6,6 +6,17 @@ This guide will demonstrate one way to setup a workstation with a base install o
 
 Ansible will be installed after the base install to double-check our work and handle the rest.
 
+## TODO
+
+Setup for:
+- ansible
+- yaourt
+- i3
+- vim
+- zsh
+- ruby
+- chef
+
 ## Initial installation
 
 ### dd:
@@ -234,18 +245,6 @@ Add entry to /etc/fstab for /dev/mapper/home
 UUID=ecfaa756-c05b-4653-b18f-fa491bc47c03   /home       ext4        rw,relatime,data=ordered    0 2
 ...
 ```
-
-## TODO
-
-Setup for:
-- yaourt
-- i3
-- vim
-- zsh
-- ruby
-- chef
-- python
-- ansible
 
 ## Let ansible handle the rest
 
