@@ -1,0 +1,5 @@
+[local]
+localhost ansible_user=user ansible_connection=local ansible_python_interpreter=/usr/bin/python2.7
+
+[home]
+# desktop ansible_host=192.168.1.100 ansible_python_interpreter=/usr/bin/python2.7

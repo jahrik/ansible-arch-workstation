@@ -3,8 +3,9 @@
   become: true
   become_method: sudo
   vars_files:
-    - "vars/{{ inventory_hostname }}.yml"
+    - "./vars/{{ inventory_hostname }}.yml"
   roles:
+    - setup
     - pkgs
   tasks:
 
@@ -67,3 +68,18 @@
     when: hostname.changed
     tags:
       - hostname
+
+  # Services
+  - name: Enable Slim
+    service: name=slim
+             enabled=yes
+             state=started
+    tags:
+      - service
+
+  - name: Enable ntpdate
+    service: name=ntpdate
+             enabled=yes
+             state=started
+    tags:
+      - service
