@@ -93,12 +93,11 @@ mkswap /dev/sda2
 ### Disk Encryption:
 ```
 cryptsetup
-usage
 cryptsetup <OPTIONS> <action> <action-specific-options> <device> <dmname>
-Options
-Cryptsetup (1.6.2) defaults
+```
+
 Example
-Comment
+```
 --cipher, -c  aes-xts-plain64 aes-xts-plain64 The example uses the same cipher as the default: the AES-cipher with XTS.
 --key-size, -s  256 512 By default a 256 bit key-size is used. Note however that XTS splits the supplied key in half. So to use AES-256 instead of AES-128 you would have to set the XTS key-size to 512.
 --hash, -h  sha1  sha512  Hash algorithm used for PBKDF2. Due to this processing, SHA1 is considered adequate as of January 2014.
@@ -109,7 +108,7 @@ Comment
 
 The options used in the example column result in the following: 
 
-example:
+Example:
 ```
  cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat <device>
 ```
@@ -136,11 +135,14 @@ cryptsetup --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 500
 Open it with
 ```
 cryptsetup luksOpen /dev/sda3 root
+```
+
 Format the encrypted root partition
+```
 mkfs.ext4 /dev/mapper/root
 ```
 
-### Mount the partitions:
+Mount the partitions:
 
 Following the example partitioning scheme
 ```
