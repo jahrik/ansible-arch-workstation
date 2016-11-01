@@ -28,17 +28,3 @@
 #             state=started
 #    tags:
 #      - service
-
-#  # Yaourt
-#  - name: Clone package-query from github
-#    git:
-#      repo=https://aur.archlinux.org/package-query.git
-#      dest=/home/{{ ansible_user }}/package-query
-#    register: pkgqry
-#
-#  - name: install package-query
-#    command: makepkg -si
-#      chdir=/home/{{ ansible_user}}/package-query
-#    when: pkgqry.changed
-
-
