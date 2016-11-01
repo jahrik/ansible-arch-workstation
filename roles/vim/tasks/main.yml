@@ -1,0 +1,38 @@
+---
+- name: Install vim
+  package:
+    name=vim
+    state=present
+  tags: [ "vim" ]
+
+- name: create ~/.vim diretory
+  file: 
+    path=/home/{{ ansible_user }}/.vim/
+    state=directory
+    mode=0755
+  tags: [ "vim" ]
+
+- name: Clone vundle from github
+  git:
+    repo=https://github.com/VundleVim/Vundle.vim.git
+    dest=/home/{{ ansible_user }}/.vim/bundle/Vundle.vim
+  tags: [ "vim" ]
+
+- name: Copy .vimrc to /home/{{ ansible_user }}/
+  copy:
+    src=files/vimrc
+    dest=/home/{{ ansible_user }}/.vimrc
+    owner={{ ansible_user }}
+    group=users
+    mode=644
+  register: vimrc
+  tags: [ "vim" ]
+
+- name: Install vim plugins
+  command: vim +PluginInstall +qall
+  when: vimrc.changed
+  tags: [ "vim" ]
+
+- name: vim info
+  debug: msg="See the :h vundle Vimdoc for more details."
+  tags: [ "vim" ]

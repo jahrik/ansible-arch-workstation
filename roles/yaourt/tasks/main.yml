@@ -1,0 +1,11 @@
+---
+- name: Add archlinux.fr repo
+  blockinfile: |
+    dest=/etc/pacman.conf
+    backup=yes
+    content="[archlinuxfr]
+             SigLevel = Never
+             Server = http://repo.archlinux.fr/$arch"
+
+- name: Install yaourt
+  pacman: name=yaourt state=latest update_cache=yes
