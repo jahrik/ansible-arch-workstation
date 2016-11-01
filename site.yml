@@ -10,8 +10,8 @@
     - yaourt
     - pkgs
     - vim
-    # - slim
     # - i3
+    # - slim
   tasks:
 
 #  # Services
