@@ -1,0 +1,17 @@
+---
+- name: Add "{{locale_reg}}.{{locale}}" to locale.gen
+  lineinfile:
+    dest=/etc/locale.gen
+    line="{{locale_reg}}.{{locale}} {{locale}}"
+    state=present
+  register: locale
+  tags: [ "locale" ]
+
+- name: Generate locale
+  shell: "{{item}}"
+  with_items:
+    - locale-gen
+    - echo LANG="{{locale_reg}}.{{locale}}" > /etc/locale.conf
+    - export LANG="{{locale_reg}}.{{locale}}"
+  when: locale.changed 
+  tags: [ "locale" ]

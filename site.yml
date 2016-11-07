@@ -6,7 +6,10 @@
     - "./vars/{{ inventory_hostname }}.yml"
   roles:
     - setup
-    - verify_base_install
+    - mkinitcpio
+    - hostname
+    - locale
+    - timezone
     - yaourt
     - pkgs
     - vim

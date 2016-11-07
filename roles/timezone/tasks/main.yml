@@ -1,0 +1,10 @@
+---
+- name: Set timezone to {{time_reg}} {{time_zone}}
+  file:
+    src=/usr/share/zoneinfo/{{time_reg}}/{{time_zone}}
+    dest=/etc/localtime
+    owner=root
+    group=root
+    state=link
+  tags: [ "timezone" ]
+

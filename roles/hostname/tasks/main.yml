@@ -1,0 +1,12 @@
+---
+- name: Set hostname
+  hostname: name={{ inventory_hostname }}
+  register: hostname
+  tags:
+    - hostname
+
+- name: echo /etc/hostname
+  shell: echo "{{ inventory_hostname }}" > /etc/hostname
+  when: hostname.changed
+  tags:
+    - hostname
