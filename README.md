@@ -1,10 +1,26 @@
-# Ansible workstation configuration for development
+# Arch linux install with ansible provisioning
 
 This tool is meant to be used with arch linux after a base installation has been performed.
 
-This guide will demonstrate one way to setup a workstation with a base install of arch linux.
-
 Ansible will be installed after the base install to double-check our work and handle the rest.
+
+Table of Contents
+=================
+
+   * [Arch linux install with ansible provisioning](#arch-linux-install-with-ansible-provisioning)
+      * [TODO](#todo)
+      * [Initial installation](#initial-installation)
+         * [dd:](#dd)
+         * [Partition the hard drive:](#partition-the-hard-drive)
+         * [Format your partitions:](#format-your-partitions)
+         * [Disk Encryption:](#disk-encryption)
+         * [Mount the partitions:](#mount-the-partitions)
+         * [Install the base system:](#install-the-base-system)
+         * [Generate an fstab:](#generate-an-fstab)
+         * [Configure your new install:](#configure-your-new-install)
+         * [Finish encryption of home partiition:](#finish-encryption-of-home-partiition)
+      * [Let ansible handle the rest](#let-ansible-handle-the-rest)
+      * [Vagrant lab](#vagrant-lab)
 
 ## TODO
 
