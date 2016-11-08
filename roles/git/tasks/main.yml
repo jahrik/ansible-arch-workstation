@@ -1,0 +1,32 @@
+---
+- name: Install git
+  package: name=git
+  become: yes
+
+- name: Check if git name is set
+  shell: git config user.name
+  register: git_name
+  tags: [ "git" ]
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: Configure git name
+  command: "/usr/bin/git config --global user.name \"{{ archlinux_user_real_name }}\""
+  become: yes
+  become_user: "{{ archlinux_username }}"
+  when: git_name.stdout != "{{ archlinux_user_real_name }}"
+  tags: [ "git" ]
+
+- name: Check if git email is set
+  shell: git config user.email
+  register: git_email
+  tags: [ "git" ]
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: configure git email
+  command: "/usr/bin/git config --global user.email \"{{ archlinux_user_email }}\""
+  become: yes
+  become_user: "{{ archlinux_username }}"
+  when: git_email.stdout != "{{ archlinux_user_email }}"
+  tags: [ "git" ]
