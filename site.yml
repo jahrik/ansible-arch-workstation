@@ -5,7 +5,8 @@
   vars_files:
     - "./vars/{{ inventory_hostname }}.yml"
   roles:
-    - setup
+    - authorized_keys
+    - sudoers
     - mkinitcpio
     - hostname
     - locale
@@ -13,8 +14,8 @@
     - yaourt
     - pkgs
     - vim
-    # - i3
     # - slim
+    # - i3
   tasks:
 
 #  # Services

@@ -3,10 +3,3 @@
   lineinfile: "dest=/etc/sudoers state=present regexp='^{{ ansible_user }}' line='{{ ansible_user }} ALL=(ALL) NOPASSWD: ALL'"
   tags:
     - setup
-
-- name: Authorized keys
-  authorized_key: user={{ ansible_user }}
-                  key={{ lookup('file', '~/.ssh/id_rsa.pub') }}
-                  state=present
-  tags:
-    - setup
