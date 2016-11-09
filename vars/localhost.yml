@@ -1,8 +1,20 @@
 ---
+
+user:
+  name: wgill
+  real_name: Wes Gill
+  uid: 1000
+  group: users
+  shell: /usr/bin/zsh
+  email: jahrik@gmail.com
+  log_dir: log
+
 locale_reg: en_US
 locale: UTF-8
+
 time_reg: US
 time_zone: Mountain
+
 pkgs:
   - alsa-utils
   - ansible

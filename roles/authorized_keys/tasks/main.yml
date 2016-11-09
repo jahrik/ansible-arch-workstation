@@ -1,7 +1,6 @@
 ---
 - name: Authorized keys
-  authorized_key: user={{ ansible_user }}
+  authorized_key: user={{ user.name }}
                   key={{ lookup('file', '~/.ssh/id_rsa.pub') }}
                   state=present
-  tags:
-    - setup
+  tags: [ "setup" ]

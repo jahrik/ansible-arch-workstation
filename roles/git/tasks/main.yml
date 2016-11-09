@@ -8,13 +8,13 @@
   register: git_name
   tags: [ "git" ]
   become: yes
-  become_user: "{{ archlinux_username }}"
+  become_user: "{{ user.name }}"
 
 - name: Configure git name
-  command: "/usr/bin/git config --global user.name \"{{ archlinux_user_real_name }}\""
+  command: "/usr/bin/git config --global user.name \"{{ user.real_name }}\""
   become: yes
-  become_user: "{{ archlinux_username }}"
-  when: git_name.stdout != "{{ archlinux_user_real_name }}"
+  become_user: "{{ user.name }}"
+  when: git_name.stdout != "{{ user.real_name }}"
   tags: [ "git" ]
 
 - name: Check if git email is set
@@ -22,11 +22,11 @@
   register: git_email
   tags: [ "git" ]
   become: yes
-  become_user: "{{ archlinux_username }}"
+  become_user: "{{ user.name }}"
 
 - name: configure git email
-  command: "/usr/bin/git config --global user.email \"{{ archlinux_user_email }}\""
+  command: "/usr/bin/git config --global user.email \"{{ user.email }}\""
   become: yes
-  become_user: "{{ archlinux_username }}"
-  when: git_email.stdout != "{{ archlinux_user_email }}"
+  become_user: "{{ user.name }}"
+  when: git_email.stdout != "{{ user.email }}"
   tags: [ "git" ]

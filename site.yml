@@ -5,16 +5,12 @@
   vars_files:
     - "./vars/{{ inventory_hostname }}.yml"
   vars_prompt:
-    - name: "archlinux_username"
-      prompt: "Enter your system username"
-      private: no
-    - name: "archlinux_user_real_name"
-      prompt: "Enter your full real name"
-      private: no
-    - name: "archlinux_user_email"
-      prompt: "Enter your email address"
-      private: no
+    - name: "user_password"
+      prompt: "Enter user password"
+      private: yes
+
   roles:
+    - user
     - authorized_keys
     - sudoers
     - git
