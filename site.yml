@@ -14,7 +14,7 @@
     - authorized_keys
     - sudoers
     - git
-    - mkinitcpio
+    # - mkinitcpio
     - hostname
     - locale
     - timezone

@@ -15,7 +15,10 @@ vundle:
   - "https://github.com/powerline/powerline.git"
   - "https://github.com/ngmy/vim-rubocop.git"
   - "https://github.com/tpope/vim-surround.git"
-
+  - "MarcWeber/vim-addon-mw-utils"
+  - "tomtom/tlib_vim"
+  - "garbas/vim-snipmate"
+  - "vadv/vim-chef"
 set: 
   - laststatus=2
   - showtabline=2
@@ -59,3 +62,6 @@ let:
 
 command:
   - Fuckyou w !sudo tee %
+
+autocmd:
+  - FileType ruby,eruby set filetype=ruby.eruby.chef
