@@ -19,6 +19,7 @@ vundle:
   - "tomtom/tlib_vim"
   - "garbas/vim-snipmate"
   - "vadv/vim-chef"
+  - "https://github.com/hashivim/vim-terraform.git"
 set: 
   - laststatus=2
   - showtabline=2
