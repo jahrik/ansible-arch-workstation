@@ -20,6 +20,7 @@ vundle:
   - "garbas/vim-snipmate"
   - "vadv/vim-chef"
   - "https://github.com/hashivim/vim-terraform.git"
+  - "https://github.com/wtfbbqhax/Snort-vim.git"
 set: 
   - laststatus=2
   - showtabline=2
