@@ -22,16 +22,16 @@ mount /dev/mapper/vg-root /mnt
 mkdir /mnt/home
 mount /dev/mapper/vg-home /mnt/home
 mkdir /mnt/var
-mount /dev/mapper/vg-home /mnt/var
+mount /dev/mapper/vg-var /mnt/var
 swapon /dev/mapper/vg-swap
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
 #Install the base system:
-pacstrap /mnt base base-devel
+#pacstrap /mnt base base-devel
 
 #Generate an fstab:
-genfstab -U -p /mnt >> /mnt/etc/fstab
+#genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Check to see it was written.
-cat /mnt/etc/fstab
+#cat /mnt/etc/fstab
