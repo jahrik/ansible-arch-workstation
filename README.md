@@ -183,10 +183,22 @@ grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### Reboot
+#### User
 ```
-exit
-reboot
+pacman -S zsh
+groupadd <user>
+useradd -m -g <user> -s /bin/zsh <user>
+```
+
+#### Sudo
+```
+pacman -S sudo
+
+```
+
+Add user to /etc/sudoers.d/config
+```
+<user> ALL=(ALL) NOPASSWD: ALL
 ```
 
 ## Ansible
