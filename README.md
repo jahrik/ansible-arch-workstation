@@ -110,7 +110,7 @@ mount /dev/mapper/vg-root /mnt
 mkdir /mnt/home
 mount /dev/mapper/vg-home /mnt/home
 mkdir /mnt/var
-mount /dev/mapper/vg-home /mnt/var
+mount /dev/mapper/vg-var /mnt/var
 swapon /dev/mapper/vg-swap
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
@@ -156,7 +156,7 @@ passwd
 Edit /etc/mkinitcpio.conf and add the word "encrypt" and "lvm2" to HOOKS='...' just before "filesystems"
 ```
 ...
-HOOKS="base udev autodetect modconf keyboard encrypt lvm2 block encrypt filesystems fsck"
+HOOKS="base udev autodetect modconf keyboard encrypt lvm2 block filesystems fsck"
 ...
 ```
 
@@ -174,7 +174,7 @@ pacman -S grub
 
 Edit /etc/default/grub
 ```
-GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:cryptolvm"
+GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:vg root=/dev/mapper/vg-root"
 ```
 
 Configure grub
