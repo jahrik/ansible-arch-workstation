@@ -4,7 +4,7 @@ user:
   name: wgill
   real_name: Wes Gill
   uid: 1000
-  group: users
+  group: wgill
   shell: /usr/bin/zsh
   email: jahrik@gmail.com
   log_dir: log
