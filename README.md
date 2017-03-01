@@ -73,7 +73,17 @@ cryptsetup luksFormat /dev/sda2
 # open encrypted drive
 cryptsetup open /dev/sda2 cryptolvm
 # password: # *use yubikey for 2FA*
+```
 
+### partitioning.sh
+
+```
+wget https://raw.githubusercontent.com/jahrik/ansible-arch-workstation/master/partitioning.sh
+```
+
+
+### LVM
+```
 # create volume group
 pvcreate /dev/mapper/cryptolvm
 vgcreate vg /dev/mapper/cryptolvm
@@ -87,7 +97,7 @@ lvcreate -l 100%FREE vg -n home
 
 #### Format the partitions
 ```
-mkfs.ext2 /dev/sda1
+mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/mapper/vg-root
 mkfs.ext4 /dev/mapper/vg-var
 mkfs.ext4 /dev/mapper/vg-home
@@ -156,6 +166,7 @@ mkinitcpio -p linux
 ```
 
 #### Bootloader
+[Boot_loader](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#Boot_loader)
 ```
 pacman -S grub
 
