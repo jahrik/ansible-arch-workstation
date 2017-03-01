@@ -21,6 +21,8 @@ vundle:
   - "vadv/vim-chef"
   - "https://github.com/hashivim/vim-terraform.git"
   - "https://github.com/wtfbbqhax/Snort-vim.git"
+  - "godlygeek/tabular"
+  - "plasticboy/vim-markdown"
 set: 
   - laststatus=2
   - showtabline=2
