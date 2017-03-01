@@ -37,7 +37,7 @@ Setup for:
 
 ### dd:
 
-First go to the Arch website and download the latest .iso file.
+First go to [archlinux downloads](https://www.archlinux.org/download/) and download the latest .iso file.
 
 Burn it to a cd or memory stick.
 
@@ -89,14 +89,18 @@ You'll want a seperate /boot partition for an ecrypted setup.
 
 Create seperate / and /home partitions as well.
 
+In my setup, I'm also setting up a seperate /var partition with 100G for logging
+
 Also create a "/swap" space [calculate swap](http://lmgtfy.com/?q=calculating+swap)
 ```
-parted 
 parted -s /dev/sda mklabel msdos
 parted -s -a optimal /dev/sda mkpart primary 0% 512MB
-parted -s -a optimal /dev/sda mkpart primary 512MB 2GB
-parted -s -a optimal /dev/sda mkpart primary 2GB 20GB
-parted -s -a optimal /dev/sda mkpart primary 20GB 100%
+parted -s -a optimal /dev/sda mkpart primary 512MB 8.512GB
+parted -s -a optimal /dev/sda mkpart primary 8.512GB 60GB
+parted -s -a optimal /dev/sda mkpart extended 60GB 100%
+# needs help
+# parted -s -a optimal /dev/sda mkpart logical 60GB 160GB
+# parted -s -a optimal /dev/sda mkpart logical 160GB 100%
 ```
 
 ### Format your partitions:
