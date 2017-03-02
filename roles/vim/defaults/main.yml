@@ -63,6 +63,8 @@ filetype:
 
 let:
   - g:pyflakes_use_quickfix = 0
+  - g:NERDTreeDirArrowExpandable="+"
+  - g:NERDTreeDirArrowCollapsible="~"
 
 command:
   - Fuckyou w !sudo tee %
