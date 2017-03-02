@@ -1,0 +1,8 @@
+---
+conky:
+  update_int: 2
+  color_01: FFCC99
+  color_02: 33CC33
+  color_03: 33CC99
+  w_int: "{{ ansible_interfaces[1] }}"
+  e_int: "{{ ansible_interfaces[2] }}"
