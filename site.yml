@@ -4,12 +4,8 @@
   become_method: sudo
   vars_files:
     - "./vars/{{ inventory_hostname }}.yml"
-#  vars_prompt:
-#    - name: "user_password"
-#      prompt: "Enter user password"
-#      private: yes
-
   roles:
+    - pkgs
     # - user
     # - authorized_keys
     # - sudoers
@@ -19,29 +15,8 @@
     - locale
     - timezone
     - yaourt
-    # - pkgs
     - vim
+    - i3
     # - slim
-    # - i3
   tasks:
 
-#    # this might be a yaourt thing
-#    - name: Install snort
-#      package:
-#        name: "{{ item }}"
-#        state: present
-#      with_items:
-#        - swig
-#        - snort
-#        - barnyard2
-#        - pulledpork
-#      tags: [ 'snort' ]
-#
-#    - name: Configure snort
-
-# Install netsniff-ng
-# Configure netsniff-ng
-# netsniff-ng.service
-
-# Install bro
-# bro-cut netsniff-ng.pcap
