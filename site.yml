@@ -13,10 +13,19 @@
     # - mkinitcpio
     - hostname
     - locale
-    - timezone
+    - time
     - yaourt
     - vim
     - i3
     # - slim
   tasks:
 
+  - name: Web browser
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - w3m
+      - chromium
+      - firefox
+    tags: [ 'browser' ]
