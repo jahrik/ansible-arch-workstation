@@ -39,6 +39,19 @@
     - rxvt-unicode
     - ttf-dejavu
     - conky
+    - xf86-input-synaptics
+    - scrot
+    - xorg-xmodmap
+  tags: [ 'i3' ]
+
+- name: install extras from aur
+  shell: "yaourt -S --noconfirm {{ item }}"
+  with_items:
+    - xcalib
+    - ttf-consolas-powerline
+    - consolas-font
+  become: false
+  # when: pcaman -Q {{ item }} != 0
   tags: [ 'i3' ]
 
 - name: Create ~/.i3 directories
@@ -91,8 +104,3 @@
     group: "{{ ansible_user }}"
     state: link
   tags: [ 'i3' ]
-
-
-# link
-#- bin
-#- systemd
