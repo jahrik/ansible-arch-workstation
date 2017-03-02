@@ -4,7 +4,31 @@ This tool is meant to be used with arch linux after a base installation has been
 
 Ansible will be installed after the base install to double-check our work and handle the rest.
 
+Table of Contents
+=================
 
+   * [Arch linux install with ansible provisioning](#arch-linux-install-with-ansible-provisioning)
+      * [TODO](#todo)
+      * [Initial installation](#initial-installation)
+         * [dd:](#dd)
+         * [dm-crypt wipe on an empty disk or partition](#dm-crypt-wipe-on-an-empty-disk-or-partition)
+         * [LVM on LUKS](#lvm-on-luks)
+         * [partitioning.sh](#partitioningsh)
+         * [LVM](#lvm)
+            * [Format the partitions](#format-the-partitions)
+            * [Mount file systems](#mount-file-systems)
+            * [Install the base system:](#install-the-base-system)
+            * [Generate an fstab:](#generate-an-fstab)
+            * [Chroot](#chroot)
+            * [Install vim](#install-vim)
+            * [Networking](#networking)
+            * [Root password](#root-password)
+            * [Configuring mkinitcpio](#configuring-mkinitcpio)
+            * [Bootloader](#bootloader)
+            * [User](#user)
+            * [Sudo](#sudo)
+      * [Ansible](#ansible)
+      * [Vagrant lab](#vagrant-lab)
 
 ## TODO
 
@@ -61,6 +85,17 @@ cryptsetup close container
 
 [LVM_on_LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
 ```
+NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
+sda             8:0    0   477G  0 disk
+|-sda1          8:1    0   487M  0 part  /boot
+`-sda2          8:2    0 476.5G  0 part
+  `-vg        254:0    0 476.5G  0 crypt
+    |-vg-swap 254:1    0     8G  0 lvm   [SWAP]
+    |-vg-root 254:2    0   100G  0 lvm   /
+    |-vg-var  254:3    0   100G  0 lvm   /var
+    `-vg-home 254:4    0 268.5G  0 lvm   /home
+```
+```
 # partitions for /boot and /(encrypted drive)
 parted -s /dev/sda mklabel msdos
 parted -s -a optimal /dev/sda mkpart primary 0% 512MB
@@ -80,7 +115,6 @@ cryptsetup open /dev/sda2 cryptolvm
 ```
 wget https://raw.githubusercontent.com/jahrik/ansible-arch-workstation/master/partitioning.sh
 ```
-
 
 ### LVM
 ```
