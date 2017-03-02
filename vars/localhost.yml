@@ -23,7 +23,6 @@ pkgs:
   - openssh
   - sudo
   - vim
-  - w3m
   - wget
   - wpa_supplicant
   - zsh
