@@ -41,13 +41,17 @@
     - conky
   tags: [ 'i3' ]
 
-- name: Create ~/.i3 directory
+- name: Create ~/.i3 directories
   file: 
-    path: "/home/{{ ansible_user }}/.i3/"
+    path: "/home/{{ ansible_user }}/{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0755
+  with_items:
+    - .i3
+    - .i3/bin
+    - .i3/systemd
   tags: [ 'i3' ]
 
 - name: generate i3 config files
@@ -69,6 +73,16 @@
     - xresources
   tags: [ 'i3' ]
 
+- name: generate i3 bin files
+  template:
+    src: "i3/{{ item }}.j2"
+    dest: "/home/{{ ansible_user }}/.i3/{{ item }}"
+    mode: 0777
+  with_items:
+    - bin/apply-colors-runtime
+    - bin/conky-wrapper
+  tags: [ 'i3' ]
+
 - name: symlink xinitrc
   file:
     src: "/home/{{ ansible_user }}/.i3/xinitrc"
@@ -77,6 +91,7 @@
     group: "{{ ansible_user }}"
     state: link
   tags: [ 'i3' ]
+
 
 # link
 #- bin
