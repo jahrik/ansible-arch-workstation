@@ -6,9 +6,9 @@
 - name: Check if git name is set
   shell: git config user.name
   register: git_name
-  tags: [ "git" ]
   become: yes
   become_user: "{{ user.name }}"
+  tags: [ "git" ]
 
 - name: Configure git name
   command: "/usr/bin/git config --global user.name \"{{ user.real_name }}\""
