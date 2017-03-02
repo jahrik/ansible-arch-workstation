@@ -1,0 +1,75 @@
+---
+- name: x server
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - xorg-server
+    - xorg-server-utils
+    - xorg-xinit
+  tags: [ 'i3' ]
+
+- name: video driver
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mesa
+    - xf86-video-vesa
+    - xf86-video-nouveau
+  tags: [ 'i3' ]
+
+- name: Install i3
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - i3-wm
+    - i3lock
+    - i3status
+    - dmenu
+    - dunst
+    - rxvt-unicode
+    - ttf-dejavu
+  tags: [ 'i3' ]
+
+- name: Create ~/.i3 directory
+  file: 
+    path: "/home/{{ ansible_user }}/.i3/"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+  tags: [ 'i3' ]
+
+- name: generate i3 config files
+  template:
+    src: "i3/{{ item }}.j2"
+    dest: "/home/{{ ansible_user }}/.i3/{{ item }}"
+  with_items:
+    - Xresources.dark
+    - Xresources.light
+    - config
+    - conkyrc
+    - dark.xresources
+    - dunstrc
+    - gtk-3.0-settings
+    - gtkrc-2.0
+    - light.xresources
+    - xinitrc
+    - xmodmap
+    - xresources
+  tags: [ 'i3' ]
+
+- name: symlink xinitrc
+  file:
+    src: "/home/{{ ansible_user }}/.i3/xinitrc"
+    dest: "/home/{{ ansible_user }}/.xinitrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  tags: [ 'i3' ]
+
+# link
+#- bin
+#- systemd
