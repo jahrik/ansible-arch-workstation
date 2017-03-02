@@ -1,5 +1,5 @@
 ---
-- name: x server
+- name: Install x server
   package:
     name: "{{ item }}"
     state: present
@@ -9,7 +9,7 @@
     - xorg-xinit
   tags: [ 'i3' ]
 
-- name: video driver
+- name: Install video driver
   package:
     name: "{{ item }}"
     state: present
@@ -27,10 +27,18 @@
     - i3-wm
     - i3lock
     - i3status
+  tags: [ 'i3' ]
+
+- name: Install i3 extras
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
     - dmenu
     - dunst
     - rxvt-unicode
     - ttf-dejavu
+    - conky
   tags: [ 'i3' ]
 
 - name: Create ~/.i3 directory
