@@ -1,7 +1,7 @@
 background        no
 out_to_console 	  yes
 out_to_x	  no
-update_interval	  2
+update_interval {{ conky.update_int }}
 total_run_times	  0
 short_units	  yes
 pad_percents	  3
@@ -11,24 +11,24 @@ default_outline_color white
 default_shade_color white
 color1 FFCC99
 color2 33CC33
-color3 33CC99
+color3 {{ conky.color_02 }}
 # xftfont DejaVu Sans Mono:size=12
 
 override_utf8_locale yes
 
 TEXT
-,[{"full_text": " ^ $uptime ", "color":"\#FFCC99" },
-  {"full_text": " ❤ CPU $acpitemp°C $cpu% ${cpubar 4} ", "color":"\#33CC99" },
-  {"full_text": " ≣ RAM $memperc% ${membar 4} ", "color":"\#33CC99" },
-  {"full_text": " ≣ / ${fs_bar 6 /} ", "color":"\#FFCC99" },
-  {"full_text": " ≣ /home ${fs_bar 6 /home} ", "color":"\#FFCC99" },
-  {"full_text": " ≣ /swap $swapperc% ${swapbar 4} ", "color":"\#FFCC99" },
-  ${if_up wlp3s0}{"full_text": " ≈ ${wireless_essid wlp3s0} [${wireless_link_qual_perc wlp3s0}%] ","color":"\#33CC99"},
-  $else${if_up enp0s25}{"full_text": " ≈ enp0s25 ","color":"\#33CC99"},
-  $else{"full_text": " ≈ no connection ","color":"\#33CC99"},$endif$endif
-  {"full_text": " ☇ [$battery_percent%] ","color":"\#33CC99"},
-  {"full_text": " ${time WW%V.%u, %a %d %b}"},
-  {"full_text": " ${time %H:%M} "}
+,[{"full_text": " ^ $uptime ", "color":"\#{{ conky.color_01 }}" },
+  {"full_text": " ❤ CPU $acpitemp°C $cpu% ${cpubar 4} ", "color":"\#{{ conky.color_02 }}" },
+  {"full_text": " ≣ RAM $memperc% ${membar 4} ", "color":"\#{{ conky.color_02 }}" },
+  {"full_text": " ≣ / ${fs_bar 6 /} ", "color":"\#{{ conky.color_01 }}" },
+  {"full_text": " ≣ /home ${fs_bar 6 /home} ", "color":"\#{{ conky.color_01 }}" },
+  {"full_text": " ≣ /swap $swapperc% ${swapbar 4} ", "color":"\#{{ conky.color_01 }}" },
+  ${if_up {{ conky.w_int }}}{"full_text": " ≈ ${wireless_essid {{ conky.w_int }}} [${wireless_link_qual_perc {{ conky.w_int }}}%] ","color":"\#{{ conky.color_02 }}"},
+  $else${if_up {{ conky.e_int }}}{"full_text": " ≈ {{ conky.e_int }} ","color":"\#{{ conky.color_02 }}"},
+  $else{"full_text": " ≈ no connection ","color":"\#{{ conky.color_02 }}"},$endif$endif
+  {"full_text": " ☇ [$battery_percent%] ","color":"\#{{ conky.color_02 }}"},
+  {"full_text": " ${time WW%V.%u, %a %d %b}","color":"\#{{ conky.color_03 }}"},
+  {"full_text": " ${time %H:%M}","color":"\#{{ conky.color_03 }}"}
   # {"full_text": " ${color1} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1} "}
   # {"full_text": " ♪ [$mixer%] ", "color":"\#268BD2"},
 ]
