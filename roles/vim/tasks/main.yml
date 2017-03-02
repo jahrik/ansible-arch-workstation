@@ -38,7 +38,7 @@
     path=/home/{{ ansible_user }}/.vim/en.utf-8.add
     owner={{ ansible_user }}
     group=users
-    state=file
+    state=touch
     mode=0644
   tags: [ "vim" ]
 
