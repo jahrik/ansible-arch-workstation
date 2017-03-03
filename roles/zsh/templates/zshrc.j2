@@ -1,52 +1,78 @@
 # {{ ansible_managed }}
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-autoload -Uz promptinit
-promptinit
-prompt redhat
+ZMOD=$HOME/.z
 
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="{{ theme }}"
 
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory autocd extendedglob nobeep nomatch notify
-bindkey -v
 
-zstyle :compinstall filename '/home/{{ ansible_user }}/.zshrc'
-autoload -Uz compinit
-compinit
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-# Python venv
-# pip completion --zsh
-# export WORKON_HOME=~/.virtualenvs
-# export PROJECT_HOME=$PROJECT_HOME
-# source /usr/bin/virtualenvwrapper.sh
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-# ENV
-export EDITOR=vim
-export BROWSER=/usr/bin/chromium
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Default w3m page
-export HTTP_HOME='www.google.com'
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+#plugins=(git sudo )
+plugins=(git sudo vim-interaction vi-mode)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Key Bindings
+source $ZMOD/keybindings.zsh
 
 # Alias
-alias ls='ls --color=auto'
-#alias docker_destroy="docker ps -a -q | xargs -n1 docker stop && docker ps -a -q | xargs -n1 docker rm"
-#alias docker_clean="docker images | grep none | awk '{ print $3 }' | xargs -n1 docker rmi"
-#alias stopvpn="ps waux | grep vpn | awk '{ print $2 }' | head -n 3 | xargs sudo kill"
-#alias git="/usr/bin/git"
-#alias boto="/usr/lib/python2.7/site-packages/boto"
-#alias readme="gh-md-toc README.md"
+source $ZMOD/alias.zsh
 
-# Path
-PATH=${PATH}:${HOME}/bin
-PATH=${PATH}:/opt
+# Exports
+source $ZMOD/export.zsh
 
-# bro
-export PATH=/usr/local/bro/bin:$PATH
+# Functions
+source $ZMOD/functions.zsh
+
+# vi keys enable
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+#export KEYTIMEOUT=1
+
+# Open termite terminal in Directory
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi

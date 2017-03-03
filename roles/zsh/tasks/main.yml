@@ -5,7 +5,6 @@
     state: latest
   with_items:
     - git
-    - mercurial
     - zsh
   tags: [ 'zsh' ]
 
@@ -15,16 +14,36 @@
     dest: "/home/{{ ansible_user }}/.oh-my-zsh"
   tags: [ 'zsh' ]
 
-- name: default user setup for zsh
-  hg:
-    repo: "https://bitbucket.org/snippets/a_baez/pRqBj"
-    dest: "/home/{{ ansible_user }}/.z"
+- name: create ~/.z/ dir
+  file:
+    path: "/home/{{ ansible_user }}/.z"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+  tags: [ "zsh" ]
+
+- name: generate ~/.z/ files
+  template:
+    src: "{{ item }}.j2"
+    dest: "/home/{{ ansible_user }}/.z/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  with_items:
+    - zshrc
+    - alias.zsh
+    - export.zsh
+    - functions.zsh
+    - keybindings.zsh
+    - zshenv
   tags: [ 'zsh' ]
 
 - name: link the zshrc and zshenv
   file:
     src: "/home/{{ ansible_user }}/.z/{{ item }}"
     dest: "/home/{{ ansible_user }}/.{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
     force: yes
   with_items:

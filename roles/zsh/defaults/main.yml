@@ -1,0 +1,6 @@
+---
+theme: robbyrussell
+path:
+  - ~/bin
+  - /opt
+  - /usr/local/bro/bin
