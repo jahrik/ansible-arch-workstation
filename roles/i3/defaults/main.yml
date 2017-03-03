@@ -6,3 +6,9 @@ conky:
   color_03: 33CC99
   w_int: "{{ ansible_interfaces[1] }}"
   e_int: "{{ ansible_interfaces[2] }}"
+
+# https://wiki.archlinux.org/index.php/redshift
+# redshift:
+  # lat:
+  # lon:
+# redshift -l 42.56:114.46 -m randr -t 4800:3500 -g 0.75:0.75:0.75 &
