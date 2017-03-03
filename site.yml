@@ -3,35 +3,42 @@
   become: true
   become_method: sudo
   vars_files:
-    - "./vars/{{ inventory_hostname }}.yml"
+  - "./vars/{{ inventory_hostname }}.yml"
   roles:
-    - pkgs
-    # - user
-    # - authorized_keys
-    # - sudoers
-    # - git
-    - mkinitcpio
-    - hostname
-    - locale
-    - time
-    - yaourt
-    - vim
-    - i3
-    # - slim
-    - zsh
-    # - openvpn
-    # - ruby
-    # - chef
-    # - python
-    # - docker
+  - yaourt
+  - pkgs
+  # - user
+  # - authorized_keys
+  # - sudoers
+  # - git
+  - mkinitcpio
+  - hostname
+  - locale
+  - time
+  - vim
+  - zsh
+  - i3
+  # - slim
+  - browser
+  # - ssh
+  # - vpn
+  # - gpg
+  # - ruby
+  # - chef
+  # - python
+  # - docker
+  # - vagrant
+  # - virtualbox
   tasks:
 
-  - name: Web browser
-    package:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - w3m
-      - chromium
-      - firefox
-    tags: [ 'browser' ]
+  - name: install bluejeans from aur
+    yaourt:
+      name: bluejeans
+      user: "{{ ansible_user }}"
+    tags: [ 'bluejeans' ]
+
+  - name: install hipchat from aur
+    yaourt:
+      name: hipchat
+      user: "{{ ansible_user }}"
+    tags: [ 'hipchat' ]
