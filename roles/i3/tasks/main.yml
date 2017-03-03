@@ -46,14 +46,10 @@
     - redshift
   tags: [ 'i3' ]
 
-- name: install extras from aur
-  shell: "yaourt -S --noconfirm {{ item }}"
-  with_items:
-    - xcalib
-    - ttf-consolas-powerline
-    - consolas-font
-  become: false
-  # when: pcaman -Q {{ item }} != 0
+- name: install xcalib from aur
+  yaourt:
+    name: xcalib
+    user: "{{ ansible_user }}"
   tags: [ 'i3' ]
 
 - name: Create ~/.i3 directories
