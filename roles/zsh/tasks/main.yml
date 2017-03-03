@@ -1,0 +1,39 @@
+---
+- name: install zsh and dependencies
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - git
+    - mercurial
+    - zsh
+  tags: [ 'zsh' ]
+
+- name: use oh-my-zsh
+  git:
+    repo: "https://github.com/robbyrussell/oh-my-zsh.git"
+    dest: "/home/{{ ansible_user }}/.oh-my-zsh"
+  tags: [ 'zsh' ]
+
+- name: default user setup for zsh
+  hg:
+    repo: "https://bitbucket.org/snippets/a_baez/pRqBj"
+    dest: "/home/{{ ansible_user }}/.z"
+  tags: [ 'zsh' ]
+
+- name: link the zshrc and zshenv
+  file:
+    src: "/home/{{ ansible_user }}/.z/{{ item }}"
+    dest: "/home/{{ ansible_user }}/.{{ item }}"
+    state: link
+    force: yes
+  with_items:
+    - zshrc
+    - zshenv
+  tags: [ 'zsh' ]
+
+- name: change shell from bash to zsh
+  user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
+  tags: [ 'zsh' ]

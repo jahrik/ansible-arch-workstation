@@ -1,0 +1,52 @@
+# {{ ansible_managed }}
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+autoload -Uz promptinit
+promptinit
+prompt redhat
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory autocd extendedglob nobeep nomatch notify
+bindkey -v
+
+zstyle :compinstall filename '/home/{{ ansible_user }}/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Python venv
+# pip completion --zsh
+# export WORKON_HOME=~/.virtualenvs
+# export PROJECT_HOME=$PROJECT_HOME
+# source /usr/bin/virtualenvwrapper.sh
+
+# ENV
+export EDITOR=vim
+export BROWSER=/usr/bin/chromium
+
+# Default w3m page
+export HTTP_HOME='www.google.com'
+
+# Alias
+alias ls='ls --color=auto'
+#alias docker_destroy="docker ps -a -q | xargs -n1 docker stop && docker ps -a -q | xargs -n1 docker rm"
+#alias docker_clean="docker images | grep none | awk '{ print $3 }' | xargs -n1 docker rmi"
+#alias stopvpn="ps waux | grep vpn | awk '{ print $2 }' | head -n 3 | xargs sudo kill"
+#alias git="/usr/bin/git"
+#alias boto="/usr/lib/python2.7/site-packages/boto"
+#alias readme="gh-md-toc README.md"
+
+# Path
+PATH=${PATH}:${HOME}/bin
+PATH=${PATH}:/opt
+
+# bro
+export PATH=/usr/local/bro/bin:$PATH
