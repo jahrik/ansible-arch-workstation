@@ -51,9 +51,10 @@ cleanDocker() {
   docker rmi $(docker images -q --filter "dangling=true")
   docker rm $(docker ps -a -q)
 }
-
 inpectDocker() {
+{% raw %}
   docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' $1
+{% endraw %}
 }
 
 #tt() {
