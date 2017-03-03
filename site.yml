@@ -18,6 +18,12 @@
     - vim
     - i3
     # - slim
+    - zsh
+    # - openvpn
+    # - ruby
+    # - chef
+    # - python
+    # - docker
   tasks:
 
   - name: Web browser
