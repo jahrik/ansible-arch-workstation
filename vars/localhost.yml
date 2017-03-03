@@ -15,6 +15,7 @@ lang: en_US.UTF-8
 time_zone: US/Mountain
 
 pkgs:
+  - alsa-utils
   - ansible
   - dialog
   - git
