@@ -42,6 +42,8 @@
     - xf86-input-synaptics
     - scrot
     - xorg-xmodmap
+    - xorg-xrdb
+    - redshift
   tags: [ 'i3' ]
 
 - name: install extras from aur
