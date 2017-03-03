@@ -2,5 +2,5 @@
 - name: Install all required packages
   package: name={{item}} state=present
   with_items: "{{ pkgs }}"
-  tags:
-    - package
+  tags: [ 'pkgs' ]
+
