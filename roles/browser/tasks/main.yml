@@ -1,0 +1,16 @@
+---
+- name: install web browsers
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - w3m
+    - chromium
+    - firefox
+  tags: [ 'browser' ]
+
+- name: install pepper-flash from aur
+  yaourt:
+    name: pepper-flash
+    user: "{{ ansible_user }}"
+  tags: [ 'browser' ]
