@@ -4,6 +4,7 @@
   become_method: sudo
   vars_files:
   - "./vars/{{ inventory_hostname }}.yml"
+  - "./secrets/{{ inventory_hostname }}.yml"
   roles:
   - yaourt
   - pkgs
@@ -21,7 +22,7 @@
   # - slim
   - browser
   # - ssh
-  # - vpn
+  - vpn
   # - gpg
   # - ruby
   # - chef
