@@ -9,18 +9,19 @@ user:
   email: jahrik@gmail.com
   log_dir: log
 
-locale_reg: en_US
-locale: UTF-8
+locale: en_US.UTF-8 UTF-8
+lang: en_US.UTF-8
 
-time_reg: US
-time_zone: Mountain
+time_zone: US/Mountain
 
 pkgs:
   - ansible
   - dialog
   - git
+  - mlocate
   - nmap
   - openssh
+  - rsync
   - sudo
   - vim
   - wget
