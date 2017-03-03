@@ -52,6 +52,10 @@ cleanDocker() {
   docker rm $(docker ps -a -q)
 }
 
+inpectDocker() {
+  docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' $1
+}
+
 #tt() {
 #  ~/Projects/scripts/cron/themeChanger.py ~/.config/termite ~/Programs/base16-builder/output/termite
 #}
