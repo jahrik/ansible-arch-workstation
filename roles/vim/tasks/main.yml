@@ -20,7 +20,7 @@
     dest=/home/{{ ansible_user }}/.vim/bundle/Vundle.vim
   tags: [ "vim" ]
 
-- name: Generate .vimrc from roles/vim/defaults/main.yml
+- name: Generate ~/.vimrc
   template: 
     src=vimrc.j2
     dest=/home/{{ ansible_user }}/.vimrc
