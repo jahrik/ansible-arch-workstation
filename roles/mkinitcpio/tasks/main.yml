@@ -1,9 +1,8 @@
 ---
-- name: Add encrypt to mkinitcpio.conf
-  lineinfile:
-    dest=/etc/mkinitcpio.conf
-    line='HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"'
-    state=present
+- name: Generate mkinitcpio.conf
+  template:
+    src: mkinitcpio.conf.j2
+    dest: /etc/mkinitcpio.conf
   register: mkinitcpio
   tags: [ "mkinitcpio" ]
 
@@ -11,5 +10,3 @@
   command: mkinitcpio -p linux
   when: mkinitcpio.changed 
   tags: [ "mkinitcpio" ]
-
-
