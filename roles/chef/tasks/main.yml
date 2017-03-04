@@ -5,4 +5,14 @@
     user: "{{ ansible_user }}"
   tags: [ 'chef' ]
 
+- name: link /usr/bin/inspec
+  file:
+    src: /opt/chefdk/bin/inspec
+    dest: /usr/bin/inspec
+    owner: root
+    group: root
+    state: link
+  tags: [ 'chef' ]
 
+# - name: clone chef-repo
+# - name: clone cookbooks
