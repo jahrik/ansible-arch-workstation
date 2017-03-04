@@ -1,0 +1,8 @@
+---
+- name: Install chef-dk
+  yaourt:
+    name: chef-dk
+    user: "{{ ansible_user }}"
+  tags: [ 'chef' ]
+
+
