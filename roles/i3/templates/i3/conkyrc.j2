@@ -20,8 +20,8 @@ TEXT
   {"full_text": " ≣ / ${fs_bar 6 /} ", "color":"\#{{ conky.color_01 }}" },
   {"full_text": " ≣ /home ${fs_bar 6 /home} ", "color":"\#{{ conky.color_01 }}" },
   {"full_text": " ≣ /swap $swapperc% ${swapbar 4} ", "color":"\#{{ conky.color_01 }}" },
-  ${if_up {{ conky.w_int }}}{"full_text": " ≈ ${wireless_essid {{ conky.w_int }}} [${wireless_link_qual_perc {{ conky.w_int }}}%] ","color":"\#{{ conky.color_02 }}"},
-  $else${if_up {{ conky.e_int }}}{"full_text": " ≈ {{ conky.e_int }} ","color":"\#{{ conky.color_02 }}"},
+  ${if_up {{ conky.interface }}}{"full_text": " ≈ ${wireless_essid {{ conky.interface }}} [${wireless_link_qual_perc {{ conky.interface }}}%] ","color":"\#{{ conky.color_02 }}"},
+  $else${if_up {{ conky.interface }}}{"full_text": " ≈ {{ conky.interface }} ","color":"\#{{ conky.color_02 }}"},
   $else{"full_text": " ≈ no connection ","color":"\#{{ conky.color_02 }}"},$endif$endif
   {"full_text": " ☇ [$battery_percent%] ","color":"\#{{ conky.color_02 }}"},
   {"full_text": " ${time WW%V.%u, %a %d %b}","color":"\#{{ conky.color_03 }}"},
