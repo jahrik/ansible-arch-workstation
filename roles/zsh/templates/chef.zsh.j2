@@ -1,0 +1,9 @@
+# Chef                                                                           
+
+{% if chef.user %}
+export OPSCODE_USER={{ chef.user }}
+{% endif %}
+{% if chef.url %}
+export CHEF_URL={{ chef.url }}
+{% endif %}
+eval "$(chef shell-init zsh)"
