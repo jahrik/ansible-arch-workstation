@@ -11,7 +11,7 @@
   # - user
   # - authorized_keys
   # - sudoers
-  # - git
+  - git
   - mkinitcpio
   - hostname
   - locale
@@ -25,7 +25,7 @@
   - vpn
   # - gpg
   # - ruby
-  # - chef
+  - chef
   # - python
   # - docker
   # - vagrant
