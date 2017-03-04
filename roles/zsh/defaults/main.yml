@@ -3,4 +3,5 @@ theme: robbyrussell
 path:
   - ~/bin
   - /opt
+  - /opt/chefdk/bin
   - /usr/local/bro/bin

@@ -31,11 +31,12 @@
     group: "{{ ansible_user }}"
   with_items:
     - zshrc
+    - zshenv
     - alias.zsh
     - export.zsh
     - functions.zsh
     - keybindings.zsh
-    - zshenv
+    - chef.zsh
   tags: [ 'zsh' ]
 
 - name: link the zshrc and zshenv
