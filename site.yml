@@ -30,7 +30,20 @@
   # - docker
   # - vagrant
   # - virtualbox
+  - conky
   tasks:
+
+  - name: install vagrant
+    package:
+      name: vagrant
+      state: present
+    tags: [ 'vagrant' ]
+
+  - name: install virtualbox
+    package:
+      name: virtualbox
+      state: present
+    tags: [ 'virtualbox' ]
 
   - name: install bluejeans from aur
     yaourt:
