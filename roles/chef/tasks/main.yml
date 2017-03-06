@@ -29,6 +29,7 @@
     repo: "{{ chef.repo_url }}"
     dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}"
     accept_hostkey: true
+  when: chef.repo is defined
   tags: [ 'chef' ]
 
 # Still handled manually
@@ -51,4 +52,5 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0644
+  when: chef.server_url is defined
   tags: [ 'chef' ]
