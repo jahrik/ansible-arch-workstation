@@ -1,0 +1,32 @@
+{
+  "chef":{
+    "chef_server_url":"{{ chef.server_url }}",
+    "validation_client_name":"{{ chef.validation_client_name }}",
+    "validation_key_path":"{{ chef.validation_key_path }}",
+    "client_key":"{{ chef.client_key }}",
+    "node_name":"{{ chef.node_name }}"
+  },
+  "cookbook":{
+    "copyright":"{{ chef.copyright }}",
+    "email":"{{ chef.email }}",
+    "license":"reserved"
+  },
+  "allowed_licenses":[],
+  "raise_license_exception":false,
+  "vagrant":{
+    "vm":{
+      "box":"ubuntu-14.04",
+      "box_url":"",
+      "forward_port":{},
+      "network":{
+        "bridged":false,
+        "hostonly":"192.168.33.11"
+      },
+      "provision":"chef_zero"
+    }
+  },
+  "ssl":{
+    "verify":false
+  }
+}
+
