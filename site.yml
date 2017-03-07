@@ -3,56 +3,65 @@
   become: true
   become_method: sudo
   vars_files:
-  - "./vars/{{ inventory_hostname }}.yml"
-  - "./secrets/{{ inventory_hostname }}.yml"
+    - "./vars/{{ inventory_hostname }}.yml"
+    - "./secrets/{{ inventory_hostname }}.yml"
+
   roles:
-  - yaourt
-  - pkgs
-  # - user
-  # - authorized_keys
-  # - sudoers
-  - git
-  - mkinitcpio
-  - hostname
-  - locale
-  - time
-  - vim
-  - zsh
-  - i3
-  # - slim
-  - browser
-  # - ssh
-  - vpn
-  # - gpg
-  # - ruby
-  - chef
-  # - python
-  # - docker
-  # - vagrant
-  - virtualbox
-  - conky
+    - yaourt
+    - pkgs
+    # - user
+    # - authorized_keys
+    # - sudoers
+    - git
+    - mkinitcpio
+    - hostname
+    - locale
+    - time
+    - vim
+    - zsh
+    - i3
+    # - slim
+    - browser
+    # - ssh
+    - vpn
+    # - gpg
+    # - ruby
+    - chef
+    # - python
+    # - docker
+    # - vagrant
+    - virtualbox
+    - conky
+
   tasks:
 
-  - name: install vagrant
-    package:
-      name: vagrant
-      state: present
-    tags: [ 'vagrant' ]
+    - name: install vagrant
+      package:
+        name: vagrant
+        state: present
+      tags: [ 'vagrant' ]
 
-  - name: install bluejeans from aur
-    yaourt:
-      name: bluejeans
-      user: "{{ ansible_user }}"
-    tags: [ 'bluejeans' ]
+    - name: install chat apps from aur
+      yaourt:
+        name: "{{ item }}"
+        user: "{{ ansible_user }}"
+      with_items:
+        - bluejeans
+        - hipchat
+      tags: [ 'chat' ]
 
-  - name: install hipchat from aur
-    yaourt:
-      name: hipchat
-      user: "{{ ansible_user }}"
-    tags: [ 'hipchat' ]
+    - name: install evolution email client
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - evolution
+        - evolution-ews
+        - gnome-keyring
+      tags: [ 'email' ]
 
-  - name: install terraform from aur
-    yaourt:
-      name: terraform
-      user: "{{ ansible_user }}"
-    tags: [ 'terraform' ]
+    - name: install terraform from aur
+      yaourt:
+        name: terraform
+        user: "{{ ansible_user }}"
+      tags: [ 'terraform' ]
