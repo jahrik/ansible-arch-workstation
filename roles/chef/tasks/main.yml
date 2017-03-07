@@ -32,9 +32,26 @@
   when: chef.repo is defined
   tags: [ 'chef' ]
 
-# Still handled manually
-# - name: copy user.pem
-# - name: clone cookbooks
+- name: copy validation key
+  become: false
+  copy:
+    src: "{{ chef.validation_key_file }}"
+    dest: "{{ chef.validation_key_path }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0400
+  when: chef.validation_key_file is defined
+  tags: [ 'chef' ]
+
+- name: Clone chef cookbooks
+  become: fasle
+  git:
+    repo: "{{ chef.cookbook_url }}{{ item }}.git"
+    dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}/cookbooks/{{ item }}"
+    accept_hostkey: true
+  when: chef.cookbooks is defined
+  with_items: "{{ chef.cookbooks }}"
+  tags: [ 'chef' ]
 
 - name: Ensure ~/.berkshelf dir exists
   file:
