@@ -16,3 +16,4 @@ pkgs:
   - wget
   - wpa_supplicant
   - zsh
+  - htop
