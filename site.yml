@@ -50,3 +50,9 @@
       name: hipchat
       user: "{{ ansible_user }}"
     tags: [ 'hipchat' ]
+
+  - name: install terraform from aur
+    yaourt:
+      name: terraform
+      user: "{{ ansible_user }}"
+    tags: [ 'terraform' ]
