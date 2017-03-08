@@ -22,7 +22,7 @@
     - i3
     # - slim
     - browser
-    # - ssh
+    - ssh
     - vpn
     # - gpg
     # - ruby
