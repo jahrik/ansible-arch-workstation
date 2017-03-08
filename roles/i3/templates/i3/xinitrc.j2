@@ -7,11 +7,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# so all binaries are visible in dmenu_run
-export PATH="$PATH:$HOME/.i3/bin:$HOME/.bin:$HOME/bin"
+export I3_CONFIG_DIR="$(dirname $(readlink -f $0))"
+
+export PATH="$PATH:$I3_CONFIG_DIR/bin:$HOME/bin"
 
 # use xresources
-xrdb -merge ~/.i3/xresources
+xrdb -merge $I3_CONFIG_DIR/xresources
 
 # color temperature adjustment, set for Boise
 # redshift -l 42.56:114.46 -m randr -t 4800:3500 -g 0.75:0.75:0.75 &
@@ -19,10 +20,18 @@ xrdb -merge ~/.i3/xresources
 # notification
 dunst -config ~/.i3/dunstrc &
 
+# disks automounting
+udiskie &
+
+# gpg agent
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+gpg-connect-agent updatestartuptty /bye
+
+# ssh-agent
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # terminal server
 urxvtd &
-
-xcape
 
 i3
 
