@@ -5,7 +5,7 @@
     state: present
   tags: [ 'ssh' ]
 
-- name: ensure ~/.config/systemd
+- name: ensure ~/.config/systemd/user is dir
   file:
     path: "/home/{{ ansible_user }}/.config/systemd/user"
     state: directory
