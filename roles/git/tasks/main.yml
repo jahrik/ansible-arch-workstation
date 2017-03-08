@@ -1,4 +1,5 @@
 ---
+# consider a rewrite with (https://docs.ansible.com/ansible/git_config_module.html)
 - name: Install git
   package: name=git
   become: yes
