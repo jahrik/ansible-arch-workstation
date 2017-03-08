@@ -9,7 +9,6 @@ pkgs:
   - git
   - mlocate
   - nmap
-  - openssh
   - rsync
   - sudo
   - vim
