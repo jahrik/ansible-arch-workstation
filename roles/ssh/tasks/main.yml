@@ -22,10 +22,5 @@
     group: "{{ ansible_user }}"
     mode: 0600
   tags: [ 'ssh' ]
-
-#  notify:
-#    - restart ssh-agent
-#
-#handlers:
-
-  # - name: start and enable ssh-agent
+  notify:
+    - restart ssh-agent
