@@ -1,0 +1,9 @@
+---
+- name: install venv and wrapper
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-virtualenv
+    - python-virtualenvwrapper
+  tags: [ 'python' ]

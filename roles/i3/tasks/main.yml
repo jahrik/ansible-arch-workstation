@@ -34,17 +34,18 @@
     name: "{{ item }}"
     state: present
   with_items:
+    - conky
     - dmenu
     - dunst
+    - feh
+    - redshift
     - rxvt-unicode
-    - ttf-dejavu
-    - conky
-    - xf86-input-synaptics
     - scrot
+    - ttf-dejavu
+    - udiskie
+    - xf86-input-synaptics
     - xorg-xmodmap
     - xorg-xrdb
-    - redshift
-    - udiskie
   tags: [ 'i3' ]
 
 - name: install xcalib from aur

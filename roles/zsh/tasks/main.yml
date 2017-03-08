@@ -37,6 +37,7 @@
     - functions.zsh
     - keybindings.zsh
     - chef.zsh
+    - python.zsh
   tags: [ 'zsh' ]
 
 - name: link the zshrc and zshenv

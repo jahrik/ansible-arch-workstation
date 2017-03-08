@@ -27,7 +27,7 @@
     # - gpg
     # - ruby
     - chef
-    # - python
+    - python
     # - docker
     # - vagrant
     - virtualbox
