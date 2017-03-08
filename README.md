@@ -8,25 +8,26 @@ Table of Contents
 =================
 
    * [Arch linux install with ansible provisioning](#arch-linux-install-with-ansible-provisioning)
+   * [Table of Contents](#table-of-contents)
       * [TODO](#todo)
       * [Initial installation](#initial-installation)
          * [dd:](#dd)
          * [dm-crypt wipe on an empty disk or partition](#dm-crypt-wipe-on-an-empty-disk-or-partition)
          * [LVM on LUKS](#lvm-on-luks)
-         * [partitioning.sh](#partitioningsh)
-         * [LVM](#lvm)
+            * [partitioning.sh](#partitioningsh)
+            * [LVM](#lvm)
             * [Format the partitions](#format-the-partitions)
             * [Mount file systems](#mount-file-systems)
-            * [Install the base system:](#install-the-base-system)
-            * [Generate an fstab:](#generate-an-fstab)
-            * [Chroot](#chroot)
-            * [Install vim](#install-vim)
-            * [Networking](#networking)
-            * [Root password](#root-password)
-            * [Configuring mkinitcpio](#configuring-mkinitcpio)
-            * [Bootloader](#bootloader)
-            * [User](#user)
-            * [Sudo](#sudo)
+         * [Install the base system:](#install-the-base-system)
+         * [Generate an fstab:](#generate-an-fstab)
+         * [Chroot](#chroot)
+         * [Install vim](#install-vim)
+         * [Networking](#networking)
+         * [Root password](#root-password)
+         * [Configuring mkinitcpio](#configuring-mkinitcpio)
+         * [Bootloader](#bootloader)
+         * [User](#user)
+         * [Sudo](#sudo)
       * [Ansible](#ansible)
       * [Vagrant lab](#vagrant-lab)
 
@@ -110,13 +111,13 @@ cryptsetup open /dev/sda2 cryptolvm
 # password: # *use yubikey for 2FA*
 ```
 
-### partitioning.sh
+#### partitioning.sh
 
 ```
 wget https://raw.githubusercontent.com/jahrik/ansible-arch-workstation/master/partitioning.sh
 ```
 
-### LVM
+#### LVM
 ```
 # create volume group
 pvcreate /dev/mapper/cryptolvm
@@ -150,12 +151,12 @@ mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 ```
 
-#### Install the base system:
+### Install the base system:
 ```
 pacstrap /mnt base base-devel
 ```
 
-#### Generate an fstab: 
+### Generate an fstab: 
 ```
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
@@ -165,28 +166,28 @@ Check to see it was written.
 cat /mnt/etc/fstab
 ```
 
-#### Chroot
+### Chroot
 ```
 arch-chroot /mnt /bin/bash
 ```
 
-#### Install vim
+### Install vim
 ```
 pacman -S vim
 ```
 
-#### Networking
+### Networking
 ```
 pacman -S iw wpa_supplicant dialog
 ```
 
-#### Root password
+### Root password
 ```
 # first change root password
 passwd
 ```
 
-#### Configuring mkinitcpio
+### Configuring mkinitcpio
 Edit /etc/mkinitcpio.conf and add the word "encrypt" and "lvm2" to HOOKS='...' just before "filesystems"
 ```
 ...
@@ -199,7 +200,7 @@ Then run the command
 mkinitcpio -p linux
 ```
 
-#### Bootloader
+### Bootloader
 [Boot_loader](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#Boot_loader)
 ```
 pacman -S grub
@@ -217,14 +218,14 @@ grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### User
+### User
 ```
 pacman -S zsh
 groupadd <user>
 useradd -m -g <user> -s /bin/zsh <user>
 ```
 
-#### Sudo
+### Sudo
 ```
 pacman -S sudo
 

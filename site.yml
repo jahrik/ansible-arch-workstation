@@ -65,3 +65,9 @@
         name: terraform
         user: "{{ ansible_user }}"
       tags: [ 'terraform' ]
+
+    - name: install libreoffice
+      package:
+        name: libreoffice-fresh
+        state: present
+      tags: [ 'libreoffice' ]
