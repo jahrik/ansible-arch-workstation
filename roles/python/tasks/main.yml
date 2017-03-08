@@ -1,9 +1,20 @@
 ---
-- name: install venv and wrapper
+- name: install python packages
   package:
     name: "{{ item }}"
-    state: present
+    state: latest
   with_items:
     - python-virtualenv
     - python-virtualenvwrapper
+    - flake8
+    - python-pylint
+    - python2-pylint
+  tags: [ 'python' ]
+
+- name: install various libs
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - postgresql-libs
   tags: [ 'python' ]
