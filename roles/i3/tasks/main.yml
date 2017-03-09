@@ -120,3 +120,12 @@
     dest: /home/{{ ansible_user }}/.urxvt/ext/font-size
     mode: 0755
   tags: [ 'i3' ]
+
+- name: create $HOME/screenshots dir for scrot
+  file: 
+    path: "/home/{{ ansible_user }}/screenshots/"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+  tags: [ 'i3' ]
