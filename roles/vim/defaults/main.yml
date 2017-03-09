@@ -1,28 +1,27 @@
 ---
 vundle:
+  - "Syntastic"
   - "Gundo"
   - "git.zip"
   - "fugitive.vim"
   - "The-NERD-tree"
   - "EasyMotion"
   - "ack.vim"
-  - "http://github.com/gmarik/snipmate.vim.git"
-  - "https://github.com/fholgado/minibufexpl.vim.git"
-  - "git://git.wincent.com/command-t.git"
-  - "https://github.com/pearofducks/ansible-vim.git"
-  - "https://github.com/davidhalter/jedi-vim.git"
-  - "https://github.com/nvie/vim-flake8.git"
-  - "https://github.com/powerline/powerline.git"
-  - "https://github.com/ngmy/vim-rubocop.git"
-  - "https://github.com/tpope/vim-surround.git"
-  - "MarcWeber/vim-addon-mw-utils"
+  - "minibufexpl.vim"
+  - "vim-flake8"
+  - "surround.vim"
   - "tomtom/tlib_vim"
   - "garbas/vim-snipmate"
   - "vadv/vim-chef"
-  - "https://github.com/hashivim/vim-terraform.git"
-  - "https://github.com/wtfbbqhax/Snort-vim.git"
   - "godlygeek/tabular"
   - "plasticboy/vim-markdown"
+  - "MarcWeber/vim-addon-mw-utils"
+  - "https://github.com/hashivim/vim-terraform.git"
+  - "https://github.com/wtfbbqhax/Snort-vim.git"
+  - "https://github.com/pearofducks/ansible-vim.git"
+  - "https://github.com/davidhalter/jedi-vim.git"
+  - "https://github.com/powerline/powerline.git"
+  - "https://github.com/ngmy/vim-rubocop.git"
 set: 
   - laststatus=2
   - showtabline=2
@@ -41,6 +40,10 @@ set:
   - spelllang=en
   - spellfile=$HOME/.vim/en.utf-8.add
   - number
+  # syntastic
+  - statusline+=%#warningmsg#
+  - statusline+=%{SyntasticStatuslineFlag()}
+  - statusline+=%*
 
 map:
   - <c-j> <c-w>j
@@ -66,6 +69,11 @@ let:
   # - g:NERDTreeDirArrowExpandable="+"
   # - g:NERDTreeDirArrowCollapsible="~"
   - g:NERDTreeDirArrows=0
+  # syntastic
+  - g:syntastic_always_populate_loc_list = 1
+  - g:syntastic_auto_loc_list = 1
+  - g:syntastic_check_on_open = 1
+  - g:syntastic_check_on_wq = 0
 
 command:
   - Fuckyou w !sudo tee %
