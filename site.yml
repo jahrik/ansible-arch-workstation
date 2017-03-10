@@ -74,4 +74,3 @@
         name: libreoffice-fresh
         state: present
       tags: [ 'libreoffice' ]
-   
