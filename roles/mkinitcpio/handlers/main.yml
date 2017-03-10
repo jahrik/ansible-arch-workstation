@@ -1,0 +1,4 @@
+---
+- name: mkinitcpio
+  command: mkinitcpio -p linux
+  tags: [ "mkinitcpio" ]

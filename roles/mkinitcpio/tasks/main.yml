@@ -3,10 +3,5 @@
   template:
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf
-  register: mkinitcpio
-  tags: [ "mkinitcpio" ]
-
-- name: Run mkinitcpio if updated
-  command: mkinitcpio -p linux
-  when: mkinitcpio.changed 
+  notify: mkinitcpio
   tags: [ "mkinitcpio" ]
