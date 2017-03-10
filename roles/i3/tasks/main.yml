@@ -55,7 +55,7 @@
   tags: [ 'i3' ]
 
 - name: Create ~/.i3 directories
-  file: 
+  file:
     path: "/home/{{ ansible_user }}/{{ item }}"
     state: directory
     owner: "{{ ansible_user }}"
@@ -106,7 +106,7 @@
   tags: [ 'i3' ]
 
 - name: create $HOME/.urxvt/ext/ dir
-  file: 
+  file:
     path: "/home/{{ ansible_user }}/.urxvt/ext/"
     state: directory
     owner: "{{ ansible_user }}"
@@ -122,7 +122,7 @@
   tags: [ 'i3' ]
 
 - name: create $HOME/screenshots dir for scrot
-  file: 
+  file:
     path: "/home/{{ ansible_user }}/screenshots/"
     state: directory
     owner: "{{ ansible_user }}"
