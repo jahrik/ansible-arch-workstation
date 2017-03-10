@@ -1,7 +1,17 @@
 ---
+# envars
+editor: vim
+browser: chromium
+term: rxvt
+
+# time
+time_zone: US/Mountain
+
+# locale
 locale: en_US.UTF-8 UTF-8
 lang: en_US.UTF-8
-time_zone: US/Mountain
+
+# base packages
 pkgs:
   - alsa-utils
   - ansible
@@ -16,3 +26,4 @@ pkgs:
   - wpa_supplicant
   - zsh
   - htop
+  - mtpaint

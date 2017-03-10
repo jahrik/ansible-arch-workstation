@@ -1,12 +1,13 @@
 #!/usr/bin/zsh
 
 # ENV
-export EDITOR=vim
-export BROWSER=/usr/bin/chromium
+export EDITOR={{ editor }}
+export BROWSER=/usr/bin/{{ browser }}
+export LANG={{ lang }}
 
 # Default w3m page
 export HTTP_HOME='www.google.com'
 
 # Terminal
-export TERM=rxvt
-export COLORTERM=rxvt
+export TERM={{ term }}
+export COLORTERM={{ term }}

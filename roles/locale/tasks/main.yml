@@ -3,9 +3,7 @@
   template:
     src: locale.gen.j2
     dest: /etc/locale.gen
-  notify:
-    - locale-gen
-    - export LANG
+  notify: locale-gen
   tags: [ "locale" ]
 
 - name: Generate locale.conf

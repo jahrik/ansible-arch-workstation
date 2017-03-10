@@ -2,7 +2,3 @@
 - name: locale-gen
   command: locale-gen
   tags: [ 'locale' ]
-
-- name: export LANG
-  shell: export LANG="{{ lang }}"
-  tags: [ 'locale' ]
