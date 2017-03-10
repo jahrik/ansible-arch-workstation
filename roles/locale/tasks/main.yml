@@ -3,15 +3,9 @@
   template:
     src: locale.gen.j2
     dest: /etc/locale.gen
-  register: _locale
-  tags: [ "locale" ]
-
-- name: Generate locale
-  shell: "{{ item }}"
-  with_items:
+  notify:
     - locale-gen
-    - export LANG="{{ lang }}"
-  when: _locale.changed 
+    - export LANG
   tags: [ "locale" ]
 
 - name: Generate locale.conf
