@@ -38,6 +38,7 @@
     - keybindings.zsh
     - chef.zsh
     - python.zsh
+    - ansible.zsh
   tags: [ 'zsh' ]
 
 - name: link the zshrc and zshenv
