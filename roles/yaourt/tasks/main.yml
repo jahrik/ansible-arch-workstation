@@ -11,7 +11,7 @@
 - name: Install yaourt
   package:
     name: yaourt
-    state: latest
+    state: present
     update_cache: yes
   tags: [ "yaourt" ]
 
