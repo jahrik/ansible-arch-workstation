@@ -66,6 +66,7 @@ filetype:
 
 let:
   - g:pyflakes_use_quickfix = 0
+  # nerdtree
   # - g:NERDTreeDirArrowExpandable="+"
   # - g:NERDTreeDirArrowCollapsible="~"
   - g:NERDTreeDirArrows=0
@@ -74,6 +75,9 @@ let:
   - g:syntastic_auto_loc_list = 1
   - g:syntastic_check_on_open = 1
   - g:syntastic_check_on_wq = 0
+  - g:syntastic_ruby_checkers = ['rubocop']
+  - g:syntastic_python_checkers = ['pylint', 'flake8']
+  - g:syntastic_ansible_checkers = ['ansible_lint']
 
 command:
   - Fuckyou w !sudo tee %
