@@ -1,6 +1,5 @@
 ---
 vundle:
-  - "Syntastic"
   - "Gundo"
   - "git.zip"
   - "fugitive.vim"
@@ -14,6 +13,7 @@ vundle:
   - "garbas/vim-snipmate"
   - "vadv/vim-chef"
   - "godlygeek/tabular"
+  - "vim-syntastic/syntastic"
   - "plasticboy/vim-markdown"
   - "MarcWeber/vim-addon-mw-utils"
   - "https://github.com/hashivim/vim-terraform.git"
