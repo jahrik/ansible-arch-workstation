@@ -2,7 +2,7 @@
 - name: install zsh and dependencies
   package:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
     - git
     - zsh
@@ -12,6 +12,7 @@
   git:
     repo: "https://github.com/robbyrussell/oh-my-zsh.git"
     dest: "/home/{{ ansible_user }}/.oh-my-zsh"
+    version: master
   tags: [ 'zsh' ]
 
 - name: create ~/.z/ dir
