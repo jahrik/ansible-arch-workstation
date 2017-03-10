@@ -1,40 +1,16 @@
 ---
-# consider a rewrite with (https://docs.ansible.com/ansible/git_config_module.html)
 - name: Install git
   package: name=git
   become: yes
   tags: [ "git" ]
 
-- name: Check if git name is set
-  shell: git config user.name
-  register: git_name
-  become: yes
-  become_user: "{{ user.name }}"
-  when: user.name is defined
-  tags: [ "git" ]
-
-- name: Configure git name
-  command: "/usr/bin/git config --global user.name \"{{ user.real_name }}\""
-  become: yes
-  become_user: "{{ user.name }}"
-  when:
-    - git_name.stdout != "{{ user.real_name }}"
-    - user.real_name is defined
-  tags: [ "git" ]
-
-- name: Check if git email is set
-  shell: git config user.email
-  register: git_email
-  become: yes
-  when: user.email is defined
-  become_user: "{{ user.name }}"
-  tags: [ "git" ]
-
-- name: configure git email
-  command: "/usr/bin/git config --global user.email \"{{ user.email }}\""
-  become: yes
-  become_user: "{{ user.name }}"
-  when:
-    - git_email.stdout != "{{ user.email }}"
-    - user.email is defined
+- name: Setup default git configuraiton
+  git_config:
+    name="{{ item.name }}"
+    scope=global
+    value="{{ item.value }}"
+  with_items:
+    - {name: "user.name",  value: "{{ user.real_name }}" }
+    - {name: "user.email", value: "{{ user.email }}" }
+    - {name: "ui.color",   value: "True" }
   tags: [ "git" ]
