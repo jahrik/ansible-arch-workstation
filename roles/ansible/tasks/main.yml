@@ -1,0 +1,7 @@
+---
+
+- name: Install ansible-lint
+  yaourt:
+    name: ansible-lint
+    user: "{{ ansible_user }}"
+  tags: [ 'ansible' ]

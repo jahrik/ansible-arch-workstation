@@ -28,10 +28,13 @@
     # - ruby
     - chef
     - python
+    - ansible
     # - docker
     # - vagrant
     - virtualbox
     - conky
+    # - psql
+    # - mysql
 
   tasks:
 
@@ -71,3 +74,4 @@
         name: libreoffice-fresh
         state: present
       tags: [ 'libreoffice' ]
+   
