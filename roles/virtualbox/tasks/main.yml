@@ -21,7 +21,7 @@
 #  notify:
 #   - vboxreload
 #  tags: [ 'virtualbox' ]
-# 
+#
 #resolving dependencies...
 #looking for conflicting packages...
 #:: virtualbox-host-modules-arch and virtualbox-host-dkms are in conflict. Remove virtualbox-host-dkms? [y/N]
