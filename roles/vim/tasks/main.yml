@@ -1,49 +1,46 @@
 ---
 - name: Install vim
   package:
-    name=vim
-    state=present
+    name: vim
+    state: present
   tags: [ "vim" ]
 
 - name: create ~/.vim diretory
-  file: 
-    path=/home/{{ ansible_user }}/.vim/
-    state=directory
-    owner={{ ansible_user }}
-    group={{ ansible_user }}
-    mode=0755
+  file:
+    path: "/home/{{ ansible_user }}/.vim/"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
   tags: [ "vim" ]
 
 - name: Clone vundle from github
   git:
-    repo=https://github.com/VundleVim/Vundle.vim.git
-    dest=/home/{{ ansible_user }}/.vim/bundle/Vundle.vim
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: "/home/{{ ansible_user }}/.vim/bundle/Vundle.vim"
+    version: master
   tags: [ "vim" ]
 
 - name: Generate ~/.vimrc
-  template: 
-    src=vimrc.j2
-    dest=/home/{{ ansible_user }}/.vimrc
-    owner={{ ansible_user }}
-    group={{ ansible_user }}
-    mode=0644
-  register: vimrc
-  tags: [ "vim" ]
-
-- name: Install vim plugins
-  command: vim +PluginInstall +qall
-  when: vimrc.changed
+  template:
+    src: vimrc.j2
+    dest: "/home/{{ ansible_user }}/.vimrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+  notify: install plugins
   tags: [ "vim" ]
 
 - name: Touch spell-check file
-  file: 
-    path=/home/{{ ansible_user }}/.vim/en.utf-8.add
-    owner={{ ansible_user }}
-    group={{ ansible_user }}
-    state=touch
-    mode=0644
+  file:
+    path: "/home/{{ ansible_user }}/.vim/en.utf-8.add"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: touch
+    mode: 0644
   tags: [ "vim" ]
 
 - name: vim info
-  debug: msg="See ':h vundle' for more details."
+  debug:
+    msg: "See ':h vundle' for more details."
   tags: [ "vim" ]
