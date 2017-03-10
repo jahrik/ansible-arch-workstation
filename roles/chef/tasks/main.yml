@@ -28,6 +28,7 @@
   git:
     repo: "{{ chef.repo_url }}"
     dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}"
+    version: master
     accept_hostkey: true
   when: chef.repo is defined
   tags: [ 'chef' ]
@@ -48,6 +49,7 @@
   git:
     repo: "{{ chef.cookbook_url }}{{ item }}.git"
     dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}/cookbooks/{{ item }}"
+    version: master
     accept_hostkey: true
   when: chef.cookbooks is defined
   with_items: "{{ chef.cookbooks }}"
