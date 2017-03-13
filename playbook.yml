@@ -15,6 +15,7 @@
     - git
     - mkinitcpio
     - hostname
+    - hosts
     - locale
     - time
     - vim
@@ -74,3 +75,9 @@
         name: libreoffice-fresh
         state: present
       tags: [ 'libreoffice' ]
+
+    - name: Install transmission
+      package:
+        name: transmission-gtk
+        state: present
+      tags: [ 'bittorrent' ]
