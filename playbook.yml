@@ -7,35 +7,35 @@
     - "./secrets/{{ inventory_hostname }}.yml"
 
   roles:
-    - yaourt
+    - hostname
+    - mkinitcpio
+    - locale
+    - time
     - pkgs
+    - git
+    - yaourt
     # - user
     # - authorized_keys
     # - sudoers
-    - git
-    - mkinitcpio
-    - hostname
-    - hosts
-    - locale
-    - time
-    - vim
-    - zsh
-    - i3
-    # - slim
-    - browser
-    - ssh
-    - vpn
-    # - gpg
-    # - ruby
-    - chef
-    - python
-    - ansible
     # - docker
-    # - vagrant
-    - virtualbox
-    - conky
-    # - psql
+    # - gpg
     # - mysql
+    # - psql
+    # - ruby
+    # - slim
+    # - vagrant
+    - ansible
+    - browser
+    - chef
+    - conky
+    - hosts
+    - i3
+    - python
+    - ssh
+    - vim
+    - virtualbox
+    - vpn
+    - zsh
 
   tasks:
 
