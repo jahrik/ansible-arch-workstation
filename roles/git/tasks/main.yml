@@ -13,4 +13,5 @@
     - {name: "user.name",  value: "{{ user.real_name }}" }
     - {name: "user.email", value: "{{ user.email }}" }
     - {name: "ui.color",   value: "True" }
+  when: user is defined
   tags: [ "git" ]
