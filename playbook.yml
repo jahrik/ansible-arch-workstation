@@ -81,3 +81,49 @@
         name: transmission-gtk
         state: present
       tags: [ 'bittorrent' ]
+
+    - name: Install remote desktop software
+      package:
+        name: gtk-vnc
+        state: present
+      tags: [ 'vnc' ]
+
+    - name: Install ntfs-3g for mounting ntfs disks
+      package:
+        name: ntfs-3g
+        state: present
+      tags: [ 'mount' ]
+
+    - name: Thinkpad battery optimization software TLP
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - tlp
+        - tp_smapi
+        - acpi_call
+        - smartmontools
+      tags: [ 'battery' ]
+
+    - name: Enable and start tlp.service
+      systemd:
+        name: tlp
+        daemon_reload: yes
+        state: started
+        enabled: yes
+      tags: [ 'battery' ]
+
+    - name: Enable and start tlp-sleep.service
+      systemd:
+        name: tlp-sleep
+        daemon_reload: yes
+        enabled: yes
+      tags: [ 'battery' ]
+
+    - name: Disable and stop systemd-rfkill.service
+      systemd:
+        name: systemd-rfkill
+        daemon_reload: yes
+        state: stopped
+        enabled: no
+      tags: [ 'battery' ]
