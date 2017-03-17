@@ -68,6 +68,7 @@ ${color2}Processes:$color1 $processes  ${color2}Running:$color1 $running_process
 $hr
 ${color2}File systems:
 ${color2}/ $color1${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${color2}/var $color1${fs_used /var}/${fs_size /var} ${fs_bar 6 /var}
 ${color2}/home $color1${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
 ${color2}Networking:
 Up:$color1 ${upspeed {{ conky.interface  }}} ${color2} - Down:$color1 ${downspeed {{ conky.interface  }}}
