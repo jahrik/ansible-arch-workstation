@@ -1,0 +1,31 @@
+---
+- name: Install pianobar
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libao
+    - ffmpeg
+    - readline
+    - json-c
+    - libgcrypt
+    - pianobar
+  tags: [ 'pianobar' ]
+
+- name: create config dir
+  file:
+    path: "/home/{{ ansible_user }}/.config/pianobar"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+  tags: [ 'pianobar' ]
+
+- name: generate pianobar config
+  template:
+    src: config.j2
+    dest: "/home/{{ ansible_user }}/.config/pianobar/config"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+  tags: [ 'pianobar' ]

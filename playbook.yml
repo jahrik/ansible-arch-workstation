@@ -30,6 +30,7 @@
     - conky
     - hosts
     - i3
+    - pianobar
     - python
     - ssh
     - vim
@@ -64,36 +65,42 @@
         - gnome-keyring
       tags: [ 'email' ]
 
+    # terraform
     - name: install terraform from aur
       yaourt:
         name: terraform
         user: "{{ ansible_user }}"
       tags: [ 'terraform' ]
 
+    # office
     - name: install libreoffice
       package:
         name: libreoffice-fresh
         state: present
       tags: [ 'libreoffice' ]
 
+    # bittorrent
     - name: Install transmission
       package:
         name: transmission-gtk
         state: present
       tags: [ 'bittorrent' ]
 
+    # rdp
     - name: Install remote desktop software
       package:
         name: gtk-vnc
         state: present
       tags: [ 'vnc' ]
 
+    # media
     - name: Install ntfs-3g for mounting ntfs disks
       package:
         name: ntfs-3g
         state: present
       tags: [ 'mount' ]
 
+    # Thinkpad
     - name: Thinkpad battery optimization software TLP
       package:
         name: "{{ item }}"
