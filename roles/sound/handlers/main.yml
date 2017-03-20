@@ -1,0 +1,10 @@
+---
+- name: restart pulse as user
+  systemd:
+    name: pulseaudio.service
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
+    user: yes
+  become: false
+  tags: [ 'sound' ]
