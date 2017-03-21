@@ -35,17 +35,12 @@
     - sound
     - ssh
     - vim
+    - vagrant
     - virtualbox
     - vpn
     - zsh
 
   tasks:
-
-    - name: install vagrant
-      package:
-        name: vagrant
-        state: present
-      tags: [ 'vagrant' ]
 
     - name: install chat apps from aur
       yaourt:

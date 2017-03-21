@@ -1,0 +1,18 @@
+---
+- name: install vagrant
+  package:
+    name: vagrant
+    state: present
+  tags: [ 'vagrant' ]
+
+- name: install vagrant plugins
+  command: vagrant plugin install "{{ item }}"
+  become: fasle
+  with_items:
+    - vagrant-berkshelf
+    - vagrant-chef-zero
+    - vagrant-hostsupdater
+    - vagrant-omnibus
+    - vagrant-share
+    - vagrant-vbguest
+  tags: [ 'vagrant' ]

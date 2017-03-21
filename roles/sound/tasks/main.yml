@@ -46,16 +46,6 @@
   notify: restart pulse as user
   tags: [ 'sound' ]
 
-#I figured it out myself. here is how you do it for anyone who has these issues too and cant find any answers
-#Sound with Pulse and ALSA
-##sudo pacman -S alsa-utils
-##sudo pacman -S alsa-oss
-##sudo pacman -S alsa-plugins
-##sudo pacman -S pulseaudio
-##sudo pacman -S pavucontrol
-##sudo pacman -S ib32-alsa-plugins
-##sudo pacman -S lib32-libpulse
-##sudo pacman -S pulseaudio-alsa
 #Setting up Sound
 ## groupadd pulse-access
 ## groupadd pulse-rt
