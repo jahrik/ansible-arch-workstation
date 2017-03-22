@@ -51,6 +51,7 @@ cleanDocker() {
   docker rmi $(docker images -q --filter "dangling=true")
   docker rm $(docker ps -a -q)
 }
+
 inpectDocker() {
 {% raw %}
   docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' $1
@@ -91,6 +92,23 @@ font_test (){
 }
 
 ssh_quick() {
+    if [[ -z $1 ]]; then
+        echo "Give key name like:  ssh_quick new_rsa"
+        echo "Optional add email like:  ssh_quick new_rsa example.email.com"
+    fi
     ssh-keygen -b 4096 -t rsa -f ~/.ssh/$1 -C "$2"
 }
 
+git_tag_cookbook() {
+  version=$(grep version metadata.rb | awk '{ gsub(/"/, "", $2);gsub(/\047/, "", $2); print "v"$2 }')
+  git_log=$(git log -1 --pretty=%B)
+  if ! [[ $(git tag) ]] || [[ $( git tag | grep "$version" ) != "$version" ]];
+  then
+    echo "$version";
+    echo "$git_log";
+    git tag -a "$version" -m "$git_log";
+    git push origin "$version";
+  else
+    echo "tag $version already exists";
+  fi
+}
