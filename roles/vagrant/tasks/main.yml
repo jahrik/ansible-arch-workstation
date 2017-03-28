@@ -6,7 +6,7 @@
   tags: [ 'vagrant' ]
 
 - name: Check if vagrant plugins are installed
-  become: fasle
+  become: false
   shell: "vagrant plugin list | grep {{ item }}"
   ignore_errors: true
   with_items: "{{ vagrant_plugins }}"
@@ -14,8 +14,8 @@
   tags: [ 'vagrant' ]
 
 - name: install vagrant plugins
+  become: false
   command: vagrant plugin install "{{ item }}"
-  become: fasle
   with_items: "{{ vagrant_plugins }}"
   when: plugins_installed | failed
   tags: [ 'vagrant' ]
