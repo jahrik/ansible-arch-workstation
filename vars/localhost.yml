@@ -1,7 +1,7 @@
 ---
 # envars
 editor: vim
-browser: chromium
+browser: firefox
 term: rxvt
 
 # time

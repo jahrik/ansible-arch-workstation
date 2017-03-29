@@ -14,3 +14,23 @@
     name: pepper-flash
     user: "{{ ansible_user }}"
   tags: [ 'browser' ]
+
+# Firefox
+- name: install firefox extras
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - firefox-noscript
+    - flashplugin
+  tags: [ 'browser' ]
+
+- name: install firefox extras from aur
+  yaourt:
+    name: lastpass
+    user: "{{ ansible_user }}"
+  with_items:
+    - lastpass
+    - ttf-ms-fonts
+    - vimperator
+  tags: [ 'browser' ]
