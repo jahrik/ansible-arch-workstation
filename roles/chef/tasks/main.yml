@@ -5,6 +5,14 @@
     user: "{{ ansible_user }}"
   tags: [ 'chef' ]
 
+- name: Install chef extras
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - graphviz
+  tags: [ 'chef' ]
+
 - name: link /usr/bin/inspec
   file:
     src: /opt/chefdk/bin/inspec
