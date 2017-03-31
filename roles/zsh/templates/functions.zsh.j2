@@ -13,73 +13,20 @@ man() {
             man "$@"
 }
 
-## checks for wordcount of a directory
-#wcnt() {
-#    if [[ -z $1 ]]; then
-#        echo "Give an application like:  wcnt lua"
-#    fi
-#
-#    find . -name "*.$1" | xargs wc -l
-#}
-#
-## update without xorg-server
-#upnX() {
-#    tmp=(xorg-server xorg-server-common xf86-input-wacom xf86-input-evdev)
-#    yaourt -Syua --ignore ${tmp[1]} --ignore ${tmp[2]} --ignore ${tmp[3]} --ignore ${tmp[4]}
-#}
-#
-## update minidlna
-#dlnaUpdate() {
-#    sudo systemctl stop minidlna
-#    sudo minidlnad -R
-#    sudo systemctl start minidlna
-#}
-#
-#repoPermission() {
-#  ssh $1 -p 2222 docker exec phabricator5000 chown 2001:2000 /var/repo -R
-#}
-#
-#repoDelete() {
-#  ssh $1 -p 2222 docker exec -it phabricator5000 ./bin/remove destroy $2
-#}
-#
-#phabLogin() {
-#  ssh $1 -p 2222 docker exec -it phabricator5000 /bin/bash
-#}
-
+# Clean up docker
 cleanDocker() {
   docker rmi $(docker images -q --filter "dangling=true")
   docker rm $(docker ps -a -q)
 }
 
+# Show docker environment variables without logging in
 inpectDocker() {
 {% raw %}
   docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' $1
 {% endraw %}
 }
 
-#tt() {
-#  ~/Projects/scripts/cron/themeChanger.py ~/.config/termite ~/Programs/base16-builder/output/termite
-#}
-
-#tupm() {
-#  if [ -f "Tupfile.moon" ]; then
-#    moonc "Tupfile.moon"
-#  fi
-#
-#  tup
-#}
-#
-#makePatch() {
-#  diff -crB $1 $2 > p0.patch
-#}
-#
-#cimport() {
-#  makePatch $1 $2
-#  hg import -e ./p0.patch
-#  rm ./p0.patch
-#}
-
+# Test fonts installed
 font_test (){
     print "Letters:\tAaBbCcDdEeFfGgHhIiJjKkLlMm"
     print "\t\tNnOoPpQqRrSsTtUuVvWwXxYyZz"
@@ -91,6 +38,7 @@ font_test (){
     print "Ambiguity:\t1Il ao DO0Q B8 ``''\" ({ ,. ;: "
 }
 
+# Quickly generate a new ssh key
 ssh_quick() {
     if [[ -z $1 ]]; then
         echo "Give key name like:  ssh_quick new_rsa"
@@ -99,6 +47,9 @@ ssh_quick() {
     ssh-keygen -b 4096 -t rsa -f ~/.ssh/$1 -C "$2"
 }
 
+# Pull version from metadata.rb
+# Pull last commit message from github
+# Set tag and push to github
 git_tag_cookbook() {
   version=$(grep version metadata.rb | awk '{ gsub(/"/, "", $2);gsub(/\047/, "", $2); print "v"$2 }')
   git_log=$(git log -1 --pretty=%B)
@@ -111,4 +62,16 @@ git_tag_cookbook() {
   else
     echo "tag $version already exists";
   fi
+}
+
+# Convert seconds to DHMS
+sec2dhms() {
+  declare -i SS="$1"
+  D=$(( SS / 86400 ))
+  H=$(( SS % 86400 / 3600 ))
+  M=$(( SS % 3600 / 60 ))
+  S=$(( SS % 60 ))
+  [ "$D" -gt 0 ] && echo -n "${D}:"
+  [ "$H" -gt 0 ] && printf "%02g:" "$H"
+  printf "%02g:%02g\n" "$M" "$S"
 }
