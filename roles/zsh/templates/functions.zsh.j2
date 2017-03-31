@@ -14,17 +14,30 @@ man() {
 }
 
 # Clean up docker
-cleanDocker() {
+docker_clean() {
   docker rmi $(docker images -q --filter "dangling=true")
   docker rm $(docker ps -a -q)
 }
-
-# Show docker environment variables without logging in
-inpectDocker() {
 {% raw %}
+# Show docker environment variables without logging in
+docker_inspect_env() {
+  if [[ -z $1 ]]; then
+      echo "Give <container-name OR id> like:  docker_inspect_env <container-name OR id>"
+  else
   docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' $1
-{% endraw %}
+  fi
 }
+{% endraw %}
+{% raw %}
+# Show docker IP variables without logging in
+docker_inspect_ip() {
+  if [[ -z $1 ]]; then
+      echo "Give <container-name OR id> like:  docker_inspect_env <container-name OR id>"
+  else
+  docker inspect --format '{{ .NetworkSettings.IPAddress }}' $1
+  fi
+}
+{% endraw %}
 
 # Test fonts installed
 font_test (){
