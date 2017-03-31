@@ -32,17 +32,10 @@
     - modprobe loop
   tags: [ "docker" ]
 
-- name: enable docker daemon
+- name: start docker daemon
   systemd:
     name: docker.service
+    state: started
     daemon_reload: yes
-    enabled: yes
-  tags: [ "docker" ]
-
-- name: restart docker daemon
-  systemd:
-    name: docker.service
-    daemon_reload: yes
-    state: restarted
     enabled: yes
   tags: [ "docker" ]
