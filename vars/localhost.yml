@@ -24,6 +24,7 @@ pkgs:
   - nmap
   - rsync
   - sudo
+  - tcpdump
   - vim
   - wget
   - wpa_supplicant
