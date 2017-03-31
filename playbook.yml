@@ -42,6 +42,10 @@
 
   tasks:
 
+    # Make chefdk work with rvm
+    # https://wiki.archlinux.org/index.php/RVM
+    # https://gist.github.com/asnodgrass/36d88ffcb76b4068c62c
+
     - name: install chat apps from aur
       yaourt:
         name: "{{ item }}"
