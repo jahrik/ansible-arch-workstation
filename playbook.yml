@@ -17,7 +17,6 @@
     # - user
     # - authorized_keys
     # - sudoers
-    # - docker
     # - gpg
     # - mysql
     # - psql
@@ -28,6 +27,7 @@
     - browser
     - chef
     - conky
+    - docker
     - hosts
     - i3
     - pianobar

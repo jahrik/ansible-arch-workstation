@@ -1,0 +1,21 @@
+---
+- name: modprobe loop
+  become: true
+  become_method: sudo
+  command: "modprobe loop"
+  tags: [ "docker" ]
+
+- name: enable docker daemon
+  systemd:
+    name: docker.service
+    daemon_reload: yes
+    enabled: yes
+  tags: [ "docker" ]
+
+- name: restart docker daemon
+  systemd:
+    name: docker.service
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
+  tags: [ "docker" ]
