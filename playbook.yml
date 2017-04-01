@@ -107,7 +107,6 @@
         state: present
       with_items:
         - tlp
-        - tp_smapi
         - acpi_call
         - smartmontools
       tags: [ 'battery' ]
