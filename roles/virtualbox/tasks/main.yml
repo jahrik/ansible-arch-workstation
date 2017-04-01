@@ -1,30 +1,12 @@
 ---
+
 - name: install virtualbox
   package:
     name: "{{ item }}"
     state: present
   with_items:
+    - virtualbox-host-modules-arch
     - virtualbox
-    # - virtualbox-host-modules-arch
-    - virtualbox-guest-modules-arch
   notify:
    - vboxreload
   tags: [ 'virtualbox' ]
-
-# Still needs automated
-#- name: install virtualbox arch modules
-#  package:
-#    name: "{{ item }}"
-#    state: present
-#  with_items:
-#    # - virtualbox-host-modules-arch
-#  notify:
-#   - vboxreload
-#  tags: [ 'virtualbox' ]
-#
-#resolving dependencies...
-#looking for conflicting packages...
-#:: virtualbox-host-modules-arch and virtualbox-host-dkms are in conflict. Remove virtualbox-host-dkms? [y/N]
-#error: unresolvable package conflicts detected
-#error: failed to prepare transaction (conflicting dependencies)
-#:: virtualbox-host-modules-arch and virtualbox-host-dkms are in conflict

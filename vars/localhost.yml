@@ -18,6 +18,7 @@ pkgs:
   - dialog
   - git
   - htop
+  - linux-headers
   - lsof
   - mlocate
   - mtpaint
