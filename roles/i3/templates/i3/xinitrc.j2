@@ -23,6 +23,9 @@ dunst -config ~/.i3/dunstrc &
 # disks automounting
 udiskie &
 
+# turn off beep
+xset -b
+
 # gpg agent
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 gpg-connect-agent updatestartuptty /bye
