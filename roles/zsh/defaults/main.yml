@@ -5,3 +5,9 @@ path:
   - /opt
   - /opt/chefdk/bin
   - /usr/local/bro/bin
+plugins:
+  - archlinux
+  - git
+  - kitchen
+  - sudo
+  - vi-mode
