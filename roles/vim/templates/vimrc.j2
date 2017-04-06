@@ -35,6 +35,10 @@ set {{ item }}
 map {{ item }}
 {% endfor %}
 
+{% for item in nmap %}
+nmap {{ item }}
+{% endfor %}
+
 {% for item in syntax %}
 syntax {{ item }}
 {% endfor %}

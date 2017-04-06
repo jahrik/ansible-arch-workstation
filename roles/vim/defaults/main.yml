@@ -22,7 +22,7 @@ vundle:
   - "https://github.com/davidhalter/jedi-vim.git"
   - "https://github.com/powerline/powerline.git"
   - "https://github.com/ngmy/vim-rubocop.git"
-set: 
+set:
   - laststatus=2
   - showtabline=2
   - noshowmode
@@ -53,11 +53,16 @@ map:
   - <leader>td <Plug>TaskLisk
   - "<leader>g :GundoToggle<CR>"
   - "<F2> :NERDTreeToggle<CR>"
+  - "<F3> :setlocal spell! spelllang=en_us<CR>"
+
+nmap:
+  - "<F4> :SyntasticToggleMode<CR>"
+  - "<f5> :set number! number?<cr>"
 
 syntax:
   - "on"
 
-colorscheme: 
+colorscheme:
   - slate
 
 filetype:
@@ -66,11 +71,7 @@ filetype:
 
 let:
   - g:pyflakes_use_quickfix = 0
-  # nerdtree
-  # - g:NERDTreeDirArrowExpandable="+"
-  # - g:NERDTreeDirArrowCollapsible="~"
   - g:NERDTreeDirArrows=0
-  # syntastic
   - g:syntastic_always_populate_loc_list = 1
   - g:syntastic_auto_loc_list = 1
   - g:syntastic_check_on_open = 1
@@ -78,6 +79,8 @@ let:
   - g:syntastic_ruby_checkers = ['rubocop']
   - g:syntastic_python_checkers = ['pylint', 'flake8']
   - g:syntastic_ansible_checkers = ['ansible_lint']
+  - g:syntastic_chef_checkers = ['foodcritic', 'cookstyle']
+  - g:syntastic_ignore_files = ['\m^roles/']
 
 command:
   - Fuckyou w !sudo tee %
