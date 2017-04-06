@@ -3,7 +3,6 @@
 URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard,font-size
 
 URxvt.keysym.M-x                : perl:keyboard-select:activate
-URxvt.keysym.M-u                : perl:url-select:select_next
 URxvt.keysym.Shift-Control-C    : perl:clipboard:copy
 URxvt.keysym.Shift-Control-V    : perl:clipboard:paste
 URxvt.clipboard.copycmd         : xsel -ib
@@ -12,7 +11,12 @@ URxvt.keysym.M-s                : perl:keyboard-select:search
 URxvt.keysym.M-C-v              : perl:clipboard:paste_escaped
 URxvt.url-select.launcher       : {{ browser }}
 URxvt.url-select.autocopy       : true
+
+! url-select. We can middle-click on any url and this will launch the browser
+! defined by `URxvt.url-select.launcher`.
+URxvt.keysym.M-u                : perl:url-select:select_next
 URxvt.url-select.underline      : true
+URxvt.url-select.launcher       : {{ browser }}
 
 ! https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-equal:   perl:font-size:increase
