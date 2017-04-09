@@ -52,40 +52,6 @@
   when: chef.validation_key_file is defined
   tags: [ 'chef' ]
 
-- name: Clone chef cookbooks
-  become: false
-  git:
-    repo: "{{ chef.cookbook_url }}{{ item }}.git"
-    dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}/cookbooks/{{ item }}"
-    version: master
-    accept_hostkey: true
-  with_items: "{{ chef.cookbooks }}"
-  when: chef.cookbooks is defined
-  tags:
-    - chef
-    - cookbooks
-
-- name: Generate .rubocop.yml in each cookbook
-  become: false
-  template:
-    src: rubocop.yml.j2
-    dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}/cookbooks/{{ item }}/.rubocop.yml"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: 0644
-  with_items: "{{ chef.cookbooks }}"
-  when: chef.cookbooks is defined
-  tags:
-    - chef
-    - rubocop
-
-#- name: Generate .rubocop_todo.yml in each cookbook
-#  become: false
-#  when: chef.cookbooks is defined
-#  tags:
-#    - chef
-#    - rubocop
-
 - name: Ensure ~/.berkshelf dir exists
   file:
     dest: "/home/{{ ansible_user }}/.berkshelf"
