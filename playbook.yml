@@ -2,6 +2,8 @@
 - hosts: all
   become: true
   become_method: sudo
+  vars:
+    ansible_user: "{{ lookup('env','USER') }}"
   vars_files:
     - "./vars/{{ inventory_hostname }}.yml"
     - "./secrets/{{ inventory_hostname }}.yml"
@@ -136,3 +138,9 @@
         state: stopped
         enabled: no
       tags: [ 'battery' ]
+
+    - name: Install s3cmd
+      package:
+        name: s3cmd
+        state: present
+      tags: [ 's3cmd' ]
