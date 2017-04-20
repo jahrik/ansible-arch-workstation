@@ -84,6 +84,11 @@ git_pull_remote_branches() {
   git pull --all
 }
 
+# Remove all remote branches, but master
+git_remove_all_but_master_remote() {
+  git branch -a | grep -v master | grep "remotes/origin/" | cut -d "/" -f 3 | xargs -n 1 git push --delete origin
+}
+
 # Convert seconds to DHMS
 sec2dhms() {
   declare -i SS="$1"
