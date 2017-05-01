@@ -143,4 +143,10 @@
       package:
         name: s3cmd
         state: present
-      tags: [ 's3cmd' ]
+      tags: [ 'aws' ]
+
+    - name: Install postfix
+      package:
+        name: postfix
+        state: present
+      tags: [ 'mail' ]
