@@ -1,11 +1,12 @@
 ---
 
-- name: Install docker
+- name: Install docker packages
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - docker
+    - docker-compose
   tags: [ "docker" ]
 
 - name: Verify docker group exists
