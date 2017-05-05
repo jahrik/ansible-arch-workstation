@@ -15,6 +15,7 @@ vundle:
   - "godlygeek/tabular"
   - "vim-syntastic/syntastic"
   - "plasticboy/vim-markdown"
+  - "ekalinin/Dockerfile.vim"
   - "MarcWeber/vim-addon-mw-utils"
   - "https://github.com/hashivim/vim-terraform.git"
   - "https://github.com/wtfbbqhax/Snort-vim.git"
