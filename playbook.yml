@@ -150,3 +150,9 @@
         name: postfix
         state: present
       tags: [ 'mail' ]
+
+    - name: Install rdp
+      package:
+        name: freerdp
+        state: present
+      tags: [ 'rdp' ]
