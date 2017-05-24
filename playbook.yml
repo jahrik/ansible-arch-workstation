@@ -156,3 +156,18 @@
         name: freerdp
         state: present
       tags: [ 'rdp' ]
+
+    - name: Install filezilla
+      package:
+        name: filezilla
+        state: present
+      tags: [ 'ftp' ]
+
+    - name: Install fs tools
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - gparted
+        - dosfstools
+      tags: [ 'fstools' ]
