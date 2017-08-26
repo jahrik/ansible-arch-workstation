@@ -5,3 +5,11 @@
     name: ansible-lint
     user: "{{ ansible_user }}"
   tags: [ 'ansible' ]
+
+- name: Install sshpass
+  package:
+    name: sshpass
+    state: present
+  tags: [ 'ansible' ]
+
+# pysphere
