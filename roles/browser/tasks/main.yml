@@ -23,6 +23,7 @@
   with_items:
     - firefox-noscript
     - flashplugin
+    - vmware-vsphere-web-client-plugin
   tags: [ 'browser' ]
 
 - name: install firefox extras from aur
