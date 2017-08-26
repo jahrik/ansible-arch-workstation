@@ -203,6 +203,10 @@ exec "xrandr --output HDMI-1 --auto --above eDP-1"
 # or push the button
 bindsym $mod_win+3 exec "xrandr --output HDMI-1 --auto --above eDP-1"
 
+# 3 monitor setup
+exec "xrandr --output DP-1 --auto --above eDP-1 --output HDMI-2 --auto --right-of DP-1"
+bindsym $mod_win+4 exec "xrandr --output DP-1 --auto --above eDP-1 --output HDMI-2 --auto --right-of DP-1"
+
 # Sound keys
 # up
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
