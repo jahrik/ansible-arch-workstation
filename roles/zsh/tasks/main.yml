@@ -38,6 +38,7 @@
     - functions.zsh
     - keybindings.zsh
     - chef.zsh
+    - aws.zsh
     - python.zsh
     - ansible.zsh
   tags: [ 'zsh' ]
