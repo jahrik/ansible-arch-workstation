@@ -24,6 +24,7 @@ pkgs:
   - mtpaint
   - nmap
   - rsync
+  - speedtest-cli
   - sudo
   - tcpdump
   - vim
