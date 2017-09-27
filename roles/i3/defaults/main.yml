@@ -1,4 +1,7 @@
 ---
+text:
+  font: mono
+  size: 24
 conky:
   update_int: 2
   color_01: FFCC99
