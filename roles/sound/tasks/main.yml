@@ -69,3 +69,29 @@
 #
 #
 #once you finish doing all that, load up your pavucontrol, and switch it to the device you want sound from (if in the internet browser, play a video first for it to show up)
+
+# Bluetooth
+- name: Install bluetooth
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - pulseaudio-alsa
+    - pulseaudio-bluetooth
+    - bluez
+    - bluez-libs
+    - bluez-utils
+    - blueman
+  tags:
+    - sound
+    - bluetooth
+
+- name: start bluetooth daemon
+  systemd:
+    name: bluetooth.service
+    state: started
+    daemon_reload: yes
+    enabled: yes
+  tags:
+    - sound
+    - bluetooth
