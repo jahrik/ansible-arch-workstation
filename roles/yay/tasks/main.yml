@@ -1,0 +1,20 @@
+---
+- name: clone yay from github
+  become: false
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /tmp/yay
+    version: master
+    update: yes
+    # notify: makepkg -si
+  tags:
+    - yay
+
+- name: makepkg --noconfirm -si
+  become: false
+  command: makepkg --noconfirm -si
+  args:
+    chdir: /tmp/yay
+    # creates: /usr/bin/yay
+  tags:
+    - yay

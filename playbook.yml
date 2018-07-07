@@ -15,6 +15,7 @@
     - time
     - pkgs
     - git
+    - yay
     # - yaourt
     # - user
     # - authorized_keys
