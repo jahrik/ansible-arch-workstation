@@ -7,19 +7,19 @@
 
 - name: ensure ~/.config/systemd/user is dir
   file:
-    path: "/home/{{ ansible_user }}/.config/systemd/user"
+    path: "/home/{{ user.name }}/.config/systemd/user"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   tags: [ 'ssh' ]
 
 - name: generate ssh-agent.service
   template:
     src: ssh-agent.service.j2
-    dest: "/home/{{ ansible_user }}/.config/systemd/user/ssh-agent.service"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: "/home/{{ user.name }}/.config/systemd/user/ssh-agent.service"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0600
   tags: [ 'ssh' ]
   notify:

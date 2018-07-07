@@ -8,5 +8,5 @@
 - name: generate ~/.conkyrc
   template:
     src: conkyrc.j2
-    dest: "/home/{{ ansible_user }}/.conkyrc"
+    dest: "/home/{{ user.name }}/.conkyrc"
   tags: [ 'conky' ]

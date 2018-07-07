@@ -7,35 +7,35 @@
 
 - name: create ~/.vim diretory
   file:
-    path: "/home/{{ ansible_user }}/.vim/"
+    path: "/home/{{ user.name }}/.vim/"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   tags: [ "vim" ]
 
 - name: Clone vundle from github
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git
-    dest: "/home/{{ ansible_user }}/.vim/bundle/Vundle.vim"
+    dest: "/home/{{ user.name }}/.vim/bundle/Vundle.vim"
     version: master
   tags: [ "vim" ]
 
 - name: Generate ~/.vimrc
   template:
     src: vimrc.j2
-    dest: "/home/{{ ansible_user }}/.vimrc"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: "/home/{{ user.name }}/.vimrc"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: "0644"
   notify: install plugins
   tags: [ "vim" ]
 
 - name: Touch spell-check file
   file:
-    path: "/home/{{ ansible_user }}/.vim/en.utf-8.add"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    path: "/home/{{ user.name }}/.vim/en.utf-8.add"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     state: touch
     mode: 0644
   tags: [ "vim" ]

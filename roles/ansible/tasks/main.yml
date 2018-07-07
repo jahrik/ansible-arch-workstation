@@ -1,9 +1,9 @@
 ---
 
 - name: Install ansible-lint
-  yaourt:
+  yay:
     name: ansible-lint
-    user: "{{ ansible_user }}"
+    user: "{{ user.name }}"
   tags: [ 'ansible' ]
 
 - name: Install sshpass

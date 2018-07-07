@@ -6,7 +6,7 @@ export OPSCODE_USER={{ chef.user }}
 export CHEF_URL={{ chef.url }}
 {% endif %}
 {% if chef is defined and chef.repo is defined %}
-export CHEF_REPO=/home/{{ ansible_user }}/workspace/{{ chef.repo }}
+export CHEF_REPO=/home/{{ user.name }}/workspace/{{ chef.repo }}
 {% endif %}
 {% if chef is defined and chef.log_level is defined %}
 export CHEF_LOG_LEVEL={{ chef.log_level }}

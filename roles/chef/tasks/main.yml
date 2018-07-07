@@ -1,8 +1,8 @@
 ---
 - name: Install chef-dk
-  yaourt:
+  yay:
     name: chef-dk
-    user: "{{ ansible_user }}"
+    user: "{{ user.name }}"
   tags: [ 'chef' ]
 
 - name: Install chef extras
@@ -24,10 +24,10 @@
 
 - name: Ensure ~/workspace dir exists
   file:
-    dest: "/home/{{ ansible_user }}/workspace"
+    dest: "/home/{{ user.name }}/workspace"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   tags: [ 'chef' ]
 
@@ -35,7 +35,7 @@
   become: false
   git:
     repo: "{{ chef.repo_url }}"
-    dest: "/home/{{ ansible_user }}/workspace/{{ chef.repo }}"
+    dest: "/home/{{ user.name }}/workspace/{{ chef.repo }}"
     version: master
     accept_hostkey: true
   when: chef.repo is defined
@@ -46,27 +46,27 @@
   copy:
     src: "{{ chef.validation_key_file }}"
     dest: "{{ chef.validation_key_path }}"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0400
   when: chef.validation_key_file is defined
   tags: [ 'chef' ]
 
 - name: Ensure ~/.berkshelf dir exists
   file:
-    dest: "/home/{{ ansible_user }}/.berkshelf"
+    dest: "/home/{{ user.name }}/.berkshelf"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   tags: [ 'chef' ]
 
 - name: Generate ~/.berkshelf/config.json
   template:
     src: config.json.j2
-    dest: "/home/{{ ansible_user }}/.berkshelf/config.json"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: "/home/{{ user.name }}/.berkshelf/config.json"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0644
   when: chef.server_url is defined
   tags: [ 'chef' ]

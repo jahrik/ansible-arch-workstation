@@ -9,11 +9,11 @@
     # - chromium
   tags: [ 'browser' ]
 
-#- name: install pepper-flash from aur
-#  yaourt:
-#    name: pepper-flash
-#    user: "{{ ansible_user }}"
-#  tags: [ 'browser' ]
+- name: install pepper-flash from aur
+  yay:
+    name: pepper-flash
+    user: "{{ user.name }}"
+  tags: [ 'browser' ]
 
 # Firefox
 - name: install firefox extras
@@ -27,9 +27,9 @@
   tags: [ 'browser' ]
 
 - name: install firefox extras from aur
-  yaourt:
+  yay:
     name: lastpass
-    user: "{{ ansible_user }}"
+    user: "{{ user.name }}"
   with_items:
     - lastpass
     - ttf-ms-fonts

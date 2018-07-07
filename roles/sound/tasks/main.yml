@@ -28,15 +28,15 @@
   tags: [ 'sound' ]
 
 #- name: Install pasystray
-#  yaourt:
+#  yay:
 #    name: pasystray-gtk3-standalone
-#    user: "{{ ansible_user }}"
+#    user: "{{ user.name }}"
 #  tags: [ 'sound' ]
 
 - name: Install pulseaudio-ctl
-  yaourt:
+  yay:
     name: pulseaudio-ctl
-    user: "{{ ansible_user }}"
+    user: "{{ user.name }}"
   tags: [ 'sound' ]
 
 - name: Generate /etc/libao.conf

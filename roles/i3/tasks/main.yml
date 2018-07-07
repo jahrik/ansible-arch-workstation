@@ -50,17 +50,17 @@
   tags: [ 'i3' ]
 
 - name: install xcalib from aur
-  yaourt:
+  yay:
     name: xcalib
-    user: "{{ ansible_user }}"
+    user: "{{ user.name }}"
   tags: [ 'i3' ]
 
 - name: Create ~/.i3 directories
   file:
-    path: "/home/{{ ansible_user }}/{{ item }}"
+    path: "/home/{{ user.name }}/{{ item }}"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   with_items:
     - .i3
@@ -71,7 +71,7 @@
 - name: generate i3 config files
   template:
     src: "i3/{{ item }}.j2"
-    dest: "/home/{{ ansible_user }}/.i3/{{ item }}"
+    dest: "/home/{{ user.name }}/.i3/{{ item }}"
   with_items:
     - Xresources.dark
     - Xresources.light
@@ -90,7 +90,7 @@
 - name: generate i3 bin files
   template:
     src: "i3/{{ item }}.j2"
-    dest: "/home/{{ ansible_user }}/.i3/{{ item }}"
+    dest: "/home/{{ user.name }}/.i3/{{ item }}"
     mode: 0777
   with_items:
     - bin/apply-colors-runtime
@@ -99,52 +99,52 @@
 
 - name: symlink xinitrc
   file:
-    src: "/home/{{ ansible_user }}/.i3/xinitrc"
-    dest: "/home/{{ ansible_user }}/.xinitrc"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    src: "/home/{{ user.name }}/.i3/xinitrc"
+    dest: "/home/{{ user.name }}/.xinitrc"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     state: link
   tags: [ 'i3' ]
 
 - name: create $HOME/.urxvt/ext/ dir
   file:
-    path: "/home/{{ ansible_user }}/.urxvt/ext/"
+    path: "/home/{{ user.name }}/.urxvt/ext/"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   tags: [ 'i3' ]
 
 - name: download urxvt font-size plugin
   get_url:
     url: https://raw.githubusercontent.com/majutsushi/urxvt-font-size/master/font-size
-    dest: "/home/{{ ansible_user }}/.urxvt/ext/font-size"
+    dest: "/home/{{ user.name }}/.urxvt/ext/font-size"
     mode: 0755
   tags: [ 'i3' ]
 
 - name: enable urxvt keyboard-select plugin
   file:
     src: /usr/lib/urxvt/perl/keyboard-select
-    dest: "/home/{{ ansible_user }}/.urxvt/ext/keyboard-select"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: "/home/{{ user.name }}/.urxvt/ext/keyboard-select"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     state: link
   tags: [ 'i3' ]
 
 - name: enable urxvt url-select plugin
   file:
     src: /usr/lib/urxvt/perl/url-select
-    dest: "/home/{{ ansible_user }}/.urxvt/ext/url-select"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: "/home/{{ user.name }}/.urxvt/ext/url-select"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     state: link
   tags: [ 'i3' ]
 
 - name: create $HOME/screenshots dir for scrot
   file:
-    path: "/home/{{ ansible_user }}/screenshots/"
+    path: "/home/{{ user.name }}/screenshots/"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0755
   tags: [ 'i3' ]

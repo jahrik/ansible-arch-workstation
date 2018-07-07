@@ -26,11 +26,11 @@ import os
 import platform
 
 
-def yaourt_in_path(module):
+def yay_in_path(module):
     """
-    Determine if yaourt is available.
+    Determine if yay is available.
     """
-    rc, stdout, stderr = module.run_command('which yaourt', check_rc=False)
+    rc, stdout, stderr = module.run_command('which yay', check_rc=False)
     return rc == 0
 
 
@@ -71,9 +71,9 @@ def download_packages(module, pkgs, dir, user):
     """
     Download the specified packages.
     """
-    # Use yaourt, if available.
-    if yaourt_in_path(module):
-        cmds = ['sudo -u %s yaourt -S --noconfirm %s', ]
+    # Use yay, if available.
+    if yay_in_path(module):
+        cmds = ['sudo -u %s yay -S --noconfirm %s', ]
     # Otherwise, fall back to cURL
     else:
         cmds = ['sudo -u %s curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/%s.tar.gz',
