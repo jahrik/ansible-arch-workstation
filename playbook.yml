@@ -15,7 +15,7 @@
     - time
     - pkgs
     - git
-    - yaourt
+    # - yaourt
     # - user
     # - authorized_keys
     # - sudoers
@@ -36,11 +36,12 @@
     - python
     - sound
     - ssh
-    - vim
+    - jahrik.vim
     - vagrant
     - virtualbox
     - vpn
     - zsh
+    - mutt
 
   tasks:
 
@@ -144,12 +145,6 @@
         name: s3cmd
         state: present
       tags: [ 'aws' ]
-
-    - name: Install postfix
-      package:
-        name: postfix
-        state: present
-      tags: [ 'mail' ]
 
     - name: Install rdp
       package:

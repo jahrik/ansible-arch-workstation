@@ -18,3 +18,5 @@
   with_items:
     - postgresql-libs
   tags: [ 'python' ]
+
+# Configure pylint

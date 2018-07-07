@@ -5,7 +5,7 @@ browser: firefox
 term: rxvt
 
 # time
-time_zone: US/Mountain
+time_zone: US/Pacific
 
 # locale
 locale: en_US.UTF-8 UTF-8
@@ -31,3 +31,8 @@ pkgs:
   - wget
   - wpa_supplicant
   - zsh
+
+vagrant_plugins:
+  - vagrant-hostsupdater
+  - vagrant-share
+  - vagrant-vbguest

@@ -9,6 +9,7 @@ vundle:
   - "minibufexpl.vim"
   - "vim-flake8"
   - "surround.vim"
+  - "MarcWeber/vim-addon-mw-utils"
   - "tomtom/tlib_vim"
   - "garbas/vim-snipmate"
   - "vadv/vim-chef"
@@ -16,7 +17,6 @@ vundle:
   - "vim-syntastic/syntastic"
   - "plasticboy/vim-markdown"
   - "ekalinin/Dockerfile.vim"
-  - "MarcWeber/vim-addon-mw-utils"
   - "https://github.com/hashivim/vim-terraform.git"
   - "https://github.com/wtfbbqhax/Snort-vim.git"
   - "https://github.com/pearofducks/ansible-vim.git"
@@ -31,7 +31,7 @@ set:
   - foldlevel=99
   - background=dark
   - completeopt=menuone,longest,preview
-  - colorcolumn=81
+  - colorcolumn=101
   - cursorcolumn
   - cursorline
   - expandtab

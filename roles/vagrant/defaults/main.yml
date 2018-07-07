@@ -1,8 +1,5 @@
 ---
 vagrant_plugins:
-  - vagrant-berkshelf
-  - vagrant-chef-zero
   - vagrant-hostsupdater
-  - vagrant-omnibus
   - vagrant-share
   - vagrant-vbguest
