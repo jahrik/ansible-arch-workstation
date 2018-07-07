@@ -5,7 +5,6 @@
     state: present
   with_items:
     - xorg-server
-    - xorg-server-utils
     - xorg-xinit
   tags: [ 'i3' ]
 

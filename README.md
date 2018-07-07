@@ -32,7 +32,7 @@ Table of Contents
 
 Setup for:
 - ansible
-- yaourt
+- yay
 - i3
 - vim
 - zsh

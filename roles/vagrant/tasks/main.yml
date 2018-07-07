@@ -7,8 +7,8 @@
 
 - name: Check if vagrant plugins are installed
   become: false
-  shell: "vagrant plugin list | grep {{ item }}"
   ignore_errors: true
+  shell: "vagrant plugin list | grep {{ item }}"
   with_items: "{{ vagrant_plugins }}"
   register: plugins_installed
   when: vagrant_plugins is defined
@@ -16,6 +16,7 @@
 
 - name: install vagrant plugins
   become: false
+  ignore_errors: true
   command: vagrant plugin install "{{ item }}"
   with_items: "{{ vagrant_plugins }}"
   when:
