@@ -16,7 +16,21 @@
     - pkgs
     - git
     - yay
-    # - yay
+    - i3
+    - zsh
+    - conky
+    - ssh
+    - hosts
+    - jahrik.vim
+    - ansible
+    - browser
+    - docker
+    - pianobar
+    - python
+    - sound
+    - virtualbox
+    - mutt
+    # - vagrant
     # - user
     # - authorized_keys
     # - sudoers
@@ -26,23 +40,8 @@
     # - ruby
     # - slim
     # - vagrant
-    - ansible
-    - browser
-    - chef
-    - conky
-    - docker
-    - hosts
-    - i3
-    - pianobar
-    - python
-    - sound
-    - ssh
-    - jahrik.vim
-    - vagrant
-    - virtualbox
-    - vpn
-    - zsh
-    - mutt
+    # - chef
+    # - vpn
 
   tasks:
 

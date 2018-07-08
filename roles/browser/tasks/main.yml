@@ -6,7 +6,7 @@
   with_items:
     - firefox
     - w3m
-    # - chromium
+    - chromium
   tags: [ 'browser' ]
 
 - name: install pepper-flash from aur
@@ -23,7 +23,7 @@
   with_items:
     - firefox-noscript
     - flashplugin
-    - vmware-vsphere-web-client-plugin
+    # - vmware-vsphere-web-client-plugin
   tags: [ 'browser' ]
 
 - name: install firefox extras from aur

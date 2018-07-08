@@ -1,6 +1,6 @@
 ---
 text:
-  font: mono
+  font: DejaVu Sans Mono
   size: 24
 conky:
   update_int: 2

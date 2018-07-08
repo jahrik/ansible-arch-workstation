@@ -3,6 +3,9 @@
 editor: vim
 browser: firefox
 term: rxvt
+text:
+  font: DejaVu Sans Mono
+  size: 24
 
 # time
 time_zone: US/Pacific
@@ -33,6 +36,6 @@ pkgs:
   - zsh
 
 vagrant_plugins:
-  - vagrant-hostsupdater
-  - vagrant-share
-  - vagrant-vbguest
+  # - vagrant-hostsupdater
+  # - vagrant-share
+  # - vagrant-vbguest

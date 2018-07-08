@@ -6,6 +6,7 @@
   with_items:
     - xorg-server
     - xorg-xinit
+    - xorg-xrandr
   tags: [ 'i3' ]
 
 - name: Install video driver
@@ -41,6 +42,8 @@
     - rxvt-unicode
     - scrot
     - ttf-dejavu
+    # - inconsolata-powerline
+    - terminus-font
     - udiskie
     - xf86-input-synaptics
     - xorg-xmodmap
@@ -48,10 +51,13 @@
     - urxvt-perls
   tags: [ 'i3' ]
 
-- name: install xcalib from aur
+- name: install packages from aur
   yay:
-    name: xcalib
+    name: "{{ item }}"
     user: "{{ user.name }}"
+  with_items:
+    - mononoki
+    - xcalib
   tags: [ 'i3' ]
 
 - name: Create ~/.i3 directories
