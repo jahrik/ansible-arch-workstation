@@ -5,7 +5,7 @@ browser: firefox
 term: rxvt
 text:
   font: DejaVu Sans Mono
-  size: 24
+  size: 18
 
 # time
 time_zone: US/Pacific

@@ -56,7 +56,6 @@
     name: "{{ item }}"
     user: "{{ user.name }}"
   with_items:
-    - mononoki
     - xcalib
   tags: [ 'i3' ]
 
