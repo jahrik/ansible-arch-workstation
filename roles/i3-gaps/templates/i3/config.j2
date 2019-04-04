@@ -192,20 +192,20 @@ bindsym $mod_win+l exec "i3lock"
 # Screen Shot
 bindsym Print exec scrot '%Y-%m-%d_%T_scrot.png' -e 'mv $f ~/screenshots/'
 
-# Multiple monitors
-# if plugged in already try
-exec "xrandr --output DP-1 --auto --above eDP-1"
-# or push the button
-bindsym $mod_win+2 exec "xrandr --output DP-1 --auto --above eDP-1"
-
-# if plugged in already try
-exec "xrandr --output HDMI-1 --auto --above eDP-1"
-# or push the button
-bindsym $mod_win+3 exec "xrandr --output HDMI-1 --auto --above eDP-1"
-
-# 3 monitor setup
-exec "xrandr --output DP-1 --auto --above eDP-1 --output HDMI-2 --auto --right-of DP-1"
-bindsym $mod_win+4 exec "xrandr --output DP-1 --auto --above eDP-1 --output HDMI-2 --auto --right-of DP-1"
+# # Multiple monitors
+# # if plugged in already try
+# exec "xrandr --output DP-1 --auto --above eDP-1"
+# # or push the button
+# bindsym $mod_win+2 exec "xrandr --output DP-1 --auto --above eDP-1"
+# 
+# # if plugged in already try
+# exec "xrandr --output HDMI-1 --auto --above eDP-1"
+# # or push the button
+# bindsym $mod_win+3 exec "xrandr --output HDMI-1 --auto --above eDP-1"
+# 
+# # 3 monitor setup
+# exec "xrandr --output DP-1 --auto --above eDP-1 --output HDMI-2 --auto --right-of DP-1"
+# bindsym $mod_win+4 exec "xrandr --output DP-1 --auto --above eDP-1 --output HDMI-2 --auto --right-of DP-1"
 
 # Sound keys
 # up
@@ -215,3 +215,59 @@ bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 # mute
 bindsym XF86AudioMute exec amixer set Master toggle
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+ 
+#####################################################################################################################
+#################                          i3 gaps next                                             #################
+#####################################################################################################################
+
+# Settings for I3 next gap git
+# https://github.com/Airblader/i3/tree/gaps-next
+# delete or uncomment the following lines if you do not have it or do not
+# want it
+
+for_window [class="^.*"] border pixel 2
+gaps inner 10
+gaps outer 5
+smart_gaps on
+#smart_borders on
+
+#####################################################################################################################
+#################                          i3 gaps change                                           #################
+#####################################################################################################################
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 10
+        bindsym minus gaps inner current minus 10
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 10
+        bindsym Shift+minus gaps inner all minus 10
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
