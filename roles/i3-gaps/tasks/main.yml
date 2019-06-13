@@ -9,17 +9,18 @@
     - xorg-xrandr
   tags: [ 'i3' ]
 
-- name: Install video driver
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - mesa
-    - xf86-video-vesa
-    - xf86-video-nouveau
-  tags: [ 'i3' ]
+# - name: Install video driver
+#   package:
+#     name: "{{ item }}"
+#     state: present
+#   with_items:
+#     - mesa
+#     - nvidia
+#     - xf86-video-vesa
+#     - xf86-video-nouveau
+#   tags: [ 'i3' ]
 
-- name: Install i3
+- name: Install i3-gaps
   package:
     name: "{{ item }}"
     state: present

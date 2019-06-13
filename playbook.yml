@@ -15,8 +15,7 @@
     - zsh
     - i3-gaps
     - yay
-    # - i3
-    # - conky
+    - conky
     - ssh
     # - hosts
     # - jahrik.vim
@@ -25,10 +24,10 @@
     # - docker
     # - pianobar
     # - python
-    # - sound
-    # - virtualbox
+    - sound
+    - virtualbox
     # - mutt
-    # - vagrant
+    - vagrant
     # - user
     # - authorized_keys
     # - sudoers
@@ -37,7 +36,6 @@
     # - psql
     # - ruby
     # - slim
-    # - vagrant
     # - chef
     # - vpn
 
