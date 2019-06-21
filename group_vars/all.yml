@@ -8,7 +8,7 @@ text:
   size: 18
 
 # time
-time_zone: US/Pacific
+time_zone: US/Mountain
 
 # locale
 locale: en_US.UTF-8 UTF-8
@@ -16,15 +16,14 @@ lang: en_US.UTF-8
 
 # base packages
 pkgs:
+  - base-devel
   - alsa-utils
-  - ansible
   - dialog
   - git
   - htop
   - linux-headers
   - lsof
   - mlocate
-  - mtpaint
   - nmap
   - rsync
   - speedtest-cli

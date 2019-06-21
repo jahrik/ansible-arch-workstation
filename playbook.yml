@@ -2,10 +2,6 @@
 - hosts: all
   become: true
   become_method: sudo
-  vars:
-    ansible_user: "{{ lookup('env','USER') }}"
-    # vars_files:
-    # - "./secrets/{{ inventory_hostname }}.yml"
 
   roles:
     # - hostname
@@ -13,10 +9,10 @@
     - locale
     - time
     - pkgs
+    - yay
     # - git
     - zsh
     - i3-gaps
-    - yay
     - conky
     - ssh
     # - hosts
@@ -27,9 +23,9 @@
     # - pianobar
     # - python
     - sound
-    - virtualbox
+    # - virtualbox
     # - mutt
-    - vagrant
+    # - vagrant
     # - user
     # - authorized_keys
     # - sudoers
