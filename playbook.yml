@@ -4,6 +4,8 @@
   become_method: sudo
   vars:
     ansible_user: "{{ lookup('env','USER') }}"
+    # vars_files:
+    # - "./secrets/{{ inventory_hostname }}.yml"
 
   roles:
     # - hostname
