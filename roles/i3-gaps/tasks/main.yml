@@ -153,3 +153,8 @@
     group: "{{ ansible_user }}"
     mode: 0755
   tags: [ 'i3' ]
+
+- name: Set default background image for feh
+  copy:
+    src: background.jpg
+    dest: /var/background.jpg
