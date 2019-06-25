@@ -23,4 +23,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network 'private_network', ip: '192.168.33.11'
   config.vm.hostname = 'archie.dev'
 
+  config.vm.provision "shell", inline: "pacman --noconfirm -S virtualbox-guest-modules-arch"
 end
