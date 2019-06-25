@@ -8,7 +8,7 @@ text:
   size: 18
 
 # time
-time_zone: US/Pacific
+time_zone: US/Mountain
 
 # locale
 locale: en_US.UTF-8 UTF-8
@@ -17,14 +17,14 @@ lang: en_US.UTF-8
 # base packages
 pkgs:
   - alsa-utils
-  - ansible
+  - arandr
+  - base-devel
   - dialog
   - git
   - htop
   - linux-headers
   - lsof
   - mlocate
-  - mtpaint
   - nmap
   - rsync
   - speedtest-cli
@@ -34,6 +34,11 @@ pkgs:
   - wget
   - wpa_supplicant
   - zsh
+
+i3:
+  lock: true
+  bar: false
+  polybar: true
 
 vagrant_plugins:
   # - vagrant-hostsupdater

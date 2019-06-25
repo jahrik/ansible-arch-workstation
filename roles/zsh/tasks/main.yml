@@ -11,25 +11,25 @@
 - name: use oh-my-zsh
   git:
     repo: "https://github.com/robbyrussell/oh-my-zsh.git"
-    dest: "/home/{{ user.name }}/.oh-my-zsh"
+    dest: "/home/{{ ansible_user }}/.oh-my-zsh"
     version: master
   tags: [ 'zsh' ]
 
 - name: create ~/.z/ dir
   file:
-    path: "/home/{{ user.name }}/.z"
+    path: "/home/{{ ansible_user }}/.z"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     mode: 0755
   tags: [ "zsh" ]
 
 - name: generate ~/.z/ files
   template:
     src: "{{ item }}.j2"
-    dest: "/home/{{ user.name }}/.z/{{ item }}"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    dest: "/home/{{ ansible_user }}/.z/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   with_items:
     - zshrc
     - zshenv
@@ -45,10 +45,10 @@
 
 - name: link the zshrc and zshenv
   file:
-    src: "/home/{{ user.name }}/.z/{{ item }}"
-    dest: "/home/{{ user.name }}/.{{ item }}"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    src: "/home/{{ ansible_user }}/.z/{{ item }}"
+    dest: "/home/{{ ansible_user }}/.{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
     force: yes
   with_items:
@@ -58,6 +58,6 @@
 
 - name: change shell from bash to zsh
   user:
-    name: "{{ user.name }}"
+    name: "{{ ansible_user }}"
     shell: /bin/zsh
   tags: [ 'zsh' ]

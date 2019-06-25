@@ -2,34 +2,29 @@
 - hosts: all
   become: true
   become_method: sudo
-  vars:
-    ansible_user: "{{ lookup('env','USER') }}"
-  vars_files:
-    - "./vars/{{ inventory_hostname }}.yml"
-    - "./secrets/{{ inventory_hostname }}.yml"
 
   roles:
-    - hostname
-    - mkinitcpio
+    # - hostname
+    # - mkinitcpio
     - locale
     - time
     - pkgs
-    - git
     - yay
-    - i3
+    # - git
     - zsh
+    - i3-gaps
     - conky
     - ssh
-    - hosts
-    - jahrik.vim
-    - ansible
+    # - hosts
+    # - jahrik.vim
+    # - ansible
     - browser
-    - docker
-    - pianobar
-    - python
+    # - docker
+    # - pianobar
+    # - python
     - sound
-    - virtualbox
-    - mutt
+    # - virtualbox
+    # - mutt
     # - vagrant
     # - user
     # - authorized_keys
@@ -39,130 +34,129 @@
     # - psql
     # - ruby
     # - slim
-    # - vagrant
     # - chef
     # - vpn
 
   tasks:
 
-    # Geeknote?
-    # https://github.com/VitaliyRodnenko/geeknote
-
-    # Make chefdk work with rvm
-    # https://wiki.archlinux.org/index.php/RVM
-    # https://gist.github.com/asnodgrass/36d88ffcb76b4068c62c
-
-    - name: install chat apps from aur
-      yay:
-        name: "{{ item }}"
-        user: "{{ ansible_user }}"
-      with_items:
-        - bluejeans
-        - hipchat
-      tags: [ 'chat' ]
-
-    - name: install evolution email client
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - evolution
-        - evolution-ews
-        - gnome-keyring
-      tags: [ 'email' ]
-
-    # terraform
-    - name: install terraform from aur
-      yay:
-        name: terraform
-        user: "{{ ansible_user }}"
-      tags: [ 'terraform' ]
-
-    # office
-    - name: install libreoffice
-      package:
-        name: libreoffice-fresh
-        state: present
-      tags: [ 'libreoffice' ]
-
-    # bittorrent
-    - name: Install transmission
-      package:
-        name: transmission-gtk
-        state: present
-      tags: [ 'bittorrent' ]
-
-    # rdp
-    - name: Install remote desktop software
-      package:
-        name: gtk-vnc
-        state: present
-      tags: [ 'vnc' ]
-
-    # media
-    - name: Install ntfs-3g for mounting ntfs disks
-      package:
-        name: ntfs-3g
-        state: present
-      tags: [ 'mount' ]
-
-    # Thinkpad
-    - name: Thinkpad battery optimization software TLP
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - tlp
-        - acpi_call
-        - smartmontools
-      tags: [ 'battery' ]
-
-    - name: Enable and start tlp.service
-      systemd:
-        name: tlp
-        daemon_reload: yes
-        state: started
-        enabled: yes
-      tags: [ 'battery' ]
-
-    - name: Enable and start tlp-sleep.service
-      systemd:
-        name: tlp-sleep
-        daemon_reload: yes
-        enabled: yes
-      tags: [ 'battery' ]
-
-    - name: Disable and stop systemd-rfkill.service
-      systemd:
-        name: systemd-rfkill
-        daemon_reload: yes
-        state: stopped
-        enabled: no
-      tags: [ 'battery' ]
-
-    - name: Install s3cmd
-      package:
-        name: s3cmd
-        state: present
-      tags: [ 'aws' ]
-
-    - name: Install rdp
-      package:
-        name: freerdp
-        state: present
-      tags: [ 'rdp' ]
-
-    - name: Install filezilla
-      package:
-        name: filezilla
-        state: present
-      tags: [ 'ftp' ]
-
-    - name: Install fs tools
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - gparted
-        - dosfstools
-      tags: [ 'fstools' ]
+#     # Geeknote?
+#     # https://github.com/VitaliyRodnenko/geeknote
+# 
+#     # Make chefdk work with rvm
+#     # https://wiki.archlinux.org/index.php/RVM
+#     # https://gist.github.com/asnodgrass/36d88ffcb76b4068c62c
+# 
+#     - name: install chat apps from aur
+#       yay:
+#         name: "{{ item }}"
+#         user: "{{ ansible_user }}"
+#       with_items:
+#         - bluejeans
+#         - hipchat
+#       tags: [ 'chat' ]
+# 
+#     - name: install evolution email client
+#       package:
+#         name: "{{ item }}"
+#         state: present
+#       with_items:
+#         - evolution
+#         - evolution-ews
+#         - gnome-keyring
+#       tags: [ 'email' ]
+# 
+#     # terraform
+#     - name: install terraform from aur
+#       yay:
+#         name: terraform
+#         user: "{{ ansible_user }}"
+#       tags: [ 'terraform' ]
+# 
+#     # office
+#     - name: install libreoffice
+#       package:
+#         name: libreoffice-fresh
+#         state: present
+#       tags: [ 'libreoffice' ]
+# 
+#     # bittorrent
+#     - name: Install transmission
+#       package:
+#         name: transmission-gtk
+#         state: present
+#       tags: [ 'bittorrent' ]
+# 
+#     # rdp
+#     - name: Install remote desktop software
+#       package:
+#         name: gtk-vnc
+#         state: present
+#       tags: [ 'vnc' ]
+# 
+#     # media
+#     - name: Install ntfs-3g for mounting ntfs disks
+#       package:
+#         name: ntfs-3g
+#         state: present
+#       tags: [ 'mount' ]
+# 
+#     # Thinkpad
+#     - name: Thinkpad battery optimization software TLP
+#       package:
+#         name: "{{ item }}"
+#         state: present
+#       with_items:
+#         - tlp
+#         - acpi_call
+#         - smartmontools
+#       tags: [ 'battery' ]
+# 
+#     - name: Enable and start tlp.service
+#       systemd:
+#         name: tlp
+#         daemon_reload: yes
+#         state: started
+#         enabled: yes
+#       tags: [ 'battery' ]
+# 
+#     - name: Enable and start tlp-sleep.service
+#       systemd:
+#         name: tlp-sleep
+#         daemon_reload: yes
+#         enabled: yes
+#       tags: [ 'battery' ]
+# 
+#     - name: Disable and stop systemd-rfkill.service
+#       systemd:
+#         name: systemd-rfkill
+#         daemon_reload: yes
+#         state: stopped
+#         enabled: no
+#       tags: [ 'battery' ]
+# 
+#     - name: Install s3cmd
+#       package:
+#         name: s3cmd
+#         state: present
+#       tags: [ 'aws' ]
+# 
+#     - name: Install rdp
+#       package:
+#         name: freerdp
+#         state: present
+#       tags: [ 'rdp' ]
+# 
+#     - name: Install filezilla
+#       package:
+#         name: filezilla
+#         state: present
+#       tags: [ 'ftp' ]
+# 
+#     - name: Install fs tools
+#       package:
+#         name: "{{ item }}"
+#         state: present
+#       with_items:
+#         - gparted
+#         - dosfstools
+#       tags: [ 'fstools' ]

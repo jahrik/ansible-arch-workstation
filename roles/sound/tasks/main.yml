@@ -36,7 +36,7 @@
 - name: Install pulseaudio-ctl
   yay:
     name: pulseaudio-ctl
-    user: "{{ user.name }}"
+    user: "{{ ansible_user }}"
   tags: [ 'sound' ]
 
 - name: Generate /etc/libao.conf

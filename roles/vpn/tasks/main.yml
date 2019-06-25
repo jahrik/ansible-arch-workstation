@@ -10,7 +10,7 @@
 
 - name: start openvpn-client@.service
   systemd:
-    name: openvpn-client@{{ item }}
+    name: "openvpn-client@{{ item }}"
     daemon_reload: yes
     state: started
     enabled: yes

@@ -9,22 +9,23 @@
     - xorg-xrandr
   tags: [ 'i3' ]
 
-- name: Install video driver
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - mesa
-    - xf86-video-vesa
-    - xf86-video-nouveau
-  tags: [ 'i3' ]
+# - name: Install video driver
+#   package:
+#     name: "{{ item }}"
+#     state: present
+#   with_items:
+#     - mesa
+#     - nvidia
+#     - xf86-video-vesa
+#     - xf86-video-nouveau
+#   tags: [ 'i3' ]
 
-- name: Install i3
+- name: Install i3-gaps
   package:
     name: "{{ item }}"
     state: present
   with_items:
-    - i3-wm
+    - i3-gaps
     - i3lock
     - i3status
   tags: [ 'i3' ]
@@ -54,17 +55,24 @@
 - name: install packages from aur
   yay:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+    user: "{{ ansible_user }}"
   with_items:
     - xcalib
   tags: [ 'i3' ]
 
+- name: Install polybar if true
+  yay:
+    name: polybar-git
+    user: "{{ ansible_user }}"
+  when: i3.polybar
+  tags: [ 'i3' ]
+
 - name: Create ~/.i3 directories
   file:
-    path: "/home/{{ user.name }}/{{ item }}"
+    path: "/home/{{ ansible_user }}/{{ item }}"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     mode: 0755
   with_items:
     - .i3
@@ -75,7 +83,7 @@
 - name: generate i3 config files
   template:
     src: "i3/{{ item }}.j2"
-    dest: "/home/{{ user.name }}/.i3/{{ item }}"
+    dest: "/home/{{ ansible_user }}/.i3/{{ item }}"
   with_items:
     - Xresources.dark
     - Xresources.light
@@ -94,7 +102,7 @@
 - name: generate i3 bin files
   template:
     src: "i3/{{ item }}.j2"
-    dest: "/home/{{ user.name }}/.i3/{{ item }}"
+    dest: "/home/{{ ansible_user }}/.i3/{{ item }}"
     mode: 0777
   with_items:
     - bin/apply-colors-runtime
@@ -103,52 +111,74 @@
 
 - name: symlink xinitrc
   file:
-    src: "/home/{{ user.name }}/.i3/xinitrc"
-    dest: "/home/{{ user.name }}/.xinitrc"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    src: "/home/{{ ansible_user }}/.i3/xinitrc"
+    dest: "/home/{{ ansible_user }}/.xinitrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
   tags: [ 'i3' ]
 
 - name: create $HOME/.urxvt/ext/ dir
   file:
-    path: "/home/{{ user.name }}/.urxvt/ext/"
+    path: "/home/{{ ansible_user }}/.urxvt/ext/"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     mode: 0755
   tags: [ 'i3' ]
 
 - name: download urxvt font-size plugin
   get_url:
     url: https://raw.githubusercontent.com/majutsushi/urxvt-font-size/master/font-size
-    dest: "/home/{{ user.name }}/.urxvt/ext/font-size"
+    dest: "/home/{{ ansible_user }}/.urxvt/ext/font-size"
     mode: 0755
   tags: [ 'i3' ]
 
 - name: enable urxvt keyboard-select plugin
   file:
     src: /usr/lib/urxvt/perl/keyboard-select
-    dest: "/home/{{ user.name }}/.urxvt/ext/keyboard-select"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    dest: "/home/{{ ansible_user }}/.urxvt/ext/keyboard-select"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
   tags: [ 'i3' ]
 
 - name: enable urxvt url-select plugin
   file:
     src: /usr/lib/urxvt/perl/url-select
-    dest: "/home/{{ user.name }}/.urxvt/ext/url-select"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    dest: "/home/{{ ansible_user }}/.urxvt/ext/url-select"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
   tags: [ 'i3' ]
 
 - name: create $HOME/screenshots dir for scrot
   file:
-    path: "/home/{{ user.name }}/screenshots/"
+    path: "/home/{{ ansible_user }}/screenshots/"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     mode: 0755
+  tags: [ 'i3' ]
+
+- name: Set default background image for feh
+  copy:
+    src: background.jpg
+    dest: /var/background.jpg
+
+- name: Generate polybar config files
+  template:
+    src: "polybar/{{ item }}.j2"
+    dest: "/home/{{ ansible_user }}/.config/polybar/{{ item }}"
+  with_items:
+    - launch.sh
+    - config
+  when: i3.polybar
+  tags: [ 'i3' ]
+
+- name: Make polybar launch.sh executable
+  file:
+    path: "/home/{{ ansible_user }}/.config/polybar/launch.sh"
+    mode: 0755
+  when: i3.polybar
   tags: [ 'i3' ]
