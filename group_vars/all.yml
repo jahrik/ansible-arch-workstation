@@ -35,6 +35,10 @@ pkgs:
   - wpa_supplicant
   - zsh
 
+i3:
+  lock: true
+  bar: false
+
 vagrant_plugins:
   # - vagrant-hostsupdater
   # - vagrant-share
