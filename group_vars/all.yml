@@ -38,6 +38,7 @@ pkgs:
 i3:
   lock: true
   bar: false
+  polybar: true
 
 vagrant_plugins:
   # - vagrant-hostsupdater

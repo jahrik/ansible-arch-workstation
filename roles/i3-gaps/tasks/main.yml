@@ -60,6 +60,13 @@
     - xcalib
   tags: [ 'i3' ]
 
+- name: Install polybar if true
+  yay:
+    name: polybar-git
+    user: "{{ ansible_user }}"
+  when: i3.polybar
+  tags: [ 'i3' ]
+
 - name: Create ~/.i3 directories
   file:
     path: "/home/{{ ansible_user }}/{{ item }}"
@@ -158,3 +165,20 @@
   copy:
     src: background.jpg
     dest: /var/background.jpg
+
+- name: Generate polybar config files
+  template:
+    src: "polybar/{{ item }}.j2"
+    dest: "/home/{{ ansible_user }}/.config/polybar/{{ item }}"
+  with_items:
+    - launch.sh
+    - config
+  when: i3.polybar
+  tags: [ 'i3' ]
+
+- name: Make polybar launch.sh executable
+  file:
+    path: "/home/{{ ansible_user }}/.config/polybar/launch.sh"
+    mode: 0755
+  when: i3.polybar
+  tags: [ 'i3' ]

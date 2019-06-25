@@ -170,6 +170,9 @@ bar {
 exec debuglog off
 exec conky
 exec amixer sset Master 20%
+{% if i3.polybar is sameas true %}
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+{% endif %}
 # exec --no-startup-id i3-msg 'workspace 1; exec xterm'
 # exec --no-startup-id i3-msg 'workspace 2; exec chromium'
 # exec --no-startup-id i3-msg 'workspace 2; exec davstart'
