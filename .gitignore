@@ -4,3 +4,4 @@ secrets/
 roles/jahrik.vim
 roles/geerlingguy.git
 .vagrant/
+idea/
