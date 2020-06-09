@@ -180,8 +180,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Disable caps lock switch
 exec xmodmap -e "clear lock"
-# Set caps_lock as escape
-exec xmodmap -e "keysym Caps_Lock = Escape"
+# Set caps_lock as backspace
+exec xmodmap -e "keysym Caps_Lock = BackSpace"
 
 # Touchpad off
 exec synclient TouchpadOff=1
@@ -199,10 +199,15 @@ bindsym $mod_win+l exec "i3lock"
 # Screen Shot
 bindsym Print exec scrot '%Y-%m-%d_%T_scrot.png' -e 'mv $f ~/screenshots/'
 
-# Multiple monitors
-# Default 1 monitor
+# Default - main monitor
 exec "xrandr --output eDP-1 --primary --mode 1280x720 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off"
 bindsym $mod_win+1 exec "xrandr --output eDP-1 --primary --mode 1280x720 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off"
+
+# Big monitor
+exec "xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 2560x1080 --pos 0x0 --rotate normal"
+bindsym $mod_win+2 exec "xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 2560x1080 --pos 0x0 --rotate normal"
+
+# Multiple monitors
 
 # Sound keys
 # up

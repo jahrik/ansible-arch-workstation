@@ -62,7 +62,7 @@
 
 - name: Install polybar if true
   yay:
-    name: polybar-git
+    name: polybar
     user: "{{ ansible_user }}"
   when: i3.polybar
   tags: [ 'i3' ]
