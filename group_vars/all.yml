@@ -1,5 +1,6 @@
 ---
 # envars
+ansible_user: "{{ lookup('env','USER') }}"
 editor: vim
 browser: firefox
 term: rxvt
@@ -8,7 +9,7 @@ text:
   size: 18
 
 # time
-time_zone: US/Mountain
+time_zone: US/Pacific
 
 # locale
 locale: en_US.UTF-8 UTF-8
@@ -22,7 +23,7 @@ pkgs:
   - dialog
   - git
   - htop
-  - linux-headers
+  # - linux-headers
   - lsof
   - mlocate
   - nmap

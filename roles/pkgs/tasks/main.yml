@@ -1,10 +1,10 @@
 ---
 
-- name: Generate pacman mirrorlist
-  template:
-    src: mirrorlist.j2
-    dest: /etc/pacman.d/mirrorlist
-  tags: [ "pkgs" ]
+# - name: Generate pacman mirrorlist
+#   template:
+#     src: mirrorlist.j2
+#     dest: /etc/pacman.d/mirrorlist
+#   tags: [ "pkgs" ]
 
 - name: Install all required packages
   package: name={{item}} state=present
