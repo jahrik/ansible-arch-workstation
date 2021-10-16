@@ -2,7 +2,7 @@
 # envars
 ansible_user: "{{ lookup('env','USER') }}"
 editor: vim
-browser: firefox
+browser: chromium
 term: rxvt
 text:
   font: DejaVu Sans Mono
@@ -23,7 +23,6 @@ pkgs:
   - dialog
   - git
   - htop
-  # - linux-headers
   - lsof
   - mlocate
   - nmap
@@ -32,8 +31,8 @@ pkgs:
   - sudo
   - tcpdump
   - vim
+  - vim-syntastic
   - wget
-  - wpa_supplicant
   - zsh
 
 i3:

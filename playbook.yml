@@ -6,8 +6,8 @@
   roles:
     # - hostname
     # - mkinitcpio
-    - locale
-    - time
+    # - locale
+    # - time
     - pkgs
     - yay
     # - git
@@ -16,13 +16,13 @@
     - conky
     - ssh
     # - hosts
-    # - jahrik.vim
+    - jahrik.vim
     # - ansible
-    - browser
+    # - browser
     # - docker
     # - pianobar
     # - python
-    - sound
+    # - sound
     # - virtualbox
     # - mutt
     # - vagrant

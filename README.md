@@ -235,17 +235,36 @@ Add user to /etc/sudoers.d/config
 
 ## Ansible
 
-Stuff and things go here...
+Install Git and Ansible
+```
+pacman -S git ansible
 
-...
+```
 
-...
+Clone this repo
+```
+git clone
+```
+
+Install dependencies
+```
+ansible-galaxy install -r requirements.yml --roles-path roles
+```
+
+Run Ansible against localhost
+```
+ansible-playbook -l local playbook.yml
+```
+
+
 
 ## Vagrant lab
 
-Not working yet.  Need to build a new packer arch box for testing.
+Install Vagrant and it's dependencies
 
-Testing locally for now...
+```
+pacman -S vagrant
+```
 
 Bring up an arch box
 

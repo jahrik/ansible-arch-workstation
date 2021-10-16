@@ -9,17 +9,6 @@
     - xorg-xrandr
   tags: [ 'i3' ]
 
-# - name: Install video driver
-#   package:
-#     name: "{{ item }}"
-#     state: present
-#   with_items:
-#     - mesa
-#     - nvidia
-#     - xf86-video-vesa
-#     - xf86-video-nouveau
-#   tags: [ 'i3' ]
-
 - name: Install i3-gaps
   package:
     name: "{{ item }}"
@@ -165,6 +154,15 @@
   copy:
     src: background.jpg
     dest: /var/background.jpg
+
+- name: create $HOME/.config/polybar dir
+  file:
+    path: "/home/{{ ansible_user }}/.config/polybar/"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+  tags: [ 'i3' ]
 
 - name: Generate polybar config files
   template:
