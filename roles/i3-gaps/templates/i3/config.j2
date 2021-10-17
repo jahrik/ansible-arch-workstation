@@ -183,8 +183,8 @@ exec xmodmap -e "clear lock"
 # Set caps_lock as backspace
 exec xmodmap -e "keysym Caps_Lock = BackSpace"
 
-# Touchpad off
-exec synclient TouchpadOff=1
+# Touchpad on/off
+exec synclient TouchpadOff=0
 
 # Brightness
 exec "xcalib -co 80 -a"
