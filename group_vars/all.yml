@@ -17,6 +17,7 @@ lang: en_US.UTF-8
 
 # base packages
 pkgs:
+  - ansible-lint
   - alsa-utils
   - arandr
   - base-devel
