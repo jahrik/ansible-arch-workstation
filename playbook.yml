@@ -4,19 +4,19 @@
   become_method: sudo
 
   roles:
+    - pkgs
+    - yay
+    - jahrik.zsh
+    - jahrik.vim
+    - i3-gaps
+    - conky
+    - ssh
     # - hostname
     # - mkinitcpio
     # - locale
     # - time
-    - pkgs
-    - yay
     # - git
-    - zsh
-    - i3-gaps
-    - conky
-    - ssh
     # - hosts
-    - jahrik.vim
     # - ansible
     # - browser
     # - docker

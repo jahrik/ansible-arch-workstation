@@ -1,7 +1,7 @@
 *.swp
 gh-md-toc
 secrets/
-roles/jahrik.vim
+roles/jahrik.*
 roles/geerlingguy.git
 .vagrant/
 idea/

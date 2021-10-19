@@ -1,12 +1,36 @@
 ---
-# envars
 ansible_user: "{{ lookup('env','USER') }}"
+
+# ZSH Configs
+theme: robbyrussell
 editor: vim
 browser: chromium
+lang: en_US.UTF-8
 term: rxvt
+path:
+  - ~/bin
+plugins:
+  - sudo
+  - git
+aws:
+  access_key_id:
+  secret_access_key:
+chef:
+  user:
+  url:
+  repo:
+  log_level:
+python_force_color: 1
+ansible_force_color: 1
+
+# i3
 text:
   font: DejaVu Sans Mono
   size: 18
+i3:
+  lock: true
+  bar: false
+  polybar: true
 
 # time
 time_zone: US/Pacific
@@ -17,7 +41,11 @@ lang: en_US.UTF-8
 
 # base packages
 pkgs:
+  - ansible
   - ansible-lint
+  - yamllint
+  - molecule
+  - molecule-docker
   - alsa-utils
   - arandr
   - base-devel
@@ -35,11 +63,6 @@ pkgs:
   - vim-syntastic
   - wget
   - zsh
-
-i3:
-  lock: true
-  bar: false
-  polybar: true
 
 vagrant_plugins:
   # - vagrant-hostsupdater
