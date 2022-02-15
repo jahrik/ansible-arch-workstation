@@ -115,7 +115,7 @@ def install_packages(module, pkgs, dir, user):
         if rc != 0:
             module.fail_json(msg='failed to install package %s, because: %s' % (pkg,stderr))
         num_installed += 1
-    # Exit with the number of packages succesfully installed.
+    # Exit with the number of packages successfully installed.
     if num_installed > 0:
         module.exit_json(changed=True, msg='installed %s package(s)' % num_installed)
     else:
@@ -151,9 +151,9 @@ def main():
         user = p['user']
 
     # If no directory was given, assume the packages should be downloaded to
-    # ~/aur.
+    # /tmp
     if not p['dir']:
-        dir = '/home/%s/aur' % user
+        dir = '/tmp'
     else:
         dir = os.path.expanduser(p['dir'])
 
