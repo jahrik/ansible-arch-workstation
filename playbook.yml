@@ -8,9 +8,9 @@
     - yay
     - jahrik.zsh
     - jahrik.vim
-    - i3-gaps
-    - conky
-    - ssh
+    - jahrik.i3_gaps
+    # - conky
+    # - ssh
     # - hostname
     # - mkinitcpio
     # - locale
