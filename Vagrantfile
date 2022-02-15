@@ -6,7 +6,7 @@ require_relative './key_authorization.rb'
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "generic/arch"
+  config.vm.box = "archlinux/archlinux"
   config.vm.provider :virtualbox do |vb|
     vb.cpus = 2
     vb.gui = true
@@ -20,8 +20,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   authorize_key_for_root config, '~/.ssh/id_dsa.pub', '~/.ssh/id_rsa.pub'
 
   config.ssh.forward_x11 = true
-  config.vm.network 'private_network', ip: '192.168.33.11'
+  config.vm.network 'private_network', ip: '192.168.56.11'
   config.vm.hostname = 'archie.dev'
 
-  config.vm.provision "shell", inline: "pacman --noconfirm -S virtualbox-guest-modules-arch"
+  config.vm.provision "shell", inline: "pacman --noconfirm -Syu"
 end
