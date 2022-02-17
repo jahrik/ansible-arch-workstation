@@ -1,5 +1,7 @@
 # Arch Workstation
 
+[![CICD](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml)
+
 Setup an Arch Linux development environment
 
 <!-- vim-markdown-toc GFM -->
@@ -28,14 +30,11 @@ This role is intended for setting a development environment on fresh install of 
 
 ## Role Variables
 
-    ansible_user: "{{ lookup('env','USER') }}"
     time_zone: US/Pacific
     locale: en_US.UTF-8 UTF-8
 
     # base packages
     base:
-      - ansible
-      - base-devel
       - git
       - sudo
 
