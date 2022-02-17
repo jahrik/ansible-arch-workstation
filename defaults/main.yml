@@ -4,28 +4,8 @@ locale: en_US.UTF-8 UTF-8
 
 # base packages
 base_packages:
-  - acpi
-  - alsa-utils
-  - ansible
-  - ansible-lint
-  - arandr
-  - base-devel
-  - dialog
   - git
-  - htop
-  - lsof
-  - mlocate
-  - molecule
-  - molecule-docker
-  - nmap
-  - rsync
-  - speedtest-cli
   - sudo
-  - tcpdump
-  - wget
-  - yamllint
-  - gparted
-  - dosfstools
 
 # ZSH Configs
 theme: robbyrussell
@@ -36,8 +16,8 @@ term: rxvt
 path:
   - ~/bin
 plugins:
-  - sudo
   - git
+  - sudo
 
 # i3
 text:
