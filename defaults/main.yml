@@ -1,5 +1,4 @@
 ---
-ansible_user: "{{ lookup('env','USER') }}"
 time_zone: US/Pacific
 locale: en_US.UTF-8 UTF-8
 

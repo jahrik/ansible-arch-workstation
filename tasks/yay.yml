@@ -1,6 +1,5 @@
 ---
 - name: clone yay from github
-  become: false
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: /tmp/yay
@@ -11,7 +10,6 @@
     - yay
 
 - name: makepkg --noconfirm -si
-  become: false
   command: makepkg --noconfirm -si
   args:
     chdir: /tmp/yay

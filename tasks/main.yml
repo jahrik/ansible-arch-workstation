@@ -1,9 +1,10 @@
 ---
+
 - name: Install base packages
-  include_tasks: base
+  include_tasks: base.yml
 
 - name: Install yay from github
-  include_tasks: yay
+  include_tasks: yay.yml
 
 - name: Install and configure zsh and set as default user shell
   include_role:
