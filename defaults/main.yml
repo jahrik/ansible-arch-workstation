@@ -4,7 +4,7 @@ time_zone: US/Pacific
 locale: en_US.UTF-8 UTF-8
 
 # base packages
-base:
+base_packages:
   - acpi
   - alsa-utils
   - ansible
