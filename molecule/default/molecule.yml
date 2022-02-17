@@ -1,0 +1,13 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: arch
+    image: jahrik/docker-archlinux-ansible
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

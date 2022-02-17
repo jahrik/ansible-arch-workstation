@@ -1,5 +1,0 @@
----
-vagrant_plugins:
-  - vagrant-hostsupdater
-  - vagrant-share
-  - vagrant-vbguest

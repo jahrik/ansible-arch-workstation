@@ -1,4 +1,0 @@
----
-- name: vboxreload
-  command: vboxreload
-  tags: [ "virtualbox" ]

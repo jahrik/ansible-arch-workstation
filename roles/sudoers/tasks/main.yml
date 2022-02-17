@@ -1,4 +1,0 @@
----
-- name: Allow {{ user.name }} to have passwordless sudo
-  lineinfile: "dest=/etc/sudoers state=present regexp='^{{ user.name }}' line='{{ user.name }} ALL=(ALL) NOPASSWD: ALL'"
-  tags: [ "setup" ]

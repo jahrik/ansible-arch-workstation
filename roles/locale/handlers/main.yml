@@ -1,4 +1,0 @@
----
-- name: locale-gen
-  command: locale-gen
-  tags: [ 'locale' ]

@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  role_name: arch_workstation
+  author: jahrik
+  namespace: jahrik
+  description: Installs a development workstation
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-arch-workstation/issues
+  min_ansible_version: 2.1
+  license: GPLv2
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - archlinux
+    - i3-gaps
+    - vim
+    - zsh
+  dependencies:
+    - jahrik.vim
+    - jahrik.zsh
+    - jahrik.i3_gaps

@@ -1,0 +1,52 @@
+---
+- name: Install base packages
+  include_tasks: base
+
+- name: Install yay from github
+  include_tasks: yay
+
+- name: Install and configure zsh and set as default user shell
+  include_role:
+    name: jahrik.zsh
+  vars:
+    install: true
+
+- name: Install vim, vundle, and plugins
+  include_role:
+    name: jahrik.vim
+  vars:
+    install: true
+
+- name: Install and configure i3-gaps, xinitrc. xresources, dmenu, and dunst
+  include_role:
+    name: jahrik.i3_gaps
+  vars:
+    install: true
+
+    # - conky
+    # - ssh
+    # - hostname
+    # - mkinitcpio
+    # - locale
+    # - time
+    # - git
+    # - hosts
+    # - ansible
+    # - browser
+    # - docker
+    # - pianobar
+    # - python
+    # - sound
+    # - virtualbox
+    # - mutt
+    # - vagrant
+    # - user
+    # - authorized_keys
+    # - sudoers
+    # - gpg
+    # - mysql
+    # - psql
+    # - ruby
+    # - slim
+    # - chef
+    # - vpn

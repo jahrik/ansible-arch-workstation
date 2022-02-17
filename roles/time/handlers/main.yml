@@ -1,8 +1,0 @@
----
-- name: restart ntpd
-  systemd:
-    name: ntpd
-    daemon_reload: yes
-    state: restarted
-    enabled: yes
-  tags: [ "time" ]

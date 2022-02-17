@@ -1,0 +1,7 @@
+---
+- name: Install all base packages
+  package:
+    name: "{{item}}"
+    state: present
+  with_items: "{{ base }}"
+  tags: [ 'base' ]

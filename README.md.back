@@ -1,101 +1,21 @@
-# Arch Workstation
-
-Setup an Arch Linux development environment
-
+# Arch Linux install with Ansible provisioning
 <!-- vim-markdown-toc GFM -->
 
-* [Requirements](#requirements)
-* [Role Variables](#role-variables)
-* [Dependencies](#dependencies)
-* [Example Playbook](#example-playbook)
-* [License](#license)
-* [Notes](#notes)
-  * [Initial installation](#initial-installation)
+* [Initial installation](#initial-installation)
   * [Parted](#parted)
   * [LVM](#lvm)
   * [Formatting](#formatting)
   * [Mounting](#mounting)
   * [WiFi](#wifi)
   * [Arch Install](#arch-install)
-  * [Ansible](#ansible)
-  * [Vagrant lab](#vagrant-lab)
+* [Ansible](#ansible)
+* [Vagrant lab](#vagrant-lab)
 
 <!-- vim-markdown-toc -->
 
-## Requirements
-
-This role is intended for setting a development environment on fresh install of Arch Linux. It is a collection of roles that install things like i3-gaps, vim, and zsh. 
-
-## Role Variables
-
-    ansible_user: "{{ lookup('env','USER') }}"
-    time_zone: US/Pacific
-    locale: en_US.UTF-8 UTF-8
-
-    # base packages
-    base:
-      - ansible
-      - base-devel
-      - git
-      - sudo
-
-    # ZSH Configs
-    theme: robbyrussell
-    # Set default $EDITOR
-    editor: vim
-    # Set default $BROWSER
-    browser: chromium
-    lang: en_US.UTF-8
-    # Set your default $TERM
-    term: rxvt
-    # Include things to your $PATH
-    path:
-      - ~/bin
-    # zsh plugins
-    plugins:
-      - sudo
-      - git
-
-    # i3 configs
-    text:
-      font: DejaVu Sans Mono
-      size: 18
-    i3:
-      lock: true
-      # Conky i3 bar or polybar
-      bar: false
-      polybar: true
-
-    # Python/Ansible color output
-    python_force_color: 1
-    ansible_force_color: 1
-
-    vagrant_plugins:
-      # - vagrant-hostsupdater
-      # - vagrant-share
-      # - vagrant-vbguest
-
-## Dependencies
-
-- jahrik.zsh
-- jahrik.vim
-- jahrik.i3_gaps
-
-## Example Playbook
-
-    - hosts: localhost
-      roles:
-         - { role: jahrik.arch_workstation, x: 42 }
-
-## License
-
-GPLv2
-
-## Notes
-
 This repository is the first thing I clone any time I reinstall Arch on a new laptop to get it back up and running with i3-gaps, vim, zsh, and a few other tools I use every time. Arch has some of the best documentation around and their installation guide has everything needed to get a new machine up and running. I won't go into too much detail about the basic installation process other than some handy notes for myself later.
 
-### Initial installation
+## Initial installation
 
 [Installation Guide](https://wiki.archlinux.org/title/installation_guide)
 
@@ -150,11 +70,11 @@ This repository is the first thing I clone any time I reinstall Arch on a new la
 
 ### Arch Install
 
-Once you've got the basics down, like connecting to WiFi, handling any disk formatting, and having everything mounted to /mnt, you have a couple options. Use the archinstall script, or keep following the installation guide linked above.
+Once you've got the basics down, like connecting to WiFi, handling any disk formatting, and having everything mounted to /mnt, you have a couple options. You can use the archinstall script, or keep following the installation guide linked at the top.
 
 [archinstall](https://github.com/archlinux/archinstall)
 
-### Ansible
+## Ansible
 
 Install Git and Ansible
 
@@ -166,20 +86,20 @@ Clone this repo
 
 Install dependencies from [Ansible Galaxy](https://galaxy.ansible.com/)
 
-    ansible-galaxy install -r requirements.yml
+    ansible-galaxy install -r requirements.yml --roles-path roles
 
 Run Ansible against localhost
 
     ansible-playbook -l local playbook.yml
 
-### Vagrant lab
+## Vagrant lab
 
-Use vagrant to spin up a virtual machine for testing things like i3 and GUI stuff.
+Vagrant still has some advantages for testing over containers because you'll get a full virtual environment better for testing things like desktop environments and GUI stuff.
 
 Install Vagrant and it's dependencies
 
 ```
-pacman -S vagrant virtualbox
+pacman -S vagrant
 ```
 
 Bring up an arch box
@@ -189,16 +109,15 @@ Bring up an arch box
 Check the status of vagrant
 
     vagrant status
-
-    rurrent machine states:
+    Current machine states:
 
     arch-vm              running (virtualbox)
 
-SSH into the box
+SSH into a box
 
     vagrant ssh arch-vm.dev
 
 
 Run the playbook against the vm
 
-    ansible-playbook -i inventory.yml -l vagrant playbook.yml -K
+    ansible-playbook -i inventory.yml playbook.yml

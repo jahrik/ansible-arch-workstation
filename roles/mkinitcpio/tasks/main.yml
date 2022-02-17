@@ -1,7 +1,0 @@
----
-- name: Generate mkinitcpio.conf
-  template:
-    src: mkinitcpio.conf.j2
-    dest: /etc/mkinitcpio.conf
-  notify: mkinitcpio
-  tags: [ "mkinitcpio" ]
