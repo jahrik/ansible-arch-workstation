@@ -1,21 +1,23 @@
 ---
+- name: Install yay for easy AUR package installs
+  include_role:
+    name: jahrik.yay
+
 - name: Install and configure zsh and set as default user shell
   include_role:
     name: jahrik.zsh
-  vars:
-    install: true
 
 - name: Install vim, vundle, and plugins
   include_role:
     name: jahrik.vim
-  vars:
-    install: true
 
 - name: Install and configure i3-gaps, xinitrc. xresources, dmenu, and dunst
   include_role:
     name: jahrik.i3_gaps
-  vars:
-    install: true
+
+- name: Install and configure polybar
+  include_role:
+    name: jahrik.polybar
 
     # - conky
     # - ssh
