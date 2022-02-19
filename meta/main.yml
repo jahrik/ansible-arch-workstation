@@ -21,6 +21,9 @@ galaxy_info:
     - vim
     - zsh
   dependencies:
+    - jahrik.yay
     - jahrik.vim
     - jahrik.zsh
     - jahrik.i3_gaps
+    - jahrik.polybar
+    - jahrik.urxvt

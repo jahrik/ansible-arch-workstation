@@ -11,13 +11,17 @@
   include_role:
     name: jahrik.vim
 
-- name: Install and configure i3-gaps, xinitrc. xresources, dmenu, and dunst
+- name: Install and configure i3-gaps, xinitrc, conky, dmenu, and dunst
   include_role:
     name: jahrik.i3_gaps
 
 - name: Install and configure polybar
   include_role:
     name: jahrik.polybar
+
+- name: Install and configure urxvt
+  include_role:
+    name: jahrik.urxvt
 
     # - conky
     # - ssh

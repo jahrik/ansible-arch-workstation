@@ -1,6 +1,6 @@
 ---
-# - hosts: all
-#   become: true
-#   become_method: sudo
-#   roles:
-#     role: jahrik.arch_workstation
+- hosts: all
+  become: true
+  become_method: sudo
+  roles:
+    - jahrik.arch_workstation

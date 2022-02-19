@@ -11,8 +11,8 @@ base_packages:
 theme: robbyrussell
 editor: vim
 browser: chromium
+terminal: rxvt
 lang: en_US.UTF-8
-term: rxvt
 path:
   - ~/bin
 plugins:

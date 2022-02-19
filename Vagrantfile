@@ -23,5 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network 'private_network', ip: '192.168.56.11'
   config.vm.hostname = 'archie.dev'
 
-  config.vm.provision "shell", inline: "pacman --noconfirm -Syu"
+  config.vm.provision "shell", inline: %{
+    pacman --noconfirm -Syu
+    pacman --noconfirm -S xorg-server xorg-xinit xorg-xrandr
+  }
 end
