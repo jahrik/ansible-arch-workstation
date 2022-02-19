@@ -80,6 +80,7 @@ This role is intended for setting a development environment on fresh install of 
 - jahrik.zsh
 - jahrik.vim
 - jahrik.i3_gaps
+- jahrik.polybar
 
 ## Example Playbook
 
