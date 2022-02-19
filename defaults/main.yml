@@ -27,6 +27,7 @@ i3:
   lock: true
   bar: false # Conky i3 bar or polybar
   polybar: true
+  terminal: rxvt
 
 # Python/Ansible
 python_force_color: 1
