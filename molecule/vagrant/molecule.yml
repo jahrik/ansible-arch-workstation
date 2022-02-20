@@ -1,0 +1,14 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+platforms:
+  - name: archie.dev
+    box: archlinux/archlinux
+    memory: 4096
+    cpus: 2
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
