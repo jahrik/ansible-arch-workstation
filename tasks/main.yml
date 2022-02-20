@@ -11,6 +11,10 @@
   include_role:
     name: jahrik.vim
 
+- name: Install nvim, vim-plug, and plugins
+  include_role:
+    name: jahrik.nvim
+
 - name: Install and configure i3-gaps, xinitrc, conky, dmenu, and dunst
   include_role:
     name: jahrik.i3_gaps

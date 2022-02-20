@@ -1,7 +1,8 @@
 ---
 - src: jahrik.yay
-- src: jahrik.vim
 - src: jahrik.zsh
+- src: jahrik.vim
+- src: jahrik.nvim
+- src: jahrik.urxvt
 - src: jahrik.i3_gaps
 - src: jahrik.polybar
-- src: jahrik.urxvt
