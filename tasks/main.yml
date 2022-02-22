@@ -3,6 +3,10 @@
   include_role:
     name: jahrik.yay
 
+- name: Install alacritty
+  include_role:
+    name: jahrik.alacritty
+
 - name: Install and configure zsh and set as default user shell
   include_role:
     name: jahrik.zsh
