@@ -9,9 +9,9 @@ base_packages:
 
 # ZSH Configs
 theme: robbyrussell
-editor: vim
+editor: nvim
 browser: chromium
-terminal: rxvt
+terminal: alacritty
 lang: en_US.UTF-8
 path:
   - ~/bin
@@ -27,7 +27,7 @@ i3:
   lock: true
   bar: false # Conky i3 bar or polybar
   polybar: true
-  terminal: rxvt
+  terminal: alacritty
 
 # Python/Ansible
 python_force_color: 1
