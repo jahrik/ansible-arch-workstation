@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: arch_workstation
+  role_name: workstation
   author: jahrik
   namespace: jahrik
   description: Installs a development workstation
@@ -16,10 +16,14 @@ galaxy_info:
       versions:
         - focal
   galaxy_tags:
-    - archlinux
-    - i3-gaps
+    - workstation
+    - i3
     - vim
     - zsh
+    - polybar
+    - urxvt
+    - alacritty
+    - conky
   dependencies:
     - jahrik.yay
     - jahrik.vim
@@ -27,3 +31,5 @@ galaxy_info:
     - jahrik.i3_gaps
     - jahrik.polybar
     - jahrik.urxvt
+    - jahrik.alacritty
+    - jahrik.conky

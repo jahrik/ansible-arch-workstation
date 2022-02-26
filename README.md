@@ -86,7 +86,7 @@ This role is intended for setting a development environment on fresh install of 
 
     - hosts: localhost
       roles:
-         - { role: jahrik.arch_workstation, x: 42 }
+         - { role: jahrik.workstation, x: 42 }
 
 ## License
 

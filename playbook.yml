@@ -4,4 +4,4 @@
   vars:
     install: true
   roles:
-    - jahrik.arch_workstation
+    - jahrik.workstation
