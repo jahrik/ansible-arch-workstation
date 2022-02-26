@@ -27,9 +27,13 @@
   include_role:
     name: jahrik.polybar
 
-- name: Install and configure urxvt
+- name: Install and configure conky
   include_role:
-    name: jahrik.urxvt
+    name: jahrik.conky
+
+# - name: Install and configure urxvt
+#   include_role:
+#     name: jahrik.urxvt
 
     # - conky
     # - ssh
