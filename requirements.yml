@@ -1,9 +1,10 @@
 ---
+- src: jahrik.alacritty
+- src: jahrik.conky
+- src: jahrik.i3_gaps
+- src: jahrik.nvim
+- src: jahrik.polybar
+- src: jahrik.urxvt
+- src: jahrik.vim
 - src: jahrik.yay
 - src: jahrik.zsh
-- src: jahrik.vim
-- src: jahrik.nvim
-- src: jahrik.urxvt
-- src: jahrik.i3_gaps
-- src: jahrik.polybar
-- src: jahrik.alacritty

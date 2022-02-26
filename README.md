@@ -76,17 +76,21 @@ This role is intended for setting a development environment on fresh install of 
 
 ## Dependencies
 
+- jahrik.alacritty
+- jahrik.conky
+- jahrik.i3_gaps
+- jahrik.nvim
+- jahrik.polybar
+- jahrik.urxvt
+- jahrik.vim
 - jahrik.yay
 - jahrik.zsh
-- jahrik.vim
-- jahrik.i3_gaps
-- jahrik.polybar
 
 ## Example Playbook
 
     - hosts: localhost
       roles:
-         - { role: jahrik.workstation, x: 42 }
+         - { role: jahrik.workstation, install: true }
 
 ## License
 
