@@ -2,6 +2,7 @@
 - name: Install yay for easy AUR package installs
   include_role:
     name: jahrik.yay
+  when: ansible_os_family == 'Archlinux'
 
 - name: Install alacritty
   include_role:
@@ -19,7 +20,7 @@
   include_role:
     name: jahrik.nvim
 
-- name: Install and configure i3-gaps, xinitrc, conky, dmenu, and dunst
+- name: Install and configure i3-gaps, conky, dmenu, and dunst
   include_role:
     name: jahrik.i3_gaps
 
