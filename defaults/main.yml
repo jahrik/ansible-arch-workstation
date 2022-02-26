@@ -1,4 +1,5 @@
 ---
+install: true
 time_zone: US/Pacific
 locale: en_US.UTF-8 UTF-8
 
@@ -21,7 +22,7 @@ plugins:
 
 # i3
 text:
-  font: DejaVu Sans Mono
+  font: DejaVuSansMono Nerd Font Mono
   size: 18
 i3:
   lock: true
