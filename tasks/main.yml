@@ -4,9 +4,9 @@
     name: jahrik.yay
   when: ansible_os_family == 'Archlinux'
 
-- name: Install alacritty
+- name: Install and configure i3-gaps, conky, dmenu, and dunst
   include_role:
-    name: jahrik.alacritty
+    name: jahrik.i3_gaps
 
 - name: Install and configure zsh and set as default user shell
   include_role:
@@ -20,9 +20,9 @@
   include_role:
     name: jahrik.nvim
 
-- name: Install and configure i3-gaps, conky, dmenu, and dunst
+- name: Install alacritty
   include_role:
-    name: jahrik.i3_gaps
+    name: jahrik.alacritty
 
 - name: Install and configure polybar
   include_role:

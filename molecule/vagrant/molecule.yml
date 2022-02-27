@@ -3,11 +3,19 @@ dependency:
   name: galaxy
 driver:
   name: vagrant
+  provision: true
+  provider:
+    name: virtualbox
 platforms:
   - name: archie.dev
     box: archlinux/archlinux
     memory: 4096
     cpus: 2
+    provider_options:
+      gui: true
+    instance_raw_config_args:
+      - 'vm.provision :shell, inline: "pacman --noconfirm -Syu"'
+      - 'vm.provision :shell, inline: "pacman --noconfirm -S xorg-server xorg-xinit xorg-xrandr"'
 provisioner:
   name: ansible
 verifier:
