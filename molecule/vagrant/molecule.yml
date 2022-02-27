@@ -13,6 +13,8 @@ platforms:
     cpus: 2
     provider_options:
       gui: true
+    config_options:
+      synced_folder: true
     instance_raw_config_args:
       - 'vm.provision :shell, inline: "pacman --noconfirm -Syu"'
       - 'vm.provision :shell, inline: "pacman --noconfirm -S xorg-server xorg-xinit xorg-xrandr"'
