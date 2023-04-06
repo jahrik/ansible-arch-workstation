@@ -26,7 +26,7 @@ Setup an Arch Linux development environment
 
 ## Requirements
 
-This role is intended for setting a development environment on fresh install of Arch Linux. It is a collection of roles that install things like i3-gaps, vim, and zsh. 
+This role is intended for setting a development environment on fresh install of Arch Linux. It is a collection of roles that install things like sway, nvim, and zsh. 
 
 ## Role Variables
 
@@ -41,12 +41,12 @@ This role is intended for setting a development environment on fresh install of 
     # ZSH Configs
     theme: robbyrussell
     # Set default $EDITOR
-    editor: vim
+    editor: nvim
     # Set default $BROWSER
     browser: chromium
     lang: en_US.UTF-8
     # Set your default $TERM
-    term: rxvt
+    term: alacritty
     # Include things to your $PATH
     path:
       - ~/bin
@@ -55,33 +55,19 @@ This role is intended for setting a development environment on fresh install of 
       - sudo
       - git
 
-    # i3 configs
-    text:
-      font: DejaVu Sans Mono
-      size: 18
-    i3:
-      lock: true
-      # Conky i3 bar or polybar
-      bar: false
-      polybar: true
+    # sway configs
+    sway:
+      bar: waybar
 
     # Python/Ansible color output
     python_force_color: 1
     ansible_force_color: 1
 
-    vagrant_plugins:
-      # - vagrant-hostsupdater
-      # - vagrant-share
-      # - vagrant-vbguest
-
 ## Dependencies
 
 - jahrik.alacritty
-- jahrik.conky
-- jahrik.i3_gaps
 - jahrik.nvim
-- jahrik.polybar
-- jahrik.urxvt
+- jahrik.sway
 - jahrik.vim
 - jahrik.yay
 - jahrik.zsh
