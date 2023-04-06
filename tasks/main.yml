@@ -1,65 +1,25 @@
 ---
 - name: Install yay for easy AUR package installs
-  include_role:
+  ansible.builtin.include_role:
     name: jahrik.yay
   when: ansible_os_family == 'Archlinux'
 
-- name: Install and configure i3-gaps, conky, dmenu, and dunst
-  include_role:
-    name: jahrik.i3_gaps
+- name: Install alacritty
+  ansible.builtin.include_role:
+    name: jahrik.alacritty
+
+- name: Install and configure Sway
+  ansible.builtin.include_role:
+    name: jahrik.sway
 
 - name: Install and configure zsh and set as default user shell
-  include_role:
+  ansible.builtin.include_role:
     name: jahrik.zsh
 
 - name: Install vim, vundle, and plugins
-  include_role:
+  ansible.builtin.include_role:
     name: jahrik.vim
 
-- name: Install nvim, vim-plug, and plugins
-  include_role:
+- name: Install nvim, packer, lsp, and plugins
+  ansible.builtin.include_role:
     name: jahrik.nvim
-
-- name: Install alacritty
-  include_role:
-    name: jahrik.alacritty
-
-- name: Install and configure polybar
-  include_role:
-    name: jahrik.polybar
-
-- name: Install and configure conky
-  include_role:
-    name: jahrik.conky
-
-# - name: Install and configure urxvt
-#   include_role:
-#     name: jahrik.urxvt
-
-    # - conky
-    # - ssh
-    # - hostname
-    # - mkinitcpio
-    # - locale
-    # - time
-    # - git
-    # - hosts
-    # - ansible
-    # - browser
-    # - docker
-    # - pianobar
-    # - python
-    # - sound
-    # - virtualbox
-    # - mutt
-    # - vagrant
-    # - user
-    # - authorized_keys
-    # - sudoers
-    # - gpg
-    # - mysql
-    # - psql
-    # - ruby
-    # - slim
-    # - chef
-    # - vpn

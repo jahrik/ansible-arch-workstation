@@ -17,8 +17,7 @@ platforms:
       synced_folder: true
     instance_raw_config_args:
       - 'vm.provision :shell, inline: "pacman --noconfirm -Syu"'
-      - 'vm.provision :shell, inline: "pacman --noconfirm -S python base-devel"'
-      # - 'vm.provision :shell, inline: "pacman --noconfirm -S wayland xorg-xwayland"'
+      - 'vm.provision :shell, inline: "pacman --noconfirm -S xorg-server xorg-xinit xorg-xrandr"'
 provisioner:
   name: ansible
 verifier:
