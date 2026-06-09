@@ -1,10 +1,34 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: Verify
   hosts: all
   gather_facts: false
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: Check yay binary
+      ansible.builtin.stat:
+        path: /usr/bin/yay
+      register: yay_bin
+
+    - name: Assert yay is installed
+      ansible.builtin.assert:
+        that: yay_bin.stat.exists
+        fail_msg: "yay binary not found at /usr/bin/yay"
+
+    - name: Check alacritty binary
+      ansible.builtin.stat:
+        path: /usr/bin/alacritty
+      register: alacritty_bin
+
+    - name: Assert alacritty is installed
+      ansible.builtin.assert:
+        that: alacritty_bin.stat.exists
+        fail_msg: "alacritty binary not found at /usr/bin/alacritty"
+
+    - name: Check zsh binary
+      ansible.builtin.stat:
+        path: /usr/bin/zsh
+      register: zsh_bin
+
+    - name: Assert zsh is installed
+      ansible.builtin.assert:
+        that: zsh_bin.stat.exists
+        fail_msg: "zsh binary not found at /usr/bin/zsh"
