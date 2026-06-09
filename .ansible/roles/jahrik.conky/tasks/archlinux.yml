@@ -1,8 +1,0 @@
----
-- name: Install conky
-  become: true
-  community.general.pacman:
-    name: conky
-    state: present
-  tags:
-    - conky

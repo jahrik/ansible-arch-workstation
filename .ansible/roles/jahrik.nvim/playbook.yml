@@ -1,7 +1,0 @@
----
-- hosts: all
-  become: true
-  vars:
-    install: true
-  roles:
-    - jahrik.nvim

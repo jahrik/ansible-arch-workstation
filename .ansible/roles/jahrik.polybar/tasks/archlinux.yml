@@ -1,7 +1,0 @@
----
-- name: Install polybar
-  ansible.builtin.include_role:
-    name: jahrik.yay
-  vars:
-    aur_packages:
-      - polybar

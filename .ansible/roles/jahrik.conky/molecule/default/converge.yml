@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include jahrik.conky"
-      include_role:
-        name: "jahrik.conky"

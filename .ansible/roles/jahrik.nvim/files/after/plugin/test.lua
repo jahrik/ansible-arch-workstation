@@ -1,5 +1,0 @@
--- vim.keymap.set('n', '<leader>tn', TestNearest, {})
--- vim.keymap.set('n', '<leader>tf', TestFile, {})
--- vim.keymap.set('n', '<leader>ts', TestSuite, {})
--- vim.keymap.set('n', '<leader>tl', TestLast, {})
--- vim.keymap.set('n', '<leader>tv', TestVisit, {})

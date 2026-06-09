@@ -3,5 +3,6 @@ gh-md-toc
 secrets/
 roles/jahrik.*
 roles/geerlingguy.git
+.ansible/
 .vagrant/
 idea/

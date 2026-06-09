@@ -1,8 +1,0 @@
----
-- name: Install
-  ansible.builtin.include_tasks: install.yml
-  when: install
-
-- name: Uninstall
-  ansible.builtin.include_tasks: uninstall.yml
-  when: not install
