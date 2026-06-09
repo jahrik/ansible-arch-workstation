@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include jahrik.vim"
+      include_role:
+        name: "jahrik.vim"

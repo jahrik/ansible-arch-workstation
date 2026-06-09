@@ -1,0 +1,10 @@
+---
+- name: Install conky-all
+  become: true
+  ansible.builtin.apt:
+    name: conky-all
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  tags:
+    - conky

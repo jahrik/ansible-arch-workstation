@@ -1,0 +1,7 @@
+---
+- name: Install alacritty
+  become: true
+  community.general.pacman:
+    name:
+      - alacritty
+    state: present

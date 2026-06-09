@@ -1,0 +1,15 @@
+{% if chef is defined and chef.user is defined %}
+export OPSCODE_USER={{ chef.user }}
+{% endif %}
+{% if chef is defined and chef.url is defined %}
+export CHEF_URL={{ chef.url }}
+{% endif %}
+{% if chef is defined and chef.repo is defined %}
+export CHEF_REPO={{ chef.repo }}
+{% endif %}
+{% if chef is defined and chef.log_level is defined %}
+export CHEF_LOG_LEVEL={{ chef.log_level }}
+{% endif %}
+{% if chef is defined %}
+eval "$(chef shell-init zsh)"
+{% endif %}

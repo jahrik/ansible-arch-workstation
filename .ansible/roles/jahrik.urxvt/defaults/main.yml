@@ -1,0 +1,6 @@
+---
+install: true
+browser: chromium
+text:
+  font: DejaVuSansMono Nerd Font
+  size: 18

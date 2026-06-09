@@ -1,0 +1,20 @@
+galaxy_info:
+  role_name: urxvt
+  author: jahrik
+  namespace: jahrik
+  description: Install urxvt, plugins, and configure xresources
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-urxvt/issues
+  license: GPLv2
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - urxvt
+    - urxvt-pearls
+    - xresources

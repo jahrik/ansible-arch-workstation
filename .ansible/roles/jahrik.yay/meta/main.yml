@@ -1,0 +1,15 @@
+galaxy_info:
+  role_name: yay
+  author: jahrik
+  namespace: jahrik
+  description: Installs yay. Include library to use yay
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-vim/issues
+  license: GPLv2
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+  galaxy_tags:
+    - yay

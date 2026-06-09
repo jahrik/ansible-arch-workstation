@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Check zsh binary
+      ansible.builtin.stat:
+        path: /usr/bin/zsh
+      register: zsh_bin
+
+    - name: Assert zsh is installed
+      ansible.builtin.assert:
+        that: zsh_bin.stat.exists
+        fail_msg: "zsh binary not found at /usr/bin/zsh"
+
+    - name: Check ~/.config/zsh directory
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/.config/zsh"
+      register: zsh_dir
+
+    - name: Assert ~/.config/zsh directory exists
+      ansible.builtin.assert:
+        that: zsh_dir.stat.exists and zsh_dir.stat.isdir
+        fail_msg: "~/.config/zsh directory not found"
+
+    - name: Check ~/.zshrc symlink
+      ansible.builtin.stat:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+      register: zshrc
+
+    - name: Assert ~/.zshrc exists
+      ansible.builtin.assert:
+        that: zshrc.stat.exists
+        fail_msg: "~/.zshrc not found"

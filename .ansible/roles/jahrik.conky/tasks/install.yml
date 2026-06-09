@@ -1,0 +1,14 @@
+---
+- ansible.builtin.include_tasks: archlinux.yml
+  when: ansible_os_family == 'Archlinux'
+
+- ansible.builtin.include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Generate ~/.conkyrc
+  become: false
+  ansible.builtin.template:
+    src: conkyrc.j2
+    dest: ~/.conkyrc
+  tags:
+    - conky

@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check vim binary
+      ansible.builtin.stat:
+        path: /usr/bin/vim
+      register: vim_bin
+
+    - name: Assert vim is installed
+      ansible.builtin.assert:
+        that: vim_bin.stat.exists
+        fail_msg: "vim binary not found at /usr/bin/vim"
+
+    - name: Check ~/.vimrc
+      ansible.builtin.stat:
+        path: ~/.vimrc
+      register: vimrc
+
+    - name: Assert ~/.vimrc exists
+      ansible.builtin.assert:
+        that: vimrc.stat.exists
+        fail_msg: "~/.vimrc not found"
+
+    - name: Check vundle directory
+      ansible.builtin.stat:
+        path: ~/.config/vim/bundle/Vundle.vim
+      register: vundle_dir
+
+    - name: Assert vundle is installed
+      ansible.builtin.assert:
+        that: vundle_dir.stat.exists and vundle_dir.stat.isdir
+        fail_msg: "~/.config/vim/bundle/Vundle.vim not found"

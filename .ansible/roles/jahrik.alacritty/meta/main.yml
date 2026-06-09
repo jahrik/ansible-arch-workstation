@@ -1,0 +1,18 @@
+galaxy_info:
+  role_name: alacritty
+  author: jahrik
+  namespace: jahrik
+  description: Install alacritty and configs
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-vim/issues
+  license: GPLv2
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - alacritty

@@ -1,0 +1,24 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check alacritty binary
+      ansible.builtin.stat:
+        path: /usr/bin/alacritty
+      register: alacritty_bin
+
+    - name: Assert alacritty is installed
+      ansible.builtin.assert:
+        that: alacritty_bin.stat.exists
+        fail_msg: "alacritty binary not found at /usr/bin/alacritty"
+
+    - name: Check alacritty config file
+      ansible.builtin.stat:
+        path: ~/.config/alacritty/alacritty.yml
+      register: alacritty_cfg
+
+    - name: Assert alacritty config exists
+      ansible.builtin.assert:
+        that: alacritty_cfg.stat.exists
+        fail_msg: "alacritty config not found at ~/.config/alacritty/alacritty.yml"

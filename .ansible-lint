@@ -1,0 +1,6 @@
+---
+profile: basic
+exclude_paths:
+  - .cache/
+  - molecule/
+  - tests/

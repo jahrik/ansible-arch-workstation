@@ -1,0 +1,33 @@
+---
+- name: Include OS dependencies
+  ansible.builtin.include_tasks: "{{ ansible_os_family | lower }}.yml"
+
+- name: Create ~/.config/sway directory
+  become: false
+  ansible.builtin.file:
+    path: "~/.config/sway"
+    state: directory
+    mode: "0755"
+
+- name: Generate sway config files
+  become: false
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "~/.config/sway/{{ item }}"
+    mode: "0644"
+  loop:
+    - config
+
+- name: Create $HOME/screenshots dir
+  become: false
+  ansible.builtin.file:
+    path: "~/screenshots/"
+    state: directory
+    mode: "0755"
+
+- name: Set default background image
+  become: false
+  ansible.builtin.copy:
+    src: background.jpg
+    dest: "~/.config/sway/background.jpg"
+    mode: "0644"

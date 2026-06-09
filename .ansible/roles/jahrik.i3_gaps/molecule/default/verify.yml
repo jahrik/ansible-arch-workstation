@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check i3 config directory
+      ansible.builtin.stat:
+        path: ~/.config/i3
+      register: i3_dir
+
+    - name: Assert i3 config directory exists
+      ansible.builtin.assert:
+        that: i3_dir.stat.exists and i3_dir.stat.isdir
+        fail_msg: "~/.config/i3 directory not found"
+
+    - name: Check i3 config file
+      ansible.builtin.stat:
+        path: ~/.config/i3/config
+      register: i3_conf
+
+    - name: Assert i3 config exists
+      ansible.builtin.assert:
+        that: i3_conf.stat.exists
+        fail_msg: "~/.config/i3/config not found"
+
+    - name: Check xinitrc symlink
+      ansible.builtin.stat:
+        path: ~/.xinitrc
+      register: xinitrc
+
+    - name: Assert xinitrc exists
+      ansible.builtin.assert:
+        that: xinitrc.stat.exists
+        fail_msg: "~/.xinitrc not found"

@@ -1,0 +1,56 @@
+# {{ ansible_managed }}
+
+alignment top_left
+background no
+border_width 1
+cpu_avg_samples 2
+default_color 555555
+default_outline_color white
+default_shade_color white
+color1 {{ conky.color1 }}
+color2 {{ conky.color2 }}
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont {{ conky.font }}:size=12
+gap_x 50
+gap_y 50
+minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window no
+own_window_class Conky
+own_window_type desktop
+stippled_borders 0
+update_interval {{ conky.update_int }}
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+text_buffer_size 2048
+
+TEXT
+${color2}Uptime:$color1 $uptime
+${color2}Frequency (in MHz):$color1 $freq
+${color2}Frequency (in GHz):$color1 $freq_g
+${color2}RAM Usage:$color1 $mem/$memmax - $memperc% ${membar 4}
+${color2}Swap Usage:$color1 $swap/$swapmax - $swapperc% ${swapbar 4}
+${color2}CPU Usage:$color1 $cpu% ${cpubar 4}
+${color2}Processes:$color1 $processes  ${color2}Running:$color1 $running_processes
+$hr
+${color2}File systems:
+${color2}/ $color1${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${color2}/home $color1${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
+${color2}Networking:
+Up:$color1 ${upspeed {{ conky.interface  }}} ${color2} - Down:$color1 ${downspeed {{ conky.interface  }}}
+$hr
+${color2}Name              PID   CPU%   MEM%
+${color1} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+${color1} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${color1} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+

@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check urxvt binary
+      ansible.builtin.stat:
+        path: /usr/bin/urxvt
+      register: urxvt_bin
+
+    - name: Assert urxvt is installed
+      ansible.builtin.assert:
+        that: urxvt_bin.stat.exists
+        fail_msg: "urxvt binary not found at /usr/bin/urxvt"
+
+    - name: Check ~/.urxvt/ext directory
+      ansible.builtin.stat:
+        path: ~/.urxvt/ext
+      register: urxvt_ext
+
+    - name: Assert ~/.urxvt/ext directory exists
+      ansible.builtin.assert:
+        that: urxvt_ext.stat.exists and urxvt_ext.stat.isdir
+        fail_msg: "~/.urxvt/ext directory not found"
+
+    - name: Check xresources config
+      ansible.builtin.stat:
+        path: ~/.urxvt/xresources
+      register: urxvt_cfg
+
+    - name: Assert xresources exists
+      ansible.builtin.assert:
+        that: urxvt_cfg.stat.exists
+        fail_msg: "~/.urxvt/xresources not found"

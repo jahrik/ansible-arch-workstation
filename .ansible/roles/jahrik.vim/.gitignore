@@ -1,0 +1,11 @@
+*.egg-info/
+*.py[cod]
+*.retry
+.bundle/
+.cache/
+.coverage
+.coverage.*
+.eggs/
+*.molecule/
+.vagrant/
+molecule/default/roles

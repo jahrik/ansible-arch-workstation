@@ -1,0 +1,5 @@
+---
+# Arch installs latest from AUR
+# Ubuntu installs from source and will grab this version
+polybar:
+  version: 3.5.7

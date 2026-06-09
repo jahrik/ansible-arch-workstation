@@ -1,0 +1,6 @@
+{% if python_force_color is defined %}
+export PY_COLORS={{ python_force_color }}
+{% endif %}
+{% if ansible_force_color is defined %}
+export ANSIBLE_FORCE_COLOR={{ ansible_force_color }}
+{% endif %}

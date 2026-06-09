@@ -1,0 +1,20 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: arch
+    image: jahrik/docker-archlinux-ansible
+    pre_build_image: true
+  - name: ubuntu
+    image: geerlingguy/docker-ubuntu2004-ansible
+    pre_build_image: true
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      arch:
+        ansible_user: ansible
+verifier:
+  name: ansible

@@ -1,0 +1,10 @@
+---
+- name: Install urxvt
+  become: true
+  community.general.pacman:
+    name:
+      - rxvt-unicode
+      - urxvt-perls
+      - ttf-dejavu
+      - xsel
+    state: present

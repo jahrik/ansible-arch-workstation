@@ -1,0 +1,18 @@
+galaxy_info:
+  role_name: polybar
+  author: jahrik
+  namespace: jahrik
+  description: Install and configure polybar
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-polybar/issues
+  license: GPLv2
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - polybar

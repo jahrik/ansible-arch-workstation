@@ -1,0 +1,6 @@
+---
+install: true
+alacritty:
+  font:
+    size: 16
+    family: DejaVuSansMono Nerd Font Mono

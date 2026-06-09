@@ -1,0 +1,7 @@
+typeset -U path
+path=(
+  $path
+{% for i in path %}                                                        
+  {{ i }}                                                                   
+{% endfor %}  
+)

@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check sway binary
+      ansible.builtin.stat:
+        path: /usr/bin/sway
+      register: sway_bin
+
+    - name: Assert sway is installed
+      ansible.builtin.assert:
+        that: sway_bin.stat.exists
+        fail_msg: "sway binary not found at /usr/bin/sway"
+
+    - name: Check sway config directory
+      ansible.builtin.stat:
+        path: ~/.config/sway
+      register: sway_dir
+
+    - name: Assert sway config directory exists
+      ansible.builtin.assert:
+        that: sway_dir.stat.exists and sway_dir.stat.isdir
+        fail_msg: "~/.config/sway directory not found"
+
+    - name: Check sway config file
+      ansible.builtin.stat:
+        path: ~/.config/sway/config
+      register: sway_cfg
+
+    - name: Assert sway config exists
+      ansible.builtin.assert:
+        that: sway_cfg.stat.exists
+        fail_msg: "~/.config/sway/config not found"

@@ -1,0 +1,13 @@
+---
+- name: Uninstall neovim
+  become: true
+  ansible.builtin.package:
+    name:
+      - neovim
+    state: absent
+
+- name: Destroy ~/.config/nvim directory
+  become: false
+  ansible.builtin.file:
+    path: ~/.config/nvim
+    state: absent

@@ -1,0 +1,19 @@
+galaxy_info:
+  role_name: sway
+  namespace: jahrik
+  author: jahrik
+  description: Install and configure sway
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-sway/issues
+  license: GPLv2
+  min_ansible_version: 2.1
+  dependencies: []
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - sway

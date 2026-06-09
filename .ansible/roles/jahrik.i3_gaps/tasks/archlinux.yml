@@ -1,0 +1,29 @@
+---
+- name: Install i3-gaps
+  become: true
+  community.general.pacman:
+    name:
+      - i3-gaps
+      - i3lock
+      - i3status
+    state: present
+  tags: [ 'i3' ]
+
+- name: Install i3 extras
+  become: true
+  community.general.pacman:
+    name:
+      - conky
+      - dmenu
+      - dunst
+      - feh
+      - scrot
+      - xcalib
+      - xf86-input-synaptics
+      - xorg-xmodmap
+      - xorg-xrdb
+      - xorg-server
+      - xorg-xinit
+      - xorg-xrandr
+    state: present
+  tags: [ 'i3' ]

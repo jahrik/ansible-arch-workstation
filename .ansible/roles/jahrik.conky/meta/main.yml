@@ -1,0 +1,18 @@
+galaxy_info:
+  role_name: conky
+  author: jahrik
+  namespace: jahrik
+  description: Install conky and configs
+  company: https://homelab.business
+  issue_tracker_url: https://github.com/jahrik/ansible-vim/issues
+  license: GPLv2
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - conky

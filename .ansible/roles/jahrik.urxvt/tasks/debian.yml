@@ -1,0 +1,15 @@
+---
+- name: Update cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install urxvt
+  become: true
+  ansible.builtin.package:
+    name:
+      - rxvt-unicode
+      - ttf-dejavu
+      - xsel
+    state: present

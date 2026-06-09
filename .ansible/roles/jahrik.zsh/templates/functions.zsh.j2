@@ -1,0 +1,100 @@
+#!/usr/bin/zsh
+
+# make man pages colored
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
+{% raw %}
+# Show docker environment variables without logging in
+docker_inspect_env() {
+  if [[ -z $1 ]]; then
+      echo "Give <container-name OR id> like:  docker_inspect_env <container-name OR id>"
+  else
+  docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' $1
+  fi
+}
+{% endraw %}
+{% raw %}
+# Show docker IP without logging in
+docker_inspect_ip() {
+  if [[ -z $1 ]]; then
+      echo "Give <container-name OR id> like:  docker_inspect_ip <container-name OR id>"
+  else
+  docker inspect --format '{{ .NetworkSettings.IPAddress }}' $1
+  fi
+}
+{% endraw %}
+
+# Test fonts installed
+font_test (){
+    print "Letters:\tAaBbCcDdEeFfGgHhIiJjKkLlMm"
+    print "\t\tNnOoPpQqRrSsTtUuVvWwXxYyZz"
+    print "Digits:\t\t0123456789"
+    print "Brackets:\t( ) [ ] { } < > "
+    print "Quotes:\t\t\"foo\" 'bar' "
+    print "Punctuation: \t, . ? : ; _ ! "
+    print "Symbols:\t\` ~  @ # $ % ^ & * - + = | / \\"
+    print "Ambiguity:\t1Il ao DO0Q B8 ``''\" ({ ,. ;: "
+}
+
+# Quickly generate a new ssh key
+ssh_quick() {
+    if [[ -z $1 ]]; then
+        echo "Give key name like:  ssh_quick new_rsa"
+        echo "Optional add email like:  ssh_quick new_rsa example.email.com"
+    fi
+    ssh-keygen -b 4096 -t rsa -f ~/.ssh/$1 -C "$2"
+}
+
+# Pull version from metadata.rb
+# Pull last commit message from github
+# Set tag and push to github
+git_tag_cookbook() {
+  version=$(grep version metadata.rb | awk '{ gsub(/"/, "", $2);gsub(/\047/, "", $2); print "v"$2 }')
+  git_log=$(git log -1 --pretty=%B)
+  if ! [[ $(git tag) ]] || [[ $( git tag | grep "$version" ) != "$version" ]];
+  then
+    echo "$version";
+    echo "$git_log";
+    git tag -a "$version" -m "$git_log";
+    git push origin "$version";
+  else
+    echo "tag $version already exists";
+  fi
+}
+
+# Convert seconds to DHMS
+sec2dhms() {
+  declare -i SS="$1"
+  D=$(( SS / 86400 ))
+  H=$(( SS % 86400 / 3600 ))
+  M=$(( SS % 3600 / 60 ))
+  S=$(( SS % 60 ))
+  [ "$D" -gt 0 ] && echo -n "${D}:"
+  [ "$H" -gt 0 ] && printf "%02g:" "$H"
+  printf "%02g:%02g\n" "$M" "$S"
+}
+
+# convert B to human readable
+#!/bin/sh
+human_print(){
+while read B dummy; do
+  [ $B -lt 1024 ] && echo ${B} bytes && break
+  KB=$(((B+512)/1024))
+  [ $KB -lt 1024 ] && echo ${KB} kilobytes && break
+  MB=$(((KB+512)/1024))
+  [ $MB -lt 1024 ] && echo ${MB} megabytes && break
+  GB=$(((MB+512)/1024))
+  [ $GB -lt 1024 ] && echo ${GB} gigabytes && break
+  echo $(((GB+512)/1024)) terabytes
+done
+}

@@ -1,0 +1,78 @@
+---
+- name: "Include OS specific tasks"
+  ansible.builtin.include_tasks: "{{ ansible_os_family | lower }}.yml"
+
+- name: "Create ~/.local/share/fonts directory"
+  become: false
+  ansible.builtin.file:
+    path: ~/.local/share/fonts
+    state: directory
+    recurse: true
+
+- name: Download Nerd Fonts (dejavu-sans-mono-nerdfonts)
+  become: false
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DejaVuSansMono.zip
+    dest: ~/.local/share/fonts
+    remote_src: true
+    creates: '~/.local/share/fonts/DejaVu Sans Mono Nerd Font Complete Mono.ttf'
+  notify: fc-cache
+
+- name: Install neovim
+  become: true
+  ansible.builtin.package:
+    name: neovim
+    state: present
+
+- name: Install NPM packages
+  become: true
+  community.general.npm:
+    name: neovim
+    global: true
+    state: present
+
+- name: Ensure /usr/local/share/nvim/ directory exists
+  become: true
+  ansible.builtin.file:
+    mode: "0755"
+    path: /usr/local/share/nvim/
+    state: directory
+
+- name: Create python virtual env and install neovim module
+  become: true
+  ansible.builtin.pip:
+    name: neovim
+    virtualenv: /usr/local/share/nvim/python3
+    virtualenv_python: python3
+
+- name: Create ~/.config/nvim directories
+  become: false
+  ansible.builtin.file:
+    path: "~/.config/{{ item }}"
+    state: directory
+    mode: "0755"
+    recurse: true
+  loop:
+    - "nvim/lua/conf"
+    - "nvim/after/plugin"
+
+- name: "Generate nvim config files"
+  become: false
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "~/.config/nvim/{{ item }}"
+    mode: "0755"
+  loop:
+    - after/plugin/colors.lua
+    - after/plugin/lsp.lua
+    - after/plugin/filetype.lua
+    - after/plugin/nvimtree.lua
+    - after/plugin/telescope.lua
+    - after/plugin/test.lua
+    - after/plugin/treesitter.lua
+    - init.lua
+    - lua/conf/utils.lua
+    - lua/conf/plugins.lua
+    - lua/conf/remap.lua
+    - lua/conf/set.lua
+  notify: "nvim packersync"

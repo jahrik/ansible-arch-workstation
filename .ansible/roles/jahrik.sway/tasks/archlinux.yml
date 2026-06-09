@@ -1,0 +1,26 @@
+---
+- name: Install Sway
+  become: true
+  community.general.pacman:
+    name:
+      - sway
+    state: present
+
+- name: Install Sway Extras
+  become: true
+  community.general.pacman:
+    name:
+      - dunst
+      - seatd
+      - waybar
+      - wayland
+      - wayland-protocols
+      - xorg-xwayland
+    state: present
+
+- name: Ensure seatd started and enabled
+  become: true
+  ansible.builtin.service:
+    name: seatd
+    state: started
+    enabled: true

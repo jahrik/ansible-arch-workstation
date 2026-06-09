@@ -1,0 +1,6 @@
+---
+- ansible.builtin.include_tasks: install.yml
+  when: install | default(true) | bool
+
+- ansible.builtin.include_tasks: uninstall.yml
+  when: not (install | default(true) | bool)
