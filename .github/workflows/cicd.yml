@@ -20,9 +20,13 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install test dependencies
-        run: pip3 install yamllint
+        run: pip3 install yamllint ansible-lint
+      - name: Install Galaxy requirements
+        run: ansible-galaxy role install -r requirements.yml
       - name: Lint code
         run: yamllint .
+      - name: Ansible lint
+        run: ansible-lint
 
   molecule:
     name: Molecule

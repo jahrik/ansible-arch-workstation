@@ -9,7 +9,7 @@
   tags:
     - yay
 
-- name: makepkg --noconfirm -si
+- name: Build and install yay with makepkg
   become: false
   ansible.builtin.command: makepkg --noconfirm -si
   args:
