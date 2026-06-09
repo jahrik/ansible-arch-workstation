@@ -41,6 +41,7 @@ jobs:
         with:
           molecule_command: test
           molecule_args: -d docker
+          molecule_working_dir: .
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
