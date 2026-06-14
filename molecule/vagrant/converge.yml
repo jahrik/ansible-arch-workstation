@@ -1,7 +1,5 @@
 ---
 - name: Converge
   hosts: all
-  tasks:
-    - name: "Include jahrik.workstation"
-      include_role:
-        name: "jahrik.workstation"
+  roles:
+    - role: jahrik.workstation
