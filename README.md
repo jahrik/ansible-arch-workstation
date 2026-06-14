@@ -1,8 +1,7 @@
 # Arch Workstation
 
 [![CICD](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml)
-[![Ansible Galaxy](https://img.shields.io/ansible/role/d/13941)](https://galaxy.ansible.com/ui/standalone/roles/13941/)
-[![Ansible Quality Score](https://img.shields.io/ansible/quality/13941)](https://galaxy.ansible.com/ui/standalone/roles/13941/)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-jahrik.workstation-blue?logo=ansible)](https://galaxy.ansible.com/ui/standalone/roles/jahrik/workstation/)
 
 Setup an Arch Linux development environment
 
@@ -70,17 +69,17 @@ This role is intended for setting a development environment on fresh install of 
 
 ## Dependencies
 
-| Role | Galaxy |
-|------|--------|
-| jahrik.yay | [![Downloads](https://img.shields.io/ansible/role/d/13942)](https://galaxy.ansible.com/ui/standalone/roles/13942/) [![Quality](https://img.shields.io/ansible/quality/13942)](https://galaxy.ansible.com/ui/standalone/roles/13942/) |
-| jahrik.alacritty | [![Downloads](https://img.shields.io/ansible/role/d/13932)](https://galaxy.ansible.com/ui/standalone/roles/13932/) [![Quality](https://img.shields.io/ansible/quality/13932)](https://galaxy.ansible.com/ui/standalone/roles/13932/) |
-| jahrik.i3_gaps | [![Downloads](https://img.shields.io/ansible/role/d/13935)](https://galaxy.ansible.com/ui/standalone/roles/13935/) [![Quality](https://img.shields.io/ansible/quality/13935)](https://galaxy.ansible.com/ui/standalone/roles/13935/) |
-| jahrik.polybar | [![Downloads](https://img.shields.io/ansible/role/d/13937)](https://galaxy.ansible.com/ui/standalone/roles/13937/) [![Quality](https://img.shields.io/ansible/quality/13937)](https://galaxy.ansible.com/ui/standalone/roles/13937/) |
-| jahrik.urxvt | [![Downloads](https://img.shields.io/ansible/role/d/13939)](https://galaxy.ansible.com/ui/standalone/roles/13939/) [![Quality](https://img.shields.io/ansible/quality/13939)](https://galaxy.ansible.com/ui/standalone/roles/13939/) |
-| jahrik.conky | [![Downloads](https://img.shields.io/ansible/role/d/13933)](https://galaxy.ansible.com/ui/standalone/roles/13933/) [![Quality](https://img.shields.io/ansible/quality/13933)](https://galaxy.ansible.com/ui/standalone/roles/13933/) |
-| jahrik.zsh | [![Downloads](https://img.shields.io/ansible/role/d/13943)](https://galaxy.ansible.com/ui/standalone/roles/13943/) [![Quality](https://img.shields.io/ansible/quality/13943)](https://galaxy.ansible.com/ui/standalone/roles/13943/) |
-| jahrik.vim | [![Downloads](https://img.shields.io/ansible/role/d/13940)](https://galaxy.ansible.com/ui/standalone/roles/13940/) [![Quality](https://img.shields.io/ansible/quality/13940)](https://galaxy.ansible.com/ui/standalone/roles/13940/) |
-| jahrik.nvim | [![Downloads](https://img.shields.io/ansible/role/d/13936)](https://galaxy.ansible.com/ui/standalone/roles/13936/) [![Quality](https://img.shields.io/ansible/quality/13936)](https://galaxy.ansible.com/ui/standalone/roles/13936/) |
+| Role | CI |
+|------|----|
+| jahrik.yay | [![CI](https://github.com/jahrik/ansilbe-yay/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansilbe-yay/actions/workflows/cicd.yml) |
+| jahrik.alacritty | [![CI](https://github.com/jahrik/ansible-alacritty/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-alacritty/actions/workflows/cicd.yml) |
+| jahrik.i3_gaps | [![CI](https://github.com/jahrik/ansible-i3-gaps/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-i3-gaps/actions/workflows/cicd.yml) |
+| jahrik.polybar | [![CI](https://github.com/jahrik/ansible-polybar/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-polybar/actions/workflows/cicd.yml) |
+| jahrik.urxvt | [![CI](https://github.com/jahrik/ansible-urxvt/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-urxvt/actions/workflows/cicd.yml) |
+| jahrik.conky | [![CI](https://github.com/jahrik/ansible-conky/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-conky/actions/workflows/cicd.yml) |
+| jahrik.zsh | [![CI](https://github.com/jahrik/ansible-zsh/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-zsh/actions/workflows/cicd.yml) |
+| jahrik.vim | [![CI](https://github.com/jahrik/ansible-vim/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-vim/actions/workflows/cicd.yml) |
+| jahrik.nvim | [![CI](https://github.com/jahrik/ansible-nvim/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-nvim/actions/workflows/cicd.yml) |
 
 ## Example Playbook
 
