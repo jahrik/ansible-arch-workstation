@@ -6,7 +6,7 @@ galaxy_info:
   description: Installs a development workstation
   company: https://homelab.business
   issue_tracker_url: https://github.com/jahrik/ansible-arch-workstation/issues
-  min_ansible_version: '2.1'
+  min_ansible_version: '2.16'
   license: GPLv2
   platforms:
     - name: ArchLinux
@@ -27,10 +27,11 @@ galaxy_info:
 
 dependencies:
   - role: jahrik.yay
-  - role: jahrik.vim
-  - role: jahrik.zsh
+  - role: jahrik.alacritty
   - role: jahrik.i3_gaps
   - role: jahrik.polybar
   - role: jahrik.urxvt
-  - role: jahrik.alacritty
   - role: jahrik.conky
+  - role: jahrik.zsh
+  - role: jahrik.vim
+  - role: jahrik.nvim

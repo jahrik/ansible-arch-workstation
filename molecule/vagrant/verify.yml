@@ -1,10 +1,84 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: Verify
   hosts: all
   gather_facts: false
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: Check yay binary
+      ansible.builtin.stat:
+        path: /usr/bin/yay
+      register: yay_bin
+
+    - name: Assert yay is installed
+      ansible.builtin.assert:
+        that: yay_bin.stat.exists
+        fail_msg: "yay binary not found at /usr/bin/yay"
+
+    - name: Check alacritty binary
+      ansible.builtin.stat:
+        path: /usr/bin/alacritty
+      register: alacritty_bin
+
+    - name: Assert alacritty is installed
+      ansible.builtin.assert:
+        that: alacritty_bin.stat.exists
+        fail_msg: "alacritty binary not found at /usr/bin/alacritty"
+
+    - name: Check i3 binary
+      ansible.builtin.stat:
+        path: /usr/bin/i3
+      register: i3_bin
+
+    - name: Assert i3 is installed
+      ansible.builtin.assert:
+        that: i3_bin.stat.exists
+        fail_msg: "i3 binary not found at /usr/bin/i3"
+
+    - name: Check polybar binary
+      ansible.builtin.stat:
+        path: /usr/bin/polybar
+      register: polybar_bin
+
+    - name: Assert polybar is installed
+      ansible.builtin.assert:
+        that: polybar_bin.stat.exists
+        fail_msg: "polybar binary not found at /usr/bin/polybar"
+
+    - name: Check urxvt binary
+      ansible.builtin.stat:
+        path: /usr/bin/urxvt
+      register: urxvt_bin
+
+    - name: Assert urxvt is installed
+      ansible.builtin.assert:
+        that: urxvt_bin.stat.exists
+        fail_msg: "urxvt binary not found at /usr/bin/urxvt"
+
+    - name: Check zsh binary
+      ansible.builtin.stat:
+        path: /usr/bin/zsh
+      register: zsh_bin
+
+    - name: Assert zsh is installed
+      ansible.builtin.assert:
+        that: zsh_bin.stat.exists
+        fail_msg: "zsh binary not found at /usr/bin/zsh"
+
+    - name: Check vim binary
+      ansible.builtin.stat:
+        path: /usr/bin/vim
+      register: vim_bin
+
+    - name: Assert vim is installed
+      ansible.builtin.assert:
+        that: vim_bin.stat.exists
+        fail_msg: "vim binary not found at /usr/bin/vim"
+
+    - name: Check nvim binary
+      ansible.builtin.stat:
+        path: /usr/bin/nvim
+      register: nvim_bin
+
+    - name: Assert nvim is installed
+      ansible.builtin.assert:
+        that: nvim_bin.stat.exists
+        fail_msg: "nvim binary not found at /usr/bin/nvim"

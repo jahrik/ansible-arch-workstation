@@ -1,7 +1,4 @@
 ---
-collections:
-  - name: community.general
-
 roles:
   - name: jahrik.alacritty
   - name: jahrik.conky
