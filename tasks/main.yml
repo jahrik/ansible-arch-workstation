@@ -8,9 +8,21 @@
   ansible.builtin.include_role:
     name: jahrik.alacritty
 
-- name: Install and configure Sway
+- name: Install and configure i3-gaps
   ansible.builtin.include_role:
-    name: jahrik.sway
+    name: jahrik.i3_gaps
+
+- name: Install and configure polybar
+  ansible.builtin.include_role:
+    name: jahrik.polybar
+
+- name: Install urxvt
+  ansible.builtin.include_role:
+    name: jahrik.urxvt
+
+- name: Install and configure conky
+  ansible.builtin.include_role:
+    name: jahrik.conky
 
 - name: Install and configure zsh and set as default user shell
   ansible.builtin.include_role:

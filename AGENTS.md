@@ -14,7 +14,10 @@ Installed via `ansible-galaxy install -r requirements.yml`:
 |---|---|
 | `jahrik.yay` | AUR helper (Arch only) |
 | `jahrik.alacritty` | Terminal emulator + config |
-| `jahrik.sway` | Wayland compositor + config |
+| `jahrik.i3_gaps` | i3-gaps window manager + config |
+| `jahrik.polybar` | Status bar |
+| `jahrik.urxvt` | X11 terminal emulator |
+| `jahrik.conky` | System monitor / i3 bar widget |
 | `jahrik.zsh` | Shell + Oh My Zsh |
 | `jahrik.vim` | Vim + Vundle + plugins |
 | `jahrik.nvim` | Neovim + Packer + LSP |

@@ -4,7 +4,6 @@
 - name: jahrik.i3_gaps
 - name: jahrik.nvim
 - name: jahrik.polybar
-- name: jahrik.sway
 - name: jahrik.urxvt
 - name: jahrik.vim
 - name: jahrik.yay

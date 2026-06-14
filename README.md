@@ -1,6 +1,8 @@
 # Arch Workstation
 
 [![CICD](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml)
+[![Ansible Galaxy](https://img.shields.io/ansible/role/d/13941)](https://galaxy.ansible.com/ui/standalone/roles/13941/)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/13941)](https://galaxy.ansible.com/ui/standalone/roles/13941/)
 
 Setup an Arch Linux development environment
 
@@ -26,7 +28,7 @@ Setup an Arch Linux development environment
 
 ## Requirements
 
-This role is intended for setting a development environment on fresh install of Arch Linux. It is a collection of roles that install things like sway, nvim, and zsh. 
+This role is intended for setting a development environment on fresh install of Arch Linux. It is a collection of roles that install things like i3-gaps, nvim, and zsh.
 
 ## Role Variables
 
@@ -55,9 +57,12 @@ This role is intended for setting a development environment on fresh install of 
       - sudo
       - git
 
-    # sway configs
-    sway:
-      bar: waybar
+    # i3 configs (default WM; swap tasks/main.yml roles to use jahrik.sway instead)
+    i3:
+      lock: true
+      bar: false    # false = polybar, true = conky i3bar
+      polybar: true
+      terminal: alacritty
 
     # Python/Ansible color output
     python_force_color: 1
@@ -65,12 +70,17 @@ This role is intended for setting a development environment on fresh install of 
 
 ## Dependencies
 
-- jahrik.alacritty
-- jahrik.nvim
-- jahrik.sway
-- jahrik.vim
-- jahrik.yay
-- jahrik.zsh
+| Role | Galaxy |
+|------|--------|
+| jahrik.yay | [![Downloads](https://img.shields.io/ansible/role/d/13942)](https://galaxy.ansible.com/ui/standalone/roles/13942/) [![Quality](https://img.shields.io/ansible/quality/13942)](https://galaxy.ansible.com/ui/standalone/roles/13942/) |
+| jahrik.alacritty | [![Downloads](https://img.shields.io/ansible/role/d/13932)](https://galaxy.ansible.com/ui/standalone/roles/13932/) [![Quality](https://img.shields.io/ansible/quality/13932)](https://galaxy.ansible.com/ui/standalone/roles/13932/) |
+| jahrik.i3_gaps | [![Downloads](https://img.shields.io/ansible/role/d/13935)](https://galaxy.ansible.com/ui/standalone/roles/13935/) [![Quality](https://img.shields.io/ansible/quality/13935)](https://galaxy.ansible.com/ui/standalone/roles/13935/) |
+| jahrik.polybar | [![Downloads](https://img.shields.io/ansible/role/d/13937)](https://galaxy.ansible.com/ui/standalone/roles/13937/) [![Quality](https://img.shields.io/ansible/quality/13937)](https://galaxy.ansible.com/ui/standalone/roles/13937/) |
+| jahrik.urxvt | [![Downloads](https://img.shields.io/ansible/role/d/13939)](https://galaxy.ansible.com/ui/standalone/roles/13939/) [![Quality](https://img.shields.io/ansible/quality/13939)](https://galaxy.ansible.com/ui/standalone/roles/13939/) |
+| jahrik.conky | [![Downloads](https://img.shields.io/ansible/role/d/13933)](https://galaxy.ansible.com/ui/standalone/roles/13933/) [![Quality](https://img.shields.io/ansible/quality/13933)](https://galaxy.ansible.com/ui/standalone/roles/13933/) |
+| jahrik.zsh | [![Downloads](https://img.shields.io/ansible/role/d/13943)](https://galaxy.ansible.com/ui/standalone/roles/13943/) [![Quality](https://img.shields.io/ansible/quality/13943)](https://galaxy.ansible.com/ui/standalone/roles/13943/) |
+| jahrik.vim | [![Downloads](https://img.shields.io/ansible/role/d/13940)](https://galaxy.ansible.com/ui/standalone/roles/13940/) [![Quality](https://img.shields.io/ansible/quality/13940)](https://galaxy.ansible.com/ui/standalone/roles/13940/) |
+| jahrik.nvim | [![Downloads](https://img.shields.io/ansible/role/d/13936)](https://galaxy.ansible.com/ui/standalone/roles/13936/) [![Quality](https://img.shields.io/ansible/quality/13936)](https://galaxy.ansible.com/ui/standalone/roles/13936/) |
 
 ## Example Playbook
 
@@ -136,7 +146,7 @@ This repository is the first thing I clone any time I reinstall Arch on a new la
     iwctl
     station list
     station wlan0 scan
-    statoin wlan0 get-networks
+    station wlan0 get-networks
     station wlan0 connect <NETWORK>
 
 ### Arch Install

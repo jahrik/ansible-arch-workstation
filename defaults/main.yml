@@ -20,7 +20,7 @@ plugins:
   - git
   - sudo
 
-# i3
+# i3 (default window manager; swap tasks/main.yml roles to use jahrik.sway instead)
 text:
   font: DejaVuSansMono Nerd Font Mono
   size: 18
