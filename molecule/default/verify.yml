@@ -142,3 +142,63 @@
       ansible.builtin.assert:
         that: "'NVIM' in nvim_version.stdout"
         fail_msg: "nvim --version did not produce expected output"
+
+    - name: Check conky binary
+      ansible.builtin.stat:
+        path: /usr/bin/conky
+      register: conky_bin
+
+    - name: Assert conky is installed
+      ansible.builtin.assert:
+        that: conky_bin.stat.exists
+        fail_msg: "conky binary not found at /usr/bin/conky"
+
+    - name: Run conky --version
+      ansible.builtin.command: conky --version
+      register: conky_version
+      changed_when: false
+
+    - name: Assert conky version output
+      ansible.builtin.assert:
+        that: "'conky' in conky_version.stdout | lower"
+        fail_msg: "conky --version did not produce expected output"
+
+    - name: Check i3 config file
+      ansible.builtin.stat:
+        path: ~/.config/i3/config
+      register: i3_cfg
+
+    - name: Assert i3 config exists
+      ansible.builtin.assert:
+        that: i3_cfg.stat.exists
+        fail_msg: "~/.config/i3/config not found"
+
+    - name: Check polybar config file
+      ansible.builtin.stat:
+        path: ~/.config/polybar/config
+      register: polybar_cfg
+
+    - name: Assert polybar config exists
+      ansible.builtin.assert:
+        that: polybar_cfg.stat.exists
+        fail_msg: "~/.config/polybar/config not found"
+
+    - name: Check zsh config file
+      ansible.builtin.stat:
+        path: ~/.config/zsh/.zshrc
+      register: zshrc
+
+    - name: Assert zshrc exists
+      ansible.builtin.assert:
+        that: zshrc.stat.exists
+        fail_msg: "~/.config/zsh/.zshrc not found"
+
+    - name: Check vimrc
+      ansible.builtin.stat:
+        path: ~/.vimrc
+      register: vimrc
+
+    - name: Assert vimrc exists
+      ansible.builtin.assert:
+        that: vimrc.stat.exists
+        fail_msg: "~/.vimrc not found"
