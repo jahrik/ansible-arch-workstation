@@ -14,7 +14,7 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - focal
+        - noble
   galaxy_tags:
     - workstation
     - i3

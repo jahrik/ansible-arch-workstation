@@ -202,3 +202,14 @@ SSH into the box
 Run the playbook against the vm
 
     ansible-playbook -i inventory.yml -l vagrant playbook.yml -K
+
+## Testing
+
+```bash
+# Lint
+yamllint .
+ansible-lint
+
+# Molecule (Docker, Arch only)
+molecule test
+```
