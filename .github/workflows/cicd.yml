@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python 3
         uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: '3.12'
       - name: Install uv
         run: pip3 install uv
       - name: Install test dependencies
@@ -40,7 +40,7 @@ jobs:
       - name: Set up Python 3
         uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Molecule
         uses: gofrolist/molecule-action@v2
