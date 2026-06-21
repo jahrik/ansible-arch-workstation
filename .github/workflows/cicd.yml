@@ -16,7 +16,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v5
       - name: Set up Python 3
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           python-version: '3.12'
       - name: Install test dependencies
@@ -35,7 +35,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v5
       - name: Set up Python 3
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           python-version: '3.12'
       - name: Install test dependencies
