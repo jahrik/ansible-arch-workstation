@@ -53,7 +53,7 @@ Arch Linux only. Run this role on a fresh Arch install to bring up a complete de
 
 | Role | CI |
 |------|----|
-| jahrik.yay | [![CI](https://github.com/jahrik/ansilbe-yay/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansilbe-yay/actions/workflows/cicd.yml) |
+| jahrik.yay | [![CI](https://github.com/jahrik/ansible-yay/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-yay/actions/workflows/cicd.yml) |
 | jahrik.alacritty | [![CI](https://github.com/jahrik/ansible-alacritty/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-alacritty/actions/workflows/cicd.yml) |
 | jahrik.i3_gaps | [![CI](https://github.com/jahrik/ansible-i3-gaps/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-i3-gaps/actions/workflows/cicd.yml) |
 | jahrik.polybar | [![CI](https://github.com/jahrik/ansible-polybar/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-polybar/actions/workflows/cicd.yml) |
