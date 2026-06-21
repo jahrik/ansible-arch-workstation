@@ -1,61 +1,50 @@
-# AGENTS.md
+# ansible-arch-workstation
 
-This file provides guidance to AI coding agents when working with code in this repository.
+Top-level Ansible role that configures a complete Arch Linux development workstation by composing several `jahrik.*` sub-roles from Ansible Galaxy. This is the entry point — one playbook run installs and configures the entire environment. Arch Linux only; no support for other distributions.
 
-## Role Overview
-
-Top-level Ansible role that configures a full Arch Linux development workstation by composing several sub-roles from Ansible Galaxy. This is the entry point — it installs and configures the entire environment in one playbook run.
-
-## Composed Roles (`requirements.yml`)
-
-Installed via `ansible-galaxy install -r requirements.yml`:
-
-| Role | Purpose |
-|---|---|
-| `jahrik.yay` | AUR helper (Arch only) |
-| `jahrik.alacritty` | Terminal emulator + config |
-| `jahrik.i3_gaps` | i3-gaps window manager + config |
-| `jahrik.polybar` | Status bar |
-| `jahrik.urxvt` | X11 terminal emulator |
-| `jahrik.conky` | System monitor / i3 bar widget |
-| `jahrik.zsh` | Shell + Oh My Zsh |
-| `jahrik.vim` | Vim + Vundle + plugins |
-| `jahrik.nvim` | Neovim + Packer + LSP |
-
-## Key Variables (`defaults/main.yml`)
+## Key Variables
 
 | Variable | Default | Description |
 |---|---|---|
-| `install` | `true` | Set to `false` to uninstall |
 | `time_zone` | `US/Pacific` | System timezone |
 | `locale` | `en_US.UTF-8 UTF-8` | System locale |
 | `theme` | `robbyrussell` | Oh My Zsh theme |
 | `editor` | `nvim` | Default `$EDITOR` |
 | `browser` | `chromium` | Default `$BROWSER` |
-| `i3.bar` | `false` | Use polybar instead of conky bar |
+| `terminal` | `alacritty` | Default `$TERM` |
+| `i3.bar` | `false` | Use conky i3bar instead of polybar |
 | `i3.polybar` | `true` | Enable polybar |
 
-## Commands
+## Task Flow
+
+`tasks/main.yml` runs each sub-role in order via `ansible.builtin.include_role`:
+
+1. `jahrik.yay` — AUR helper (Arch only guard inside the role)
+2. `jahrik.alacritty` — terminal emulator + TOML config
+3. `jahrik.i3_gaps` — i3-gaps window manager + config
+4. `jahrik.polybar` — status bar
+5. `jahrik.urxvt` — X11 terminal emulator
+6. `jahrik.conky` — system monitor / i3 bar widget
+7. `jahrik.zsh` — shell + Oh My Zsh
+8. `jahrik.vim` — Vim + Vundle + plugins
+9. `jahrik.nvim` — Neovim + Packer + LSP
+
+There is no install/uninstall branching at this level; toggling is done via each sub-role's own `install` variable.
+
+## Testing
 
 ```bash
-# Install Galaxy role dependencies
-ansible-galaxy install -r requirements.yml
-
-# Run the full playbook
-ansible-playbook playbook.yml -i inventory.ini
-
-# Lint
+uv sync
+source .venv/bin/activate
 yamllint .
-
-# Test with Molecule (Docker, Arch only)
+ansible-lint
 molecule test
-
-# Test with Vagrant (VirtualBox, full GUI — needs xorg pre-installed)
-molecule test -s vagrant
 ```
 
-## Molecule Scenarios
+Molecule uses Docker with the `jahrik/docker-archlinux-ansible` image (Arch only).
 
-- `default` — Docker, Arch Linux (`jahrik/docker-archlinux-ansible`)
-- `vagrant` — VirtualBox, `archlinux/archlinux` box, 4GB RAM, GUI enabled with X11 forwarding
-- `mac` — macOS (see `molecule/mac/INSTALL.rst`)
+## CI
+
+- **Lint**: yamllint + ansible-lint
+- **Molecule**: Arch Linux via Docker (`molecule/default`)
+- **Release**: publishes to Ansible Galaxy on merge to `main`

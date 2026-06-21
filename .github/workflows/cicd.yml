@@ -2,9 +2,9 @@
 name: CICD
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -16,17 +16,17 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v5
       - name: Set up Python 3
-        uses: actions/setup-python@v6
+        uses: astral-sh/setup-uv@v8.1.0
         with:
-          python-version: '3.x'
+          python-version: '3.12'
       - name: Install test dependencies
-        run: pip3 install yamllint ansible-lint
+        run: uv sync
       - name: Install Galaxy requirements
-        run: ansible-galaxy role install -r requirements.yml
+        run: uv run ansible-galaxy role install -r requirements.yml
       - name: Lint code
-        run: yamllint .
+        run: uv run yamllint .
       - name: Ansible lint
-        run: ansible-lint
+        run: uv run ansible-lint
 
   molecule:
     name: Molecule
@@ -34,26 +34,21 @@ jobs:
     steps:
       - name: Check out the codebase
         uses: actions/checkout@v5
-
       - name: Set up Python 3
-        uses: actions/setup-python@v6
+        uses: astral-sh/setup-uv@v8.1.0
         with:
-          python-version: '3.x'
-
-      - name: Molecule
-        uses: gofrolist/molecule-action@v2
-        with:
-          molecule_command: test
-          molecule_args: -d docker
-          molecule_working_dir: .
+          python-version: '3.12'
+      - name: Install test dependencies
+        run: uv sync
+      - name: Run Molecule
+        run: uv run molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
 
   release:
     name: Release
-    needs:
-      - molecule
+    needs: [lint, molecule]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:

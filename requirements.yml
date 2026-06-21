@@ -1,10 +1,11 @@
 ---
-- name: jahrik.alacritty
-- name: jahrik.conky
-- name: jahrik.i3_gaps
-- name: jahrik.nvim
-- name: jahrik.polybar
-- name: jahrik.urxvt
-- name: jahrik.vim
-- name: jahrik.yay
-- name: jahrik.zsh
+roles:
+  - name: jahrik.alacritty
+  - name: jahrik.conky
+  - name: jahrik.i3_gaps
+  - name: jahrik.nvim
+  - name: jahrik.polybar
+  - name: jahrik.urxvt
+  - name: jahrik.vim
+  - name: jahrik.yay
+  - name: jahrik.zsh
