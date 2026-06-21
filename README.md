@@ -75,6 +75,8 @@ Arch Linux only. Run this role on a fresh Arch install to bring up a complete de
 ## Testing
 
 ```bash
+uv sync
+source .venv/bin/activate
 yamllint .
 ansible-lint
 molecule test
