@@ -34,6 +34,8 @@ There is no install/uninstall branching at this level; toggling is done via each
 ## Testing
 
 ```bash
+uv sync
+source .venv/bin/activate
 yamllint .
 ansible-lint
 molecule test
