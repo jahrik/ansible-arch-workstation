@@ -171,32 +171,44 @@ Run Ansible against localhost
 
 ### Vagrant lab
 
-Use vagrant to spin up a virtual machine for testing things like i3 and GUI stuff.
+Uses QEMU (primary) or VirtualBox (fallback) to spin up `cloud-image/arch-linux` as `archie.dev` for testing i3 and GUI stuff. The Vagrantfile provisions with `ansible_local` — no need to run the playbook manually.
 
-Install Vagrant and it's dependencies
+Install Vagrant and QEMU:
 
+```bash
+pacman -S vagrant qemu
+vagrant plugin install vagrant-qemu
 ```
+
+Or VirtualBox:
+
+```bash
 pacman -S vagrant virtualbox
 ```
 
-Bring up an arch box
+Bring up and provision the box:
 
-    vagrant up
+```bash
+vagrant up
+```
 
-Check the status of vagrant
+Check status:
 
-    vagrant status
+```bash
+vagrant status
+```
 
-    rurrent machine states:
+SSH in:
 
-    arch-vm              running (virtualbox)
+```bash
+vagrant ssh
+```
 
-SSH into the box
+Re-run provisioning after changes:
 
-    vagrant ssh arch-vm.dev
+```bash
+vagrant provision
+```
 
-
-Run the playbook against the vm
-
-    ansible-playbook -i inventory.yml -l vagrant playbook.yml -K
+The repo is rsynced to `/vagrant` inside the VM and symlinked into `/etc/ansible/roles/jahrik.workstation` so `ansible_local` can find it.
 
