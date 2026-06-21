@@ -3,14 +3,15 @@
 [![CICD](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahrik/ansible-arch-workstation/actions/workflows/cicd.yml)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-jahrik.workstation-blue?logo=ansible)](https://galaxy.ansible.com/ui/standalone/roles/jahrik/workstation/)
 
-Setup an Arch Linux development environment
+Meta-role that installs a full Arch Linux development environment by composing jahrik.* roles. Arch Linux only — does not support Debian, macOS, or SteamOS.
 
 <!-- vim-markdown-toc GFM -->
 
-* [Requirements](#requirements)
+* [OS Support](#os-support)
 * [Role Variables](#role-variables)
 * [Dependencies](#dependencies)
 * [Example Playbook](#example-playbook)
+* [Testing](#testing)
 * [License](#license)
 * [Notes](#notes)
   * [Initial installation](#initial-installation)
@@ -25,47 +26,28 @@ Setup an Arch Linux development environment
 
 <!-- vim-markdown-toc -->
 
-## Requirements
+## OS Support
 
-This role is intended for setting a development environment on fresh install of Arch Linux. It is a collection of roles that install things like i3-gaps, nvim, and zsh.
+Arch Linux only. Run this role on a fresh Arch install to bring up a complete desktop environment.
 
 ## Role Variables
 
-    time_zone: US/Pacific
-    locale: en_US.UTF-8 UTF-8
-
-    # base packages
-    base:
-      - git
-      - sudo
-
-    # ZSH Configs
-    theme: robbyrussell
-    # Set default $EDITOR
-    editor: nvim
-    # Set default $BROWSER
-    browser: chromium
-    lang: en_US.UTF-8
-    # Set your default $TERM
-    term: alacritty
-    # Include things to your $PATH
-    path:
-      - ~/bin
-    # zsh plugins
-    plugins:
-      - sudo
-      - git
-
-    # i3 configs (default WM; swap tasks/main.yml roles to use jahrik.sway instead)
-    i3:
-      lock: true
-      bar: false    # false = polybar, true = conky i3bar
-      polybar: true
-      terminal: alacritty
-
-    # Python/Ansible color output
-    python_force_color: 1
-    ansible_force_color: 1
+| Variable | Default | Description |
+|---|---|---|
+| `time_zone` | `US/Pacific` | System timezone |
+| `locale` | `en_US.UTF-8 UTF-8` | System locale |
+| `base` | `[git, sudo]` | Base packages to install |
+| `editor` | `nvim` | Default `$EDITOR` |
+| `browser` | `chromium` | Default `$BROWSER` |
+| `lang` | `en_US.UTF-8` | `$LANG` env var |
+| `term` | `alacritty` | Default `$TERM` |
+| `path` | `[~/bin]` | Extra `$PATH` entries |
+| `i3.lock` | `true` | Enable i3lock |
+| `i3.bar` | `false` | `false` = polybar, `true` = conky i3bar |
+| `i3.polybar` | `true` | Enable polybar |
+| `i3.terminal` | `alacritty` | i3 default terminal |
+| `python_force_color` | `1` | `PY_COLORS` env var |
+| `ansible_force_color` | `1` | `ANSIBLE_FORCE_COLOR` env var |
 
 ## Dependencies
 
@@ -83,13 +65,28 @@ This role is intended for setting a development environment on fresh install of 
 
 ## Example Playbook
 
-    - hosts: localhost
-      roles:
-         - { role: jahrik.workstation, install: true }
+```yaml
+---
+- hosts: localhost
+  roles:
+    - role: jahrik.workstation
+```
+
+## Testing
+
+```bash
+yamllint .
+ansible-lint
+molecule test
+```
 
 ## License
 
 GPLv2
+
+## Author Information
+
+jahrik@gmail.com
 
 ## Notes
 
@@ -203,13 +200,3 @@ Run the playbook against the vm
 
     ansible-playbook -i inventory.yml -l vagrant playbook.yml -K
 
-## Testing
-
-```bash
-# Lint
-yamllint .
-ansible-lint
-
-# Molecule (Docker, Arch only)
-molecule test
-```
