@@ -33,6 +33,19 @@
         that: alacritty_bin.stat.exists
         fail_msg: "alacritty binary not found at /usr/bin/alacritty"
 
+    - name: Run alacritty --version
+      ansible.builtin.command: alacritty --version
+      register: alacritty_version
+      changed_when: false
+      failed_when: false
+
+    - name: Assert alacritty version output
+      ansible.builtin.assert:
+        that:
+          - alacritty_version.rc == 0
+          - "'alacritty' in alacritty_version.stdout | lower"
+        fail_msg: "alacritty --version did not produce expected output"
+
     - name: Check zsh binary
       ansible.builtin.stat:
         path: /usr/bin/zsh
@@ -102,6 +115,17 @@
       ansible.builtin.assert:
         that: urxvt_bin.stat.exists
         fail_msg: "urxvt binary not found at /usr/bin/urxvt"
+
+    - name: Run urxvt -help
+      ansible.builtin.command: urxvt -help
+      register: urxvt_version
+      changed_when: false
+      failed_when: false
+
+    - name: Assert urxvt version output
+      ansible.builtin.assert:
+        that: "'rxvt' in urxvt_version.stdout | lower or 'rxvt' in urxvt_version.stderr | lower"
+        fail_msg: "urxvt -help did not produce expected output"
 
     - name: Check vim binary
       ansible.builtin.stat:

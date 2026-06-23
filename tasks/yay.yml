@@ -4,7 +4,7 @@
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay.git
     dest: /tmp/yay
-    version: master
+    version: master  # noqa: latest[git]
     update: true
   tags:
     - yay

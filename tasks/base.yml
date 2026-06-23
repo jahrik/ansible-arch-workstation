@@ -1,6 +1,14 @@
 ---
+- name: Update pacman cache
+  become: true
+  community.general.pacman:
+    update_cache: true
+  changed_when: false
+  when: ansible_os_family == 'Archlinux'
+
 - name: Install all base packages
-  ansible.builtin.package:
-    name: "{{ item }}"
+  become: true
+  community.general.pacman:
+    name: "{{ base_packages }}"
     state: present
-  loop: "{{ base_packages }}"
+  when: ansible_os_family == 'Archlinux'
