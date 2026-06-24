@@ -19,7 +19,7 @@ Top-level Ansible role that configures a complete Arch Linux development worksta
 
 `tasks/main.yml` runs each sub-role in order via `ansible.builtin.include_role`:
 
-1. `jahrik.yay` — AUR helper (Arch only guard inside the role)
+1. `jahrik.yay` — AUR helper
 2. `jahrik.alacritty` — terminal emulator + TOML config
 3. `jahrik.i3_gaps` — i3-gaps window manager + config
 4. `jahrik.polybar` — status bar
@@ -40,8 +40,6 @@ yamllint .
 ansible-lint
 molecule test
 ```
-
-Molecule uses Docker with the `jahrik/docker-archlinux-ansible` image (Arch only).
 
 ## CI
 
