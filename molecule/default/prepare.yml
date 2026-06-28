@@ -8,4 +8,4 @@
         upgrade: true
         update_cache: true
       changed_when: false
-      when: ansible_os_family == 'Archlinux'
+      when: ansible_facts['os_family'] == 'Archlinux'

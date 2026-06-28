@@ -2,7 +2,7 @@
 - name: Install yay for easy AUR package installs
   ansible.builtin.include_role:
     name: jahrik.yay
-  when: ansible_os_family == 'Archlinux'
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: Install alacritty
   ansible.builtin.include_role:
