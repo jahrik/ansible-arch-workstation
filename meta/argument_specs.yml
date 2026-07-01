@@ -1,0 +1,110 @@
+---
+argument_specs:
+  main:
+    short_description: Compose a full Arch Linux development workstation from jahrik.* roles
+    options:
+      install:
+        type: bool
+        default: true
+        description: Toggling is done via each sub-role's own install variable; unused at this level
+      time_zone:
+        type: str
+        default: US/Pacific
+        description: System timezone
+      locale:
+        type: str
+        default: en_US.UTF-8 UTF-8
+        description: System locale
+      base_packages:
+        type: list
+        elements: str
+        default:
+          - git
+          - sudo
+        description: Base packages to install
+      theme:
+        type: str
+        default: robbyrussell
+        description: Oh My Zsh theme
+      editor:
+        type: str
+        default: nvim
+        description: Default $EDITOR
+      browser:
+        type: str
+        default: chromium
+        description: Default $BROWSER
+      terminal:
+        type: str
+        default: alacritty
+        description: Default $TERM
+      lang:
+        type: str
+        default: en_US.UTF-8
+        description: $LANG environment variable
+      path:
+        type: list
+        elements: str
+        default:
+          - ~/bin
+        description: Extra $PATH entries
+      plugins:
+        type: list
+        elements: str
+        default:
+          - git
+          - sudo
+        description: Oh My Zsh plugins
+      text:
+        type: dict
+        description: Font settings shared by i3/polybar/conky
+        default:
+          font: DejaVuSansMono Nerd Font Mono
+          size: 18
+        options:
+          font:
+            type: str
+            default: DejaVuSansMono Nerd Font Mono
+            description: Font family
+          size:
+            type: int
+            default: 18
+            description: Font size
+      i3:
+        type: dict
+        description: i3 window manager settings
+        default:
+          lock: true
+          bar: false
+          polybar: true
+          terminal: alacritty
+        options:
+          lock:
+            type: bool
+            default: true
+            description: Enable i3lock
+          bar:
+            type: bool
+            default: false
+            description: Use conky i3bar instead of polybar
+          polybar:
+            type: bool
+            default: true
+            description: Enable polybar
+          terminal:
+            type: str
+            default: alacritty
+            description: i3 default terminal
+      python_force_color:
+        type: int
+        default: 1
+        description: PY_COLORS environment variable
+      ansible_force_color:
+        type: int
+        default: 1
+        description: ANSIBLE_FORCE_COLOR environment variable
+      vagrant_plugins:
+        type: list
+        elements: str
+        default: []
+        description: Optional Vagrant plugins to enable for the Vagrant lab

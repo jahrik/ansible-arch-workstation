@@ -2,36 +2,99 @@
 - name: Install yay for easy AUR package installs
   ansible.builtin.include_role:
     name: jahrik.yay
+    apply:
+      tags:
+        - workstation
+        - workstation:yay
   when: ansible_facts['os_family'] == 'Archlinux'
+  tags:
+    - workstation
+    - workstation:yay
 
 - name: Install alacritty
   ansible.builtin.include_role:
     name: jahrik.alacritty
+    apply:
+      tags:
+        - workstation
+        - workstation:alacritty
+  tags:
+    - workstation
+    - workstation:alacritty
 
 - name: Install and configure i3-gaps
   ansible.builtin.include_role:
     name: jahrik.i3_gaps
+    apply:
+      tags:
+        - workstation
+        - workstation:i3_gaps
+  tags:
+    - workstation
+    - workstation:i3_gaps
 
 - name: Install and configure polybar
   ansible.builtin.include_role:
     name: jahrik.polybar
+    apply:
+      tags:
+        - workstation
+        - workstation:polybar
+  tags:
+    - workstation
+    - workstation:polybar
 
 - name: Install urxvt
   ansible.builtin.include_role:
     name: jahrik.urxvt
+    apply:
+      tags:
+        - workstation
+        - workstation:urxvt
+  tags:
+    - workstation
+    - workstation:urxvt
 
 - name: Install and configure conky
   ansible.builtin.include_role:
     name: jahrik.conky
+    apply:
+      tags:
+        - workstation
+        - workstation:conky
+  tags:
+    - workstation
+    - workstation:conky
 
 - name: Install and configure zsh and set as default user shell
   ansible.builtin.include_role:
     name: jahrik.zsh
+    apply:
+      tags:
+        - workstation
+        - workstation:zsh
+  tags:
+    - workstation
+    - workstation:zsh
 
 - name: Install vim, vundle, and plugins
   ansible.builtin.include_role:
     name: jahrik.vim
+    apply:
+      tags:
+        - workstation
+        - workstation:vim
+  tags:
+    - workstation
+    - workstation:vim
 
 - name: Install nvim, packer, lsp, and plugins
   ansible.builtin.include_role:
     name: jahrik.nvim
+    apply:
+      tags:
+        - workstation
+        - workstation:nvim
+  tags:
+    - workstation
+    - workstation:nvim
