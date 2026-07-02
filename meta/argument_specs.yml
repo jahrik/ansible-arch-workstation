@@ -37,7 +37,7 @@ argument_specs:
       terminal:
         type: str
         default: alacritty
-        description: Default $TERM
+        description: Default terminal emulator
       lang:
         type: str
         default: en_US.UTF-8
