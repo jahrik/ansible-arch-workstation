@@ -34,7 +34,7 @@ i3:
 python_force_color: 1
 ansible_force_color: 1
 
-vagrant_plugins:
+vagrant_plugins: []
   # - vagrant-hostsupdater
   # - vagrant-share
   # - vagrant-vbguest
