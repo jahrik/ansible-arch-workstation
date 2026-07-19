@@ -6,6 +6,6 @@ dependencies = [
     "ansible-core>=2.21.1,<2.22",
     "ansible-lint>=26.6.0",
     "molecule>=26.6.0",
-    "molecule-plugins[docker]>=26.7.8",
+    "molecule-plugins[docker]>=26.7.15",
     "yamllint>=1.38.0",
 ]
