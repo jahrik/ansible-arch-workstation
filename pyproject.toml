@@ -5,7 +5,7 @@ requires-python = ">=3.12,<3.14"
 dependencies = [
     "ansible-core>=2.21.3,<2.22",
     "ansible-lint>=26.8.0",
-    "molecule>=26.6.0",
+    "molecule>=26.8.0",
     "molecule-plugins[docker]>=26.7.15",
     "yamllint>=1.38.0",
 ]
