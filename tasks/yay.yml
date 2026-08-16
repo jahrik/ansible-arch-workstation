@@ -1,10 +1,12 @@
 ---
+# AUR PKGBUILD repo has no tags/releases; pinned to the latest master commit.
+# Bump this SHA periodically to pick up new yay releases.
 - name: Clone yay from github
   become: false
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay.git
     dest: /tmp/yay
-    version: master
+    version: cb43f84828ab4f9700f7c6f9c6d7a923d4cfaff0
     update: true
   tags:
     - yay
