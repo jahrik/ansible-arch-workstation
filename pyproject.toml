@@ -3,7 +3,7 @@ name = "ansible-arch-workstation"
 version = "0.1.0"
 requires-python = ">=3.12,<3.14"
 dependencies = [
-    "ansible-core>=2.21.4,<2.22",
+    "ansible-core>=2.21.5,<2.22",
     "ansible-lint>=26.9.0",
     "molecule>=26.9.0",
     "molecule-plugins[docker]>=26.9.28",
